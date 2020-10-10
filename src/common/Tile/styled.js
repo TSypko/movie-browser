@@ -10,7 +10,23 @@ export const StyledTile = styled.div`
 `;
 
 export const Poster = styled.img`
-    width: 292px;
-    height: 434px;
-    border-radius: 5px;
+  width: 292px;
+  height: 434px;
+  border-radius: 5px;
+`;
+
+export const MovieTitle = styled.h3`
+  margin: 16px 0 8px 0;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: ${({ theme }) => theme.colors.Woodsmoke};
+`;
+
+export const MovieYear = styled.p`
+  margin: 8px 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: ${({ theme }) => theme.colors.Mystic};
 `;
