@@ -1,6 +1,10 @@
 import React from "react";
-import { TileContainer } from "./styled";
+import { TileContainer, GenreTitle } from "./styled";
 
-const GenreTile = () => <TileContainer>Example</TileContainer>;
+const GenreTile = ({ genre }) => (
+  <TileContainer>
+    <GenreTitle>{genre}</GenreTitle>
+  </TileContainer>
+);
 
 export default GenreTile;
