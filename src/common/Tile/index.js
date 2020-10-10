@@ -1,12 +1,12 @@
 import React from "react";
-import { ExampleStyledTile } from "./styled";
+import { StyledTile, Poster } from "./styled";
+import PosterImage from "../../assets/images/poster.svg";
 
 const Tile = () => {
   return (
-    <>
-      <h1>Tile Component</h1>
-      <ExampleStyledTile />
-    </>
+      <StyledTile>
+        <Poster src={PosterImage} alt="poster" />
+      </StyledTile>
   );
 };
 
