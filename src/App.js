@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <div>Strona główna...</div>
-      <Tile />
+      <Tile horizontal />
     </>
   );
 }

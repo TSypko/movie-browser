@@ -64,8 +64,14 @@ export const MovieYear = styled.p`
   } ;
 `;
 
+export const MovieProduction = styled.p``;
+
+export const MovieRelease = styled.p``;
+
 export const GenreSection = styled.section`
   display: flex;
   flex-wrap: wrap;
   margin-top: 8px;
 `;
+
+export const MovieDescription = styled.p``;
