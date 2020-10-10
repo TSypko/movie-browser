@@ -6,5 +6,7 @@ export const theme = {
     Woodsmoke: "#18181B",
   },
 
-  breakpoints: {},
+  breakpoints: {
+    mobileMax: "568px",
+  },
 };
