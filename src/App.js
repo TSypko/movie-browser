@@ -1,37 +1,30 @@
-import React from "react";
-import Tile from "./common/Tile";
-import Poster from "./assets/images/poster.svg";
+import React from 'react';
+import { HashRouter, Link, Switch, Route, Redirect } from "react-router-dom";
+import MoviesPage from "./features/movies/MoviesPage";
+import PeoplePage from "./features/people/PeoplePage";
+import { toMovies, toPeople } from './routes';
 
 function App() {
-  const movieDetails = {
-    title: "Mulan",
-    poster: Poster,
-    year: 2020,
-    genres: ["action", "drama", "adventure"],
-    description:
-      "A young Chinese maiden disguises herself as a male warrior in order to save her father. Disguises herself as a male warrior in order to save her father. A young Chinese maiden disguises herself as a male warrior in order to save her father.",
-    production: "China, USA",
-    release: "24.10.2020",
-    rate: 7.8,
-    votes: 35,
-  };
-
   return (
-    <>
-      <div>Strona główna...</div>
-      <Tile
-        horizontal
-        title={movieDetails.title}
-        poster={movieDetails.poster}
-        year={movieDetails.year}
-        description={movieDetails.description}
-        production={movieDetails.production}
-        release={movieDetails.release}
-        genres={movieDetails.genres}
-        rate={movieDetails.rate}
-        votes={movieDetails.votes}
-      />
-    </>
+    <HashRouter>
+      <nav>
+        <ul>
+          <li><Link to={toMovies()}>Movies</Link></li>
+          <li><Link to={toPeople()}>People</Link></li>
+        </ul>
+      </nav>
+      <Switch>
+        <Route path={toMovies()}>
+          <MoviesPage />
+        </Route>
+        <Route path={toPeople()}>
+          <PeoplePage />
+        </Route>
+        <Route>
+          <Redirect to={toMovies()} />
+        </Route>
+      </Switch>
+    </HashRouter>
   );
 }
 
