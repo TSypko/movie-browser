@@ -24,7 +24,6 @@ function App() {
           <Redirect to={toMovies()} />
         </Route>
       </Switch>
-
     </HashRouter>
   );
 }
