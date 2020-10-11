@@ -51,6 +51,7 @@ export const Rate = styled.span`
       font-weight: 500;
       line-height: 1.3;
       color: black;
+      margin: 0 8px;
     `};
 `;
 
@@ -72,5 +73,15 @@ export const Votes = styled.span`
       font-size: 14px;
       line-height: 1.2;
       color: black;
+      margin: 0 12px;
     `};
+`;
+
+export const OutOf10Span = styled.span`
+  font-size: 14px;
+  line-height: 1.2;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+    display: none;
+  }
 `;
