@@ -16,13 +16,13 @@ import VotesSection from "./VotesSection";
 import { theme } from "../../theme";
 
 const Tile = ({ horizontal, title, year, poster, production, release, description, genres, rate, votes }) => {
-  const [mobileSize, setMobileSize] = useState(false);
+  const [mobileContent, setMobileContent] = useState(false);
   const mobileBreakpoint = +theme.breakpoints.mobileMax.slice(0, -2);
   const onWidthChange = () => {
     if (window.innerWidth <= mobileBreakpoint) {
-      setMobileSize(true);
+      setMobileContent(true);
     } else {
-      setMobileSize(false);
+      setMobileContent(false);
     }
   };
 
@@ -52,11 +52,11 @@ const Tile = ({ horizontal, title, year, poster, production, release, descriptio
         ) : null}
         <GenreSection horizontal={horizontal} genres={genres} />
         <VotesSection horizontal={horizontal} rate={rate} votes={votes} />
-        {horizontal && !mobileSize ? (
+        {horizontal && !mobileContent ? (
           <MovieDescription>{description}</MovieDescription>
         ) : null}
       </MovieDetails>
-      {horizontal && mobileSize ? (
+      {horizontal && mobileContent ? (
         <MovieDescription>{description}</MovieDescription>
       ) : null}
     </StyledTile>
