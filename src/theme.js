@@ -11,5 +11,6 @@ export const theme = {
 
   breakpoints: {
     mobileMax: "568px",
+    headerMax: "767px"
   },
 };

@@ -13,7 +13,7 @@ export const HeaderContainer = styled.header`
     align-items: center;
     padding: 0 10px;
 
-    @media(max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+    @media(max-width: ${({ theme }) => theme.breakpoints.headerMax}) {
         flex-wrap: wrap;
     }
 `;
