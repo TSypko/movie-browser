@@ -7,7 +7,7 @@ export const StyledSection = styled.section`
   align-items: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-    margin-top: 4.39px;
+    margin-top: 4px;
   }
 
   ${({ horizontal }) =>
@@ -21,13 +21,11 @@ export const StyledSection = styled.section`
     `};
 `;
 
-export const VectorImage = styled.img`
+export const StarImage = styled.img`
   width: 22px;
-  height: 22.87px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     width: 16px;
-    height: 15.25px;
   }
 `;
 
