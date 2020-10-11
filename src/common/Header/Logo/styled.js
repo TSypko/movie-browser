@@ -11,7 +11,7 @@ export const LogoWrapper = styled.div`
     flex-shrink: 0;
 
     
-    @media(max-width: ${({theme}) => theme.breakpoints.mobileMax}) {
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         font-size: 13px;
         margin-right: 30px;
     }
