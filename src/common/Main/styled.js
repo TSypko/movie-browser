@@ -13,3 +13,10 @@ export const Title = styled.h2`
   color: ${({ theme }) => theme.colors.Woodsmoke};
   margin: 0 0 24px 0;
 `;
+
+export const MoviesContainer = styled.section`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
+  grid-gap: 24px;
+  margin: 0 auto;
+`;
