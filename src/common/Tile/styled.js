@@ -6,7 +6,7 @@ export const StyledTile = styled.div`
   width: 324px;
   min-height: 650px;
   border-radius: 5px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.White};
   padding: 16px;
   box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
   justify-self: center;
@@ -128,7 +128,7 @@ export const MovieYear = styled.p`
       font-size: 22px;
       font-weight: normal;
       line-height: 1.2;
-      color: black;
+      color: ${({ theme }) => theme.colors.Black};
 
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         color: ${({ theme }) => theme.colors.Mystic};
