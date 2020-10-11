@@ -1,6 +1,5 @@
 import React from "react";
-
-import { MainContainer, Title } from "./styled";
+import { MainContainer, MoviesContainer, Title } from "./styled";
 
 const Main = ({ children }) => (
   <MainContainer>
