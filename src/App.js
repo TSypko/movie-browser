@@ -10,7 +10,7 @@ function App() {
     genres: ["action", "drama", "adventure"],
     description:
       "A young Chinese maiden disguises herself as a male warrior in order to save her father. Disguises herself as a male warrior in order to save her father. A young Chinese maiden disguises herself as a male warrior in order to save her father.",
-    production: ["China", "USA"],
+    production: "China, USA",
     release: "24.10.2020",
     rate: 7.8,
     votes: 35,
@@ -19,7 +19,15 @@ function App() {
   return (
     <>
       <div>Strona główna...</div>
-      <Tile horizontal />
+      <Tile
+        horizontal
+        title={movieDetails.title}
+        poster={movieDetails.poster}
+        year={movieDetails.year}
+        description={movieDetails.description}
+        production={movieDetails.production}
+        release={movieDetails.release}
+      />
     </>
   );
 }

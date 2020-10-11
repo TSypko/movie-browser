@@ -11,12 +11,11 @@ import {
   InfoLabelSpan,
   InfoSpan,
 } from "./styled";
-import PosterImage from "../../assets/images/poster.svg";
 import GenreSection from "./GenreSection";
 import VotesSection from "./VotesSection";
 import { theme } from "../../theme";
 
-const Tile = ({ horizontal }) => {
+const Tile = ({ horizontal, title, year, poster, production, release, description }) => {
   const [mobileSize, setMobileSize] = useState(false);
   const mobileBreakpoint = +theme.breakpoints.mobileMax.slice(0, -2);
   const onWidthChange = () => {
@@ -35,40 +34,30 @@ const Tile = ({ horizontal }) => {
 
   return (
     <StyledTile horizontal={horizontal}>
-      <Poster horizontal={horizontal} src={PosterImage} alt="poster" />
+      <Poster horizontal={horizontal} src={poster} alt="poster" />
       <MovieDetails horizontal={horizontal}>
-        <MovieTitle horizontal={horizontal}>Mulan</MovieTitle>
-        <MovieYear horizontal={horizontal}>2020</MovieYear>
+        <MovieTitle horizontal={horizontal}>{title}</MovieTitle>
+        <MovieYear horizontal={horizontal}>{year}</MovieYear>
         {horizontal ? (
           <>
             <MovieProduction>
               <InfoLabelSpan>Production:</InfoLabelSpan>
-              <InfoSpan>China, USA</InfoSpan>
+              <InfoSpan>{production}</InfoSpan>
             </MovieProduction>
             <MovieRelease>
               <InfoLabelSpan>Release date:</InfoLabelSpan>
-              <InfoSpan>24.10.2020</InfoSpan>
+              <InfoSpan>{release}</InfoSpan>
             </MovieRelease>
           </>
         ) : null}
         <GenreSection horizontal={horizontal} />
         <VotesSection horizontal={horizontal} />
         {horizontal && !mobileSize ? (
-          <MovieDescription>
-            A young Chinese maiden disguises herself as a male warrior in order
-            to save her father. Disguises herself as a male warrior in order to
-            save her father. A young Chinese maiden disguises herself as a male
-            warrior in order to save her father.
-          </MovieDescription>
+          <MovieDescription>{description}</MovieDescription>
         ) : null}
       </MovieDetails>
       {horizontal && mobileSize ? (
-        <MovieDescription>
-          A young Chinese maiden disguises herself as a male warrior in order to
-          save her father. Disguises herself as a male warrior in order to save
-          her father. A young Chinese maiden disguises herself as a male warrior
-          in order to save her father.
-        </MovieDescription>
+        <MovieDescription>{description}</MovieDescription>
       ) : null}
     </StyledTile>
   );
