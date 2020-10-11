@@ -1,6 +1,4 @@
-import styled from "styled-components";
-
-export const StyledSection = styled.section``;
+import styled, { css } from "styled-components";
 
 export const Title = styled.h2`
   font-size: 36px;
@@ -18,9 +16,14 @@ export const Title = styled.h2`
   } ;
 `;
 
-export const Container = styled.section`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
-  grid-gap: 24px;
+export const Container = styled.div`
+  display: ${({ grid }) => (grid ? "grid" : "block")};
   margin: 0 auto;
+
+  ${({ grid }) =>
+    grid &&
+    css`
+      grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
+      grid-gap: 24px;
+    `}
 `;

@@ -1,11 +1,11 @@
 import React from "react";
-import { Container, Title, StyledSection } from "./styled";
+import { Container, Title } from "./styled";
 
-const Section = ({ title, body }) => (
-  <StyledSection>
+const Section = ({ title, body, grid }) => (
+  <section>
     <Title>{title}</Title>
-    <Container>{body}</Container>
-  </StyledSection>
+    <Container grid={grid}>{body}</Container>
+  </section>
 );
 
 export default Section;
