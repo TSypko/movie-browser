@@ -15,7 +15,7 @@ import GenreSection from "./GenreSection";
 import VotesSection from "./VotesSection";
 import { theme } from "../../theme";
 
-const Tile = ({ horizontal, title, year, poster, production, release, description }) => {
+const Tile = ({ horizontal, title, year, poster, production, release, description, genres }) => {
   const [mobileSize, setMobileSize] = useState(false);
   const mobileBreakpoint = +theme.breakpoints.mobileMax.slice(0, -2);
   const onWidthChange = () => {
@@ -50,7 +50,7 @@ const Tile = ({ horizontal, title, year, poster, production, release, descriptio
             </MovieRelease>
           </>
         ) : null}
-        <GenreSection horizontal={horizontal} />
+        <GenreSection horizontal={horizontal} genres={genres} />
         <VotesSection horizontal={horizontal} />
         {horizontal && !mobileSize ? (
           <MovieDescription>{description}</MovieDescription>

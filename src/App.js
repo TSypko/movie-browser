@@ -27,6 +27,7 @@ function App() {
         description={movieDetails.description}
         production={movieDetails.production}
         release={movieDetails.release}
+        genres={movieDetails.genres}
       />
     </>
   );
