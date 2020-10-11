@@ -10,4 +10,11 @@ export const SearchInput = styled.input`
     padding: 12px;
     padding-left:64px;
     font-size: 16px;
+    flex-shrink: 1;
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+        max-width: 100%;
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
 `;

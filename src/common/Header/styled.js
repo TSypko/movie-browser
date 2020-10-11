@@ -9,5 +9,17 @@ export const HeaderContainer = styled.header`
     max-width: 1368px;
     margin: auto;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 10px;
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+        flex-wrap: wrap;
+    }
+`;
+
+export const HeaderWrapper = styled.div`
+    display: flex;
+    flex-wrap: no-wrap;
+    flex-shrink: 0;
 `;

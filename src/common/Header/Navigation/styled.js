@@ -13,16 +13,24 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
     text-decoration: none;
     margin: 10px 0;
     padding: 10px;
+    margin-right: 30px;
 
     &.${activeClassName} {
         border: 1px solid ${({ theme }) => theme.colors.White};
-/* box-sizing: border-box; */
         border-radius: 24px;
+    }
+
+    
+    @media(max-width: ${({theme}) => theme.breakpoints.mobileMax}) {
+        font-size: 12px;
+        margin-right: 10px;
     }
 `;
 
 export const List = styled.ul`
     display: flex;
-    align-items: flex-start;
-    list-style: none;
+
+    @media(max-width: ${({theme}) => theme.breakpoints.mobileMax}) {
+        padding-left: 10px;
+    }
 `;

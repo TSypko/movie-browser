@@ -2,13 +2,15 @@ import React from "react";
 import Logo from "./Logo";
 import Navigation from "./Navigation";
 import SearchPanel from "./SearchPanel";
-import { StyledHeader, HeaderContainer } from "./styled";
+import { StyledHeader, HeaderContainer, HeaderWrapper } from "./styled";
 
 const Header = () => (
     <StyledHeader>
         <HeaderContainer>
-            <Logo />
-            <Navigation />
+            <HeaderWrapper>
+                <Logo />
+                <Navigation />
+            </HeaderWrapper>
             <SearchPanel />
         </HeaderContainer>
     </StyledHeader>
