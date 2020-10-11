@@ -16,6 +16,7 @@ export const Button = styled.button`
     border: none;
     border-radius: 5px;
     margin: 12px 6px;
+    outline-color: ${({ theme }) => theme.colors.ScienceBlue};
     color: ${({ theme }) => theme.colors.MineShaft};
     background: ${({ theme }) => theme.colors.PattensBlue};
 
