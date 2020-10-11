@@ -28,6 +28,8 @@ function App() {
         production={movieDetails.production}
         release={movieDetails.release}
         genres={movieDetails.genres}
+        rate={movieDetails.rate}
+        votes={movieDetails.votes}
       />
     </>
   );
