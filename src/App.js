@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Link, Switch, Route, Redirect } from "react-router-dom";
+import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import MoviesPage from "./features/movies/MoviesPage";
 import PeoplePage from "./features/people/PeoplePage";
 import Header from "./common/Header";
