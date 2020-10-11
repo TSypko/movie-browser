@@ -1,11 +1,6 @@
 import React from "react";
-import { MainContainer, MoviesContainer, Title } from "./styled";
+import { MainContainer } from "./styled";
 
-const Main = ({ children }) => (
-  <MainContainer>
-    <Title>Example main section</Title>
-    <MoviesContainer>{children}</MoviesContainer>
-  </MainContainer>
-);
+const Main = ({ children }) => <MainContainer>{children}</MainContainer>;
 
 export default Main;
