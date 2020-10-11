@@ -15,7 +15,7 @@ export const TileContainer = styled.div`
   ${({ horizontal }) =>
     horizontal &&
     css`
-      margin: 0 16px 0 0;
+      margin: 0 16px 8px 0;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         margin: 0 8px 8px 0;

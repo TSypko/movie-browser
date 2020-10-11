@@ -21,10 +21,8 @@ export const StyledTile = styled.div`
     horizontal &&
     css`
       flex-direction: row;
-      /* width: 1368px; */
       min-height: 544px;
       width: auto;
-      /* height: auto; */
       padding: 40px;
       border-radius: 0;
 

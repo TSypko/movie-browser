@@ -8,7 +8,7 @@ export const StyledSection = styled.div`
   ${({ horizontal }) =>
     horizontal &&
     css`
-      margin: 12px 0;
+      margin: 12px 0 4px 0;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         margin: 4px 0 0 0;
