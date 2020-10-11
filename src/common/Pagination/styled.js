@@ -19,10 +19,22 @@ export const Button = styled.button`
     color: ${({ theme }) => theme.colors.MineShaft};
     background: ${({ theme }) => theme.colors.PattensBlue};
 
-    ${({ disabled }) => disabled && css`
-    color: ${({ theme }) => theme.colors.Woodsmoke};
-    background: ${({ theme }) => theme.colors.Mystic};
-    `}
+    &:hover {
+        filter:brightness(95%);
+    }
+
+    &:active {
+        filter:brightness(92%);
+    }
+
+    &:disabled {
+        color: ${({ theme }) => theme.colors.Woodsmoke};
+        background: ${({ theme }) => theme.colors.Mystic};
+
+        &:hover {
+            filter: none;
+        }
+    }
 `;
 
 export const Icon = styled.img`
@@ -59,4 +71,3 @@ export const PageCounter = styled.span`
     font-weight: 600;
     color: ${({ theme }) => theme.colors.Woodsmoke};
 `;
-
