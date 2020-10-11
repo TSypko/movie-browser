@@ -9,6 +9,7 @@ export const StyledTile = styled.div`
   background-color: white;
   padding: 16px;
   box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
+  justify-self: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     flex-direction: row;
