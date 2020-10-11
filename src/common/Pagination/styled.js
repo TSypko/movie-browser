@@ -10,7 +10,7 @@ export const Footer = styled.footer`
 export const Button = styled.button`
     display: flex;
     align-items: center;
-    padding: 8px 16px;
+    padding: 8px 12.5px;
     font-size: 14px;
     line-height: 1.4;
     border: none;
@@ -21,7 +21,7 @@ export const Button = styled.button`
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
             margin: 12px 4px;
-            padding: 8px 12px;
+            padding: 8px 7.5px;
     }
 
     &:hover {
@@ -71,7 +71,7 @@ export const Icon = styled.img`
         margin-left: 8px;
 
         @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-            margin-left: 4px;
+            margin: 0px 2px;
         }
     `}
 
@@ -80,7 +80,7 @@ export const Icon = styled.img`
         transform: rotate(180deg);
         
         @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-            margin-right: 4px;
+            margin: 0px 2px;
         }
     `}
 
