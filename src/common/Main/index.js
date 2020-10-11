@@ -1,10 +1,10 @@
 import React from "react";
 
-import { MainContainer } from "./styled";
+import { MainContainer, Title } from "./styled";
 
 const Main = () => (
   <MainContainer>
-    <h1>Example main section</h1>
+    <Title>Example main section</Title>
   </MainContainer>
 );
 
