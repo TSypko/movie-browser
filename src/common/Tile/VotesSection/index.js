@@ -1,12 +1,12 @@
 import React from "react";
-import { StyledSection, Rate, Votes } from "./styled";
+import { StyledSection, VectorImage, Rate, Votes } from "./styled";
 import Vector from "../../../assets/images/Vector.svg";
 
-const VotesSection = () => (
-  <StyledSection>
-    <img src={Vector} alt="vector" />
-    <Rate>7,8</Rate>
-    <Votes>35 votes</Votes>
+const VotesSection = ({ horizontal }) => (
+  <StyledSection horizontal={horizontal}>
+    <VectorImage src={Vector} alt="vector" />
+    <Rate horizontal={horizontal}>7,8</Rate>
+    <Votes horizontal={horizontal}>35 votes</Votes>
   </StyledSection>
 );
 
