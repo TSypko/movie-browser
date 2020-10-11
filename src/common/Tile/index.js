@@ -6,14 +6,13 @@ import {
   MovieYear,
   MovieProduction,
   MovieRelease,
-  GenreSection,
   MovieDetails,
   MovieDescription,
   InfoLabelSpan,
   InfoSpan,
 } from "./styled";
 import PosterImage from "../../assets/images/poster.svg";
-import GenreTile from "./GenreTile";
+import GenreSection from "./GenreSection";
 import VotesSection from "./VotesSection";
 import { theme } from "../../theme";
 
@@ -52,14 +51,7 @@ const Tile = ({ horizontal }) => {
             </MovieRelease>
           </>
         ) : null}
-        <GenreSection horizontal={horizontal}>
-          <GenreTile horizontal={horizontal} genre="action" />
-          <GenreTile horizontal={horizontal} genre="drama" />
-          <GenreTile horizontal={horizontal} genre="adventure" />
-          {/* <GenreTile horizontal={horizontal} genre="comedy" />
-          <GenreTile horizontal={horizontal} genre="thriller" />
-          <GenreTile horizontal={horizontal} genre="horror" /> */}
-        </GenreSection>
+        <GenreSection horizontal={horizontal} />
         <VotesSection horizontal={horizontal} />
         {horizontal && !mobileSize ? (
           <MovieDescription>
