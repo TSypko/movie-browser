@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const StyledSection = styled.section`
+export const StyledSection = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-top: 8px;
