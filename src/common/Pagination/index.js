@@ -1,6 +1,6 @@
 import React from 'react';
 import icon from "./Icon.svg";
-import { Footer, Button, Icon, Paragraph, PageText, PageCounter } from './styled';
+import { Footer, Button, ButtonText, Icon, Paragraph, PageText, PageCounter } from './styled';
 
 const Pagination = () => {
     return (
@@ -12,7 +12,16 @@ const Pagination = () => {
                     src={icon}
                     alt="back to first page symbol"
                 />
-                First
+                <Icon
+                    prev
+                    mobile
+                    disabled
+                    src={icon}
+                    alt="back to first page symbol"
+                />
+                <ButtonText mobile>
+                    First
+                </ButtonText>
             </Button>
             <Button disabled>
                 <Icon
@@ -21,7 +30,9 @@ const Pagination = () => {
                     src={icon}
                     alt="back to previous page symbol"
                 />
-                Previous
+                <ButtonText mobile>
+                    Previous
+                </ButtonText>
             </Button>
             <Paragraph>
                 <PageText>
@@ -38,7 +49,9 @@ const Pagination = () => {
                 </PageCounter>
             </Paragraph>
             <Button >
-                Next
+                <ButtonText mobile>
+                    Next
+                </ButtonText>
                 <Icon
                     next
                     src={icon}
@@ -46,9 +59,17 @@ const Pagination = () => {
                 />
             </Button>
             <Button>
-                Last
+                <ButtonText mobile>
+                    Last
+                </ButtonText>
                 <Icon
                     next
+                    src={icon}
+                    alt="move to last page symbol"
+                />
+                <Icon
+                    next
+                    mobile
                     src={icon}
                     alt="move to last page symbol"
                 />
