@@ -4,7 +4,7 @@ import LogoImage from "../../../assets/images/logo.svg";
 
 const Logo = () => (
     <LogoWrapper>
-        <Icon src={LogoImage} alt="" />
+        <Icon src={LogoImage} alt="MovieBrowser logo" />
         Movie Browser
     </LogoWrapper>
 );
