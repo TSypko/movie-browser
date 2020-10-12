@@ -21,5 +21,8 @@ export const HeaderContainer = styled.header`
 export const HeaderWrapper = styled.div`
     display: flex;
     flex-wrap: no-wrap;
-    flex-shrink: 0;
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.headerMax}) { 
+        flex-basis: 100%; 
+    }
 `;
