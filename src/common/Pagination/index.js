@@ -1,5 +1,5 @@
 import React from 'react';
-import icon from "./Icon.svg";
+import arrowIcon from "../../assets/images/arrowIcon.svg";
 import { Footer, Button, ButtonText, Icon, Paragraph, PageText, PageCounter } from './styled';
 
 const Pagination = () => {
@@ -9,14 +9,14 @@ const Pagination = () => {
                 <Icon
                     prev
                     disabled
-                    src={icon}
+                    src={arrowIcon}
                     alt="back to first page symbol"
                 />
                 <Icon
                     prev
                     mobile
                     disabled
-                    src={icon}
+                    src={arrowIcon}
                     alt="back to first page symbol"
                 />
                 <ButtonText mobile>
@@ -27,7 +27,7 @@ const Pagination = () => {
                 <Icon
                     prev
                     disabled
-                    src={icon}
+                    src={arrowIcon}
                     alt="back to previous page symbol"
                 />
                 <ButtonText mobile>
@@ -54,7 +54,7 @@ const Pagination = () => {
                 </ButtonText>
                 <Icon
                     next
-                    src={icon}
+                    src={arrowIcon}
                     alt="move to next page symbol"
                 />
             </Button>
@@ -64,13 +64,13 @@ const Pagination = () => {
                 </ButtonText>
                 <Icon
                     next
-                    src={icon}
+                    src={arrowIcon}
                     alt="move to last page symbol"
                 />
                 <Icon
                     next
                     mobile
-                    src={icon}
+                    src={arrowIcon}
                     alt="move to last page symbol"
                 />
             </Button>
