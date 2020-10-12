@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const StyledButton = styled.button`
     display: flex;
     align-items: center;
-    padding: 8px 12.5px;
+    padding: 8px 12px;
     font-size: 14px;
     line-height: 1.4;
     border: none;
@@ -15,7 +15,7 @@ export const StyledButton = styled.button`
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
             margin: 12px 4px;
-            padding: 8px 7.5px;
+            padding: 8px;
     }
 
     &:hover {
