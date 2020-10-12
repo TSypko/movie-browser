@@ -23,14 +23,3 @@ export const PageCaption = styled.span`
         margin: 0px 1px;
     }
 `;
-
-// export const PageCounter = styled.span`
-//     line-height: 1.5;
-//     margin: 0px 4px;
-//     font-weight: 600;
-//     color: ${({ theme }) => theme.colors.Woodsmoke};
-
-//     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-//             margin: 0px 1px;
-//     }
-// `;
