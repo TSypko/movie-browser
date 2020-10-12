@@ -1,5 +1,6 @@
 import React from 'react';
 import { HashRouter, Link, Switch, Route, Redirect } from "react-router-dom";
+import Pagination from './common/Pagination';
 import MoviesPage from "./features/movies/MoviesPage";
 import PeoplePage from "./features/people/PeoplePage";
 import { toMovies, toPeople } from './routes';
@@ -24,6 +25,7 @@ function App() {
           <Redirect to={toMovies()} />
         </Route>
       </Switch>
+      <Pagination />
     </HashRouter>
   );
 }
