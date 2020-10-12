@@ -1,7 +1,8 @@
 import React from 'react';
 import Button from "./Button";
 import Icon from "./Icon";
-import { Footer, Paragraph, PageText, PageCounter } from './styled';
+import PageInfo from './PageInfo';
+import { Footer } from './styled';
 
 const Pagination = () => {
   return (
@@ -38,20 +39,9 @@ const Pagination = () => {
             />
           </>}
       />
-      <Paragraph>
-        <PageText>
-          Page
-        </PageText>
-        <PageCounter>
-          1
-        </PageCounter>
-        <PageText>
-          of
-        </PageText>
-        <PageCounter>
-          500
-        </PageCounter>
-      </Paragraph>
+
+      <PageInfo />
+      
       <Button
         buttonText="Next"
         disabled={false}
