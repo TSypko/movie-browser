@@ -3,9 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const activeClassName = "link-active";
 
-export const StyledNavLink = styled(NavLink).attrs(() => ({
-    activeClassName,
-}))`
+export const StyledNavLink = styled(NavLink).attrs({ activeClassName })`
     font-size: 14px;
     font-weight: 600;
     color: ${({ theme }) => theme.colors.White};
@@ -21,7 +19,7 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
     }
 
     
-    @media(max-width: ${({theme}) => theme.breakpoints.mobileMax}) {
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         font-size: 12px;
         margin-right: 10px;
     }
@@ -30,7 +28,7 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
 export const List = styled.ul`
     display: flex;
 
-    @media(max-width: ${({theme}) => theme.breakpoints.mobileMax}) {
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         padding-left: 10px;
     }
 `;

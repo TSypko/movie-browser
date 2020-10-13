@@ -6,8 +6,8 @@ export default () => {
     return (
         <nav>
             <List>
-                <StyledNavLink activeClassName="link-active" to={toMovies()}>Movies</StyledNavLink>
-                <StyledNavLink activeClassName="link-active" to={toPeople()}>People</StyledNavLink>
+                <StyledNavLink to={toMovies()}>Movies</StyledNavLink>
+                <StyledNavLink to={toPeople()}>People</StyledNavLink>
             </List>
         </nav>
     );
