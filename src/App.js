@@ -3,6 +3,7 @@ import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import MoviesPage from "./features/movies/MoviesPage";
 import PeoplePage from "./features/people/PeoplePage";
 import Header from "./common/Header";
+import Pagination from './common/Pagination';
 import { toMovies, toPeople } from './routes';
 
 function App() {
@@ -20,8 +21,9 @@ function App() {
           <Redirect to={toMovies()} />
         </Route>
       </Switch>
+      <Pagination />
     </HashRouter>
   );
-}
+};
 
 export default App;
