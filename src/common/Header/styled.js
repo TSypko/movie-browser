@@ -5,7 +5,7 @@ export const StyledHeader = styled.header`
     background-color: ${({ theme }) => theme.colors.Black};
 `;
 
-export const HeaderContainer = styled.header`
+export const HeaderContainer = styled.div`
     max-width: 1368px;
     margin: auto;
     display: flex;
