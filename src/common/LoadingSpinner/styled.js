@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   margin: 120px 0 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+    margin: 24px 0 0;
+  }
 `;
 
 export const BaseWheel = styled.div`
@@ -12,6 +16,12 @@ export const BaseWheel = styled.div`
   border-radius: 50%;
   border: 12px solid ${({ theme }) => theme.colors.Snuff};
   background-color: transparent;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+    width: 36px;
+    height: 36px;
+    border-width: 6px;
+  }
 `;
 
 export const RotatingQuarter = styled.div`
@@ -35,6 +45,25 @@ export const RotatingQuarter = styled.div`
 
     to {
       transform: translate(-12px, -12px) rotateZ(360deg);
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+    width: 18px;
+    height: 18px;
+    transform: translate(-6px, -6px) rotateZ(0deg);
+    border-width: 6px;
+    left: 18px;
+    animation: rotatingAnimationMobile 1s infinite linear;
+
+    @keyframes rotatingAnimationMobile {
+      from {
+        transform: translate(-6px, -6px) rotateZ(0);
+      }
+
+      to {
+        transform: translate(-6px, -6px) rotateZ(360deg);
+      }
     }
   }
 `;
