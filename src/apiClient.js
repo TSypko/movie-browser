@@ -27,7 +27,7 @@ const fetchFromApi = async (url) => {
 export const getMovie = id => fetchFromApi(getMovieUrl(id));
 export const getMovieCredits = id => fetchFromApi(getMovieCreditsUrl(id));
 export const getPopularMovies = page => fetchFromApi(getPopularMoviesUrl(page));
-export const searchForMovie = (page, query) => fetchFromApi(getSearchMoviesByQueryUrl(page, query));
+export const searchForMovies = (page, query) => fetchFromApi(getSearchMoviesByQueryUrl(page, query));
 export const getPerson = id => fetchFromApi(getPersonUrl(id));
 export const getPersonCredits = id => fetchFromApi(getPersonCreditsUrl(id));
 export const getPopularPeople = page => fetchFromApi(getPopularPeopleUrl(page));
