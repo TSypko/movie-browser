@@ -6,6 +6,7 @@ import Header from "./common/Header";
 import Pagination from "./common/Pagination";
 import { toMovies, toPeople } from "./routes";
 import LoadingSpinner from "./common/LoadingSpinner";
+import ErrorPage from "./common/ErrorPage";
 
 function App() {
   return (
