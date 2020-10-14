@@ -1,9 +1,9 @@
 import React from "react";
-import { Container } from "./styled";
+import { Container, GroundWheel } from "./styled";
 
 const LoadingGraph = () => (
   <Container>
-    <div>LoadingGraph</div>
+    <GroundWheel />
   </Container>
 );
 
