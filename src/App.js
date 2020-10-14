@@ -20,6 +20,9 @@ function App() {
           {/* LoadingSpinner test component - permision to remove after test */}
           <LoadingSpinner />
         </Route>
+        <Route path="/error">
+          <ErrorPage />
+        </Route>
         <Route>
           <Redirect to={toMovies()} />
         </Route>
