@@ -50,7 +50,7 @@ const MoviesPage = () => {
                 )
               } />
           </Main>
-          <Pagination />
+          <Pagination type="movies"/>
         </>
       }
     </>
