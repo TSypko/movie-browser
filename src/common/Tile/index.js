@@ -37,7 +37,7 @@ const Tile = ({ horizontal, title, year, poster, production, release, descriptio
       <Poster horizontal={horizontal} src={`https://image.tmdb.org/t/p/w342${poster}`} alt={`Image of ${title} poster`} />
       <MovieDetails horizontal={horizontal}>
         <MovieTitle horizontal={horizontal}>{title}</MovieTitle>
-        <MovieYear horizontal={horizontal}>{year}</MovieYear>
+        <MovieYear horizontal={horizontal}>{year.slice(0,4)}</MovieYear>
         {horizontal ? (
           <>
             <MovieProduction>
