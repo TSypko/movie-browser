@@ -17,7 +17,7 @@ const MoviesPage = () => {
 
   useEffect(() => {
     dispatch(fetchPopularMovies());
-  }, [])
+  }, [dispatch])
 
   return (
     <>
