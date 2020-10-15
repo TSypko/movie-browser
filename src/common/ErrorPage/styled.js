@@ -34,6 +34,7 @@ export const ErrorButton = styled.button`
     font-size: 14px;
     line-height: 19px;
     font-weight: 700;
+    cursor: pointer;
 
     &:hover {
         filter: brightness(110%);
