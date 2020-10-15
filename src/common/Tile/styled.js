@@ -43,6 +43,7 @@ export const Poster = styled.img`
   width: 292px;
   height: 434px;
   border-radius: 5px;
+  background: ${({ theme }) => theme.colors.Silver};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     width: 114px;
