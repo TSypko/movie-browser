@@ -1,36 +1,58 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchPopularMovies, selectMovies, selectLoading, selectError } from "../moviesSlice";
+import Main from "../../../common/Main";
+import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
 import Poster from "../../../assets/images/poster.svg";
+import LoadingSpinner from "../../../common/LoadingSpinner";
+import Pagination from "../../../common/Pagination";
 
 const MoviesPage = () => {
-  const movieDetails = {
-    title: "Mulan",
-    poster: Poster,
-    year: 2020,
-    genres: ["action", "drama", "adventure"],
-    description:
-      "A young Chinese maiden disguises herself as a male warrior in order to save her father. Disguises herself as a male warrior in order to save her father. A young Chinese maiden disguises herself as a male warrior in order to save her father.",
-    production: "China, USA",
-    release: "24.10.2020",
-    rate: 7.8,
-    votes: 35,
-  };
+
+  const dispatch = useDispatch();
+  const movies = useSelector(selectMovies);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    dispatch(fetchPopularMovies());
+  }, [])
+
   return (
-    // Tile component test
     <>
-      <div>Strona główna...</div>
-      <Tile
-        horizontal
-        title={movieDetails.title}
-        poster={movieDetails.poster}
-        year={movieDetails.year}
-        description={movieDetails.description}
-        production={movieDetails.production}
-        release={movieDetails.release}
-        genres={movieDetails.genres}
-        rate={movieDetails.rate}
-        votes={movieDetails.votes}
-      />
+      {loading &&
+        <LoadingSpinner />
+      }
+      {error &&
+        <div>ERROR!</div>
+      }
+      {movies.results &&
+        <>
+          <Main>
+            <Section
+              grid
+              title="Popular Movies"
+              body={
+                movies.results?.map(movie =>
+                  <Tile
+                    key={movie.id}
+                    title={movie.title}
+                    poster={movie.poster_path || Poster}
+                    year={movie.release_date}
+                    description={movie.overview}
+                    production={movie.production}
+                    release={movie.release_date}
+                    genres={movie.genres}
+                    rate={movie.vote_average}
+                    votes={movie.vote_count}
+                  />
+                )
+              } />
+          </Main>
+          <Pagination />
+        </>
+      }
     </>
   );
 };
