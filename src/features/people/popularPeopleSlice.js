@@ -22,4 +22,4 @@ const popularPeopleSlice = createSlice({
 
 export const selectPopularPeople = state => state.popularPeople.popularPeobleByPage;
 export const {getPopularPeople, setPopularPeople} = popularPeopleSlice.actions;
-export const popularPeopleReducer = popularPeopleSlice.reducer;
+export default popularPeopleSlice.reducer;
