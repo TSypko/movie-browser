@@ -5,7 +5,7 @@ import { ErrorContainer, StyledImage, ErrorTitle, ErrorBody, ErrorButton } from 
 
 export default () => (
     <ErrorContainer>
-        <StyledImage src={ErrorIcon}></StyledImage>
+        <StyledImage src={ErrorIcon} />
         <ErrorTitle>Ooops! Something went wrong...</ErrorTitle>
         <ErrorBody>
             Please check your network connection<br />
