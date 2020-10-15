@@ -4,7 +4,6 @@ import { fetchPopularMovies, selectMovies, selectLoading, selectError } from "..
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
-import Poster from "../../../assets/images/poster.svg";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import Pagination from "../../../common/Pagination";
 
@@ -38,7 +37,7 @@ const MoviesPage = () => {
                   <Tile
                     key={movie.id}
                     title={movie.title}
-                    poster={movie.poster_path || Poster}
+                    poster={movie.poster_path}
                     year={movie.release_date}
                     description={movie.overview}
                     genres={movie.genre_ids}
