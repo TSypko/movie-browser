@@ -41,8 +41,6 @@ const MoviesPage = () => {
                     poster={movie.poster_path || Poster}
                     year={movie.release_date}
                     description={movie.overview}
-                    production={movie.production}
-                    release={movie.release_date}
                     genres={movie.genres}
                     rate={movie.vote_average}
                     votes={movie.vote_count}
