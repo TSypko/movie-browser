@@ -34,7 +34,7 @@ const Tile = ({ horizontal, title, year, poster, production, release, descriptio
 
   return (
     <StyledTile horizontal={horizontal}>
-      <Poster horizontal={horizontal} src={poster} alt="poster" />
+      <Poster horizontal={horizontal} src={`https://image.tmdb.org/t/p/w342${poster}`} alt={`Image of ${title} poster`} />
       <MovieDetails horizontal={horizontal}>
         <MovieTitle horizontal={horizontal}>{title}</MovieTitle>
         <MovieYear horizontal={horizontal}>{year}</MovieYear>
