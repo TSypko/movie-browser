@@ -7,7 +7,6 @@ export const GlobalStyles = createGlobalStyle`
 
   html {
     box-sizing: border-box;
-    height: 100%;
   }
 
   *, ::after, ::before {
@@ -17,11 +16,10 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.colors.Mercury};
     font-family: 'Poppins', sans-serif;
-    height: 100%;
   }
 
   #root {
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
   }
