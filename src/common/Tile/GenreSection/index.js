@@ -4,7 +4,7 @@ import { StyledSection } from "./styled";
 
 const GenreSection = ({ horizontal, genres }) => (
   <StyledSection horizontal={horizontal}>
-    {genres.map((genre) => (
+    {genres?.map((genre) => (
       <GenreTile key={genre} horizontal={horizontal} genre={genre} />
     ))}
   </StyledSection>
