@@ -20,12 +20,8 @@ const MoviesPage = () => {
 
   return (
     <>
-      {loading &&
-        <LoadingSpinner />
-      }
-      {error &&
-        <div>ERROR!</div>
-      }
+      {loading && <LoadingSpinner /> }
+      {error && <div>ERROR!</div> }
       {movies.results &&
         <>
           <Main>
