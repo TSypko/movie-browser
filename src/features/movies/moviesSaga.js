@@ -11,6 +11,7 @@ function* fetchPopularMoviesHandler() {
         yield put(setGenres(genres));
     } catch (error) {
         yield put(fetchPopularMoviesError());
+        console.error(error);
     }
 };
 
