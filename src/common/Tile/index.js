@@ -13,6 +13,7 @@ import {
 } from "./styled";
 import GenreSection from "./GenreSection";
 import VotesSection from "./VotesSection";
+import posterPlaceholder from "../../assets/images/video.svg";
 import { theme } from "../../theme";
 
 const Tile = ({ horizontal, title, year, poster, production, release, description, genres, rate, votes }) => {
@@ -34,10 +35,17 @@ const Tile = ({ horizontal, title, year, poster, production, release, descriptio
 
   return (
     <StyledTile horizontal={horizontal}>
-      <Poster horizontal={horizontal} src={`https://image.tmdb.org/t/p/w342${poster}`} alt={`Image of ${title} poster`} />
+      <Poster
+        horizontal={horizontal}
+        src={
+          poster
+            ? `https://image.tmdb.org/t/p/w342${poster}`
+            : posterPlaceholder
+        }
+        alt={`Image of ${title} poster`} />
       <MovieDetails horizontal={horizontal}>
         <MovieTitle horizontal={horizontal}>{title}</MovieTitle>
-        <MovieYear horizontal={horizontal}>{year.slice(0,4)}</MovieYear>
+        <MovieYear horizontal={horizontal}>{year.slice(0, 4)}</MovieYear>
         {horizontal ? (
           <>
             <MovieProduction>
