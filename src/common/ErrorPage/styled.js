@@ -32,7 +32,7 @@ export const ErrorButton = styled.button`
     border: none;
     margin: 24px auto;
     font-size: 14px;
-    line-height: 19px;
+    line-height: 136%;
     font-weight: 700;
     cursor: pointer;
 
