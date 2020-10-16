@@ -16,6 +16,9 @@ function App() {
         <Route path={toPeople()}>
           <PeoplePage />
         </Route>
+        <Route path="/error">
+          <ErrorPage />
+        </Route>
         <Route>
           <Redirect to={toMovies()} />
         </Route>
