@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const ErrorContainer = styled.div`
     text-align: center;
-    background-color: ${({ theme }) => theme.colors.Whisper};
-    height: 100%;
 `;
 
 export const StyledImage = styled.img`

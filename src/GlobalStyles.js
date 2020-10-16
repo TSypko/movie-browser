@@ -14,13 +14,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: ${({ theme }) => theme.colors.Mercury};
+    background: ${({ theme }) => theme.colors.Whisper};
     font-family: 'Poppins', sans-serif;
-  }
-
-  #root {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
   }
 `
