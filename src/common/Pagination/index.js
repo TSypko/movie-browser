@@ -4,7 +4,7 @@ import Icon from "./Icon";
 import PageInfo from './PageInfo';
 import { Footer } from './styled';
 
-const Pagination = () => {
+const Pagination = ({ type }) => {
   return (
     <Footer>
       <Button
@@ -40,8 +40,8 @@ const Pagination = () => {
           </>}
       />
 
-      <PageInfo />
-      
+      <PageInfo type={type}/>
+
       <Button
         buttonText="Next"
         disabled={false}
