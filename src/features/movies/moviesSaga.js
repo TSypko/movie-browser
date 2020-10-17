@@ -2,10 +2,11 @@ import { takeLatest, call, put, delay } from "redux-saga/effects";
 import { getPopularMovies, getGenres } from "../../../src/apiClient";
 import { fetchPopularMovies, fetchPopularMoviesSucces, fetchPopularMoviesError, setGenres } from "./moviesSlice";
 
-function* fetchPopularMoviesHandler() {
+function* fetchPopularMoviesHandler({ payload }) {
     try {
         yield delay(500);
-        const popularMovies = yield call(getPopularMovies);
+        const page = payload;
+        const popularMovies = yield call(getPopularMovies, page);
         const genres = yield call(getGenres);
         yield put(fetchPopularMoviesSucces(popularMovies));
         yield put(setGenres(genres));
