@@ -6,6 +6,7 @@ import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import Pagination from "../../../common/Pagination";
+import ErrorPage from "../../../common/ErrorPage";
 
 const MoviesPage = () => {
 
@@ -20,8 +21,8 @@ const MoviesPage = () => {
 
   return (
     <>
-      {loading && <LoadingSpinner /> }
-      {error && <div>ERROR!</div> }
+      {loading && <LoadingSpinner />}
+      {error && <ErrorPage />}
       {movies.results &&
         <>
           <Main>
@@ -43,7 +44,7 @@ const MoviesPage = () => {
                 )
               } />
           </Main>
-          <Pagination type="movies"/>
+          <Pagination type="movies" />
         </>
       }
     </>
