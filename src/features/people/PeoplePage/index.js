@@ -9,6 +9,7 @@ const PeoplePage = () => {
     <>
       <Main>
         <Section
+          type="people"
           grid
           title="Popular People"
           body={

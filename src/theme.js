@@ -3,7 +3,6 @@ export const theme = {
     White: "#FFFFFF",
     Snuff: "#DDDDEE",
     Silver: "#C4C4C4",
-    Whisper: "#F5F5FA",
     Mercury: "#E5E5E5",
     Mystic: "#E4E6F0",
     Whisper: "#F5F5FA",
