@@ -7,17 +7,19 @@ import Tile from "../../../common/Tile";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import Pagination from "../../../common/Pagination";
 import ErrorPage from "../../../common/ErrorPage";
+import { useParams } from "react-router-dom";
 
 const MoviesPage = () => {
 
+  const params = useParams();
   const dispatch = useDispatch();
   const movies = useSelector(selectMovies);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchPopularMovies());
-  }, [dispatch])
+    dispatch(fetchPopularMovies(params.page));
+  }, [dispatch, params.page]);
 
   return (
     <>
@@ -30,7 +32,7 @@ const MoviesPage = () => {
               grid
               title="Popular Movies"
               body={
-                movies.results?.map(movie =>
+                movies.results.map(movie =>
                   <Tile
                     key={movie.id}
                     title={movie.title}
