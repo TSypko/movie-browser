@@ -1,9 +1,13 @@
 import React from "react";
-import { StyledTile } from "./styled";
+import { StyledTile, Poster, PersonDetails, PersonName } from "./styled";
+import PeoplePoster from "../../assets/images/peoplePosterBigExample.svg";
 
 const PeopleTile = () => (
     <StyledTile>
-        <div>Example PeopleTile content</div>
+        <Poster src={PeoplePoster} alt="actor photo"/>
+        <PersonDetails>
+            <PersonName>Jason Scott Lee Long name</PersonName>
+        </PersonDetails>
     </StyledTile>
 );
 
