@@ -4,8 +4,8 @@ const popularPeopleSlice = createSlice({
   name: "popularPeople",
   initialState: {
     page: 1,
-    totalPages: 500,
-    popularPeobleByPage: [],
+    totalPages: null,
+    popularPeopleByPage: [],
     loading: false,
     error: false,
   },
@@ -24,7 +24,7 @@ const popularPeopleSlice = createSlice({
       state.error = false;
     },
 
-    getPopularPeopleError: () => {
+    getPopularPeopleError: state => {
       state.loading = false;
       state.error = true;
     },
