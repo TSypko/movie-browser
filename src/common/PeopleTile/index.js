@@ -1,7 +1,10 @@
 import React from "react";
+import { StyledTile } from "./styled";
 
-const PeopleTile = ()=>(
-    <div>Example PeopleTile content</div>
+const PeopleTile = () => (
+    <StyledTile>
+        <div>Example PeopleTile content</div>
+    </StyledTile>
 );
 
 export default PeopleTile;
