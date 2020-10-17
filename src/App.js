@@ -3,21 +3,18 @@ import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import MoviesPage from "./features/movies/MoviesPage";
 import PeoplePage from "./features/people/PeoplePage";
 import Header from "./common/Header";
-import { toMovies, toPeople } from "./routes";
+import { toMovies, toMoviesPage, toPeoplePage } from "./routes";
 
 function App() {
   return (
     <HashRouter>
       <Header />
       <Switch>
-        <Route path={toMovies()}>
+        <Route path={toMoviesPage()}>
           <MoviesPage />
         </Route>
-        <Route path={toPeople()}>
+        <Route path={toPeoplePage()}>
           <PeoplePage />
-        </Route>
-        <Route path="/error">
-          <ErrorPage />
         </Route>
         <Route>
           <Redirect to={toMovies()} />
