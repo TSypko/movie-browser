@@ -12,6 +12,7 @@ export const StyledButton = styled.button`
     outline-color: ${({ theme }) => theme.colors.ScienceBlue};
     color: ${({ theme }) => theme.colors.MineShaft};
     background: ${({ theme }) => theme.colors.PattensBlue};
+    cursor: pointer;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
             margin: 12px 4px;
@@ -29,7 +30,8 @@ export const StyledButton = styled.button`
     &:disabled {
         color: ${({ theme }) => theme.colors.Woodsmoke};
         background: ${({ theme }) => theme.colors.Mystic};
-
+        cursor: unset;
+        
         &:hover {
             filter: none;
         }
