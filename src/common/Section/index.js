@@ -1,10 +1,15 @@
 import React from "react";
 import { Container, Title } from "./styled";
 
-const Section = ({ title, body, grid }) => (
+const Section = ({ title, body, grid, type }) => (
   <section>
     <Title>{title}</Title>
-    <Container grid={grid}>{body}</Container>
+    <Container
+      type={type}
+      grid={grid}
+    >
+      {body}
+    </Container>
   </section>
 );
 

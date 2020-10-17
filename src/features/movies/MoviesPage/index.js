@@ -26,6 +26,7 @@ const MoviesPage = () => {
         <>
           <Main>
             <Section
+              type="movies"
               grid
               title="Popular Movies"
               body={

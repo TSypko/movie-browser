@@ -12,7 +12,28 @@ const PeoplePage = () => {
           grid
           title="Popular People"
           body={
-            <PeopleTile />
+            <>
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+              <PeopleTile />
+            </>
           } />
       </Main>
       <Pagination type="movies" />

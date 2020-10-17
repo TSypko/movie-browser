@@ -23,7 +23,8 @@ export const Container = styled.div`
   ${({ grid }) =>
     grid &&
     css`
-      grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
-      grid-gap: 24px;
-    `}
+      grid-template-columns: ${({ type }) => type === "movies" ? "repeat(auto-fill, minmax(324px, 1fr))" : "repeat(auto-fill, minmax(248px, 1fr))"};
+      grid-gap: ${({ type }) => type === "movies" ? "24px" : "32px"};
+      `
+  };
 `;
