@@ -57,6 +57,7 @@ export const PersonDetails = styled.section`
   ${({ horizontal }) =>
     horizontal &&
     css`
+      margin-top: 0;
       margin-left: 20px;
     `};
 `;
@@ -76,6 +77,7 @@ export const PersonName = styled.h3`
   ${({ horizontal }) =>
     horizontal &&
     css`
+      text-align: left;
       margin: 8px 0 12px 0;
       font-size: 36px;
       font-weight: 600;
@@ -103,4 +105,10 @@ export const PersonBirthDate = styled.p`
 
 export const PersonBirthPlace = styled.p`
   margin: 4px 0 12px 0;
+`;
+
+export const PersonDescription = styled.p`
+  margin-top: 12px;
+  font-size: 20px;
+  line-height: 1.6;
 `;

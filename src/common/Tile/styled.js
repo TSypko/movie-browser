@@ -74,6 +74,7 @@ export const MovieDetails = styled.section`
   ${({ horizontal }) =>
     horizontal &&
     css`
+      margin-top: 0;
       margin-left: 20px;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
