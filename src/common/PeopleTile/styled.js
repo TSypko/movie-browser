@@ -49,3 +49,25 @@ export const PersonName = styled.h3`
     font-size: 14px;
   }
 `;
+
+export const InfoLabelSpan = styled.span`
+  display: inline-block;
+  color: ${({ theme }) => theme.colors.StormGray};
+  margin-right: 10px;
+  font-size: 18px;
+  line-height: 1.2;
+`;
+
+export const InfoSpan = styled.span`
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1.2;
+`;
+
+export const PersonBirthDate = styled.p`
+  margin: 12px 0 4px 0;
+`;
+
+export const PersonBirthPlace = styled.p`
+  margin: 4px 0 12px 0;
+`;
