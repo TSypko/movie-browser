@@ -10,14 +10,14 @@ const GenreSection = ({ horizontal, genres }) => {
 
   return (
     <StyledSection horizontal={horizontal}>
-      {genres?.map((genre) =>
+      {genres && genres?.map((genre) =>
         <GenreTile
           key={genre.id}
           horizontal={horizontal}
           genre={
             genre.name 
             ? genre.name
-            : genresList.genres[(genresList.genres?.findIndex(({ id }) => id === genre))].name
+            : genresList && genresList.genres && genresList.genres[(genresList.genres?.findIndex(({ id }) => id === genre))].name
           } />
       )}
     </StyledSection>
