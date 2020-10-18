@@ -10,10 +10,10 @@ import {
   InfoSpan,
   PersonDescription,
 } from "./styled";
-import PeoplePoster from "../../assets/images/peoplePosterBigExample.svg";
+import posterPlaceholder from "../../assets/images/video.svg";
 import { theme } from "../../theme";
 
-const PeopleTile = ({ horizontal }) => {
+const PeopleTile = ({ horizontal, name, birthDate, poster, birthCity, description }) => {
   const [mobileContent, setMobileContent] = useState(false);
   const mobileBreakpoint = +theme.breakpoints.mobileMax.slice(0, -2);
   const onWidthChange = () => {
@@ -32,27 +32,35 @@ const PeopleTile = ({ horizontal }) => {
 
   return (
     <StyledTile horizontal={horizontal}>
-      <Poster horizontal={horizontal} src={PeoplePoster} alt="actor photo" />
+      <Poster
+        horizontal={horizontal}
+        src={
+          poster
+            ? `https://image.tmdb.org/t/p/original${poster}`
+            : posterPlaceholder
+        }
+        alt={`Image of ${name} poster`}
+      />
       <PersonDetails horizontal={horizontal}>
-        <PersonName horizontal={horizontal}>Liu Yifei</PersonName>
+        <PersonName horizontal={horizontal}>{name}</PersonName>
         {horizontal ? (
           <>
             <PersonBirthDate>
               <InfoLabelSpan>{mobileContent ? "Birth" : "Date of birth"}: </InfoLabelSpan>
-              <InfoSpan>25.08.1987</InfoSpan>
+              <InfoSpan>{birthDate}</InfoSpan>
             </PersonBirthDate>
             <PersonBirthPlace>
               <InfoLabelSpan>Place of birth: </InfoLabelSpan>
-              <InfoSpan>Wuhan, Hubei, China</InfoSpan>
+              <InfoSpan>{birthCity}</InfoSpan>
             </PersonBirthPlace>
             {horizontal && !mobileContent ? (
-              <PersonDescription>Liu Yifei was born in Wuhan, Hubei, Province of China on August 25th, 1987. She began modeling at the age of 8 and was trained in singing, dancing and the piano. Moving to the United States at 10 with her mother, Liu lived there for four years.</PersonDescription>
+              <PersonDescription>{description}</PersonDescription>
             ) : null}
           </>
         ) : null}
       </PersonDetails>
       {horizontal && mobileContent ? (
-        <PersonDescription>Liu Yifei was born in Wuhan, Hubei, Province of China on August 25th, 1987. She began modeling at the age of 8 and was trained in singing, dancing and the piano. Moving to the United States at 10 with her mother, Liu lived there for four years.</PersonDescription>
+        <PersonDescription>{description}</PersonDescription>
       ) : null}
     </StyledTile>
   );

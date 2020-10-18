@@ -3,6 +3,7 @@ import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import MoviesPage from "./features/movies/MoviesPage";
 import PeoplePage from "./features/people/PeoplePage";
 import Header from "./common/Header";
+import ErrorPage from "./common/ErrorPage";
 import { toMovies, toPeople } from "./routes";
 
 function App() {
