@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledTile = styled.div`
   display: flex;
@@ -15,6 +15,17 @@ export const StyledTile = styled.div`
     width: 136px;
     min-height: 245px;
     padding: 8px;
+  };
+
+  ${({ horizontal }) =>
+    horizontal &&
+    css`
+      flex-direction: row;
+      min-height: 644px;
+      width: auto;
+      padding: 40px;
+      border-radius: 0;
+      `
   }
 `;
 
@@ -25,6 +36,13 @@ export const Poster = styled.img`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     width: 120px;
   }
+
+  ${({ horizontal }) =>
+    horizontal &&
+    css`
+      width: 399px;
+      margin-right: 20px;
+    `};
 `;
 
 export const PersonDetails = styled.section`
@@ -35,6 +53,12 @@ export const PersonDetails = styled.section`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     margin: 8px 0;
   }
+
+  ${({ horizontal }) =>
+    horizontal &&
+    css`
+      margin-left: 20px;
+    `};
 `;
 
 export const PersonName = styled.h3`
@@ -48,6 +72,15 @@ export const PersonName = styled.h3`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     font-size: 14px;
   }
+
+  ${({ horizontal }) =>
+    horizontal &&
+    css`
+      margin: 8px 0 12px 0;
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1.2;
+    `};
 `;
 
 export const InfoLabelSpan = styled.span`

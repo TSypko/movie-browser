@@ -3,10 +3,10 @@ import { StyledTile, Poster, PersonDetails, PersonName, PersonBirthDate, PersonB
 import PeoplePoster from "../../assets/images/peoplePosterBigExample.svg";
 
 const PeopleTile = ({ horizontal }) => (
-  <StyledTile>
-    <Poster src={PeoplePoster} alt="actor photo" />
-    <PersonDetails>
-      <PersonName>Jason Scott Lee Long name</PersonName>
+  <StyledTile horizontal={horizontal}>
+    <Poster horizontal={horizontal} src={PeoplePoster} alt="actor photo" />
+    <PersonDetails horizontal={horizontal}>
+      <PersonName horizontal={horizontal}>Jason Scott Lee Long name</PersonName>
       {horizontal ? (
         <>
           <PersonBirthDate>
