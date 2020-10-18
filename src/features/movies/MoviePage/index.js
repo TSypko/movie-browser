@@ -20,10 +20,8 @@ const MoviePage = () => {
         dispatch(fetchMovie(params.id));
     }, [params]);
 
-    console.log(movie);
-
     const formatDate = date => {
-        return new Date(date).toLocaleString(
+        return date && new Date(date).toLocaleString(
             undefined, 
             {
                 day: "numeric",
@@ -33,7 +31,7 @@ const MoviePage = () => {
     }
 
     const getProduction = countries => {
-        return countries.map(country => country.name).join(", ");
+        return countries && countries.map(country => country.name).join(", ");
     };
 
     if (loading) return <LoadingSpinner />;
@@ -48,7 +46,7 @@ const MoviePage = () => {
                 <Tile
                     horizontal={true}
                     title={movie.title}
-                    year={movie.release_date.slice(0, 4)}
+                    year={movie.release_date && movie.release_date.slice(0, 4)}
                     poster={movie.poster_path}
                     production={getProduction(movie.production_countries)}
                     release={formatDate(movie.release_date)}
