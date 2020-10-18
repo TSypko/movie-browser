@@ -5,6 +5,8 @@ import { fetchMovie, selectError, selectLoading, selectMovie } from '../moviesSl
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import ErrorPage from "../../../common/ErrorPage";
 import Backdrop from './Backdrop';
+import Main from "../../../common/Main";
+import Tile from '../../../common/Tile';
 
 const MoviePage = () => {
     const params = useParams();
@@ -18,13 +20,44 @@ const MoviePage = () => {
         dispatch(fetchMovie(params.id));
     }, [params]);
 
+    console.log(movie);
+
+    const formatDate = date => {
+        return new Date(date).toLocaleString(
+            undefined, 
+            {
+                day: "numeric",
+                month: "numeric",
+                year: "numeric",
+            });
+    }
+
+    const getProduction = countries => {
+        return countries.map(country => country.name).join(", ");
+    };
+
     if (loading) return <LoadingSpinner />;
     if (error) return <ErrorPage />;
 
     return (
         <>
             {movie && movie.backdrop_path &&
-                <Backdrop movie={movie}/>
+                <Backdrop movie={movie} />
+            }
+            {movie && <Main>
+                <Tile
+                    horizontal={true}
+                    title={movie.title}
+                    year={movie.release_date.slice(0, 4)}
+                    poster={movie.poster_path}
+                    production={getProduction(movie.production_countries)}
+                    release={formatDate(movie.release_date)}
+                    description={movie.overview}
+                    genres={movie.genres}
+                    rate={movie.vote_average}
+                    votes={movie.vote_count}
+                />
+            </Main>
             }
         </>
     )
