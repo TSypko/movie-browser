@@ -12,7 +12,7 @@ const GenreSection = ({ horizontal, genres }) => {
     <StyledSection horizontal={horizontal}>
       {genres && genres?.map((genre) =>
         <GenreTile
-          key={genre.id}
+          key={genre.name ? genre.name : genre}
           horizontal={horizontal}
           genre={
             genre.name 

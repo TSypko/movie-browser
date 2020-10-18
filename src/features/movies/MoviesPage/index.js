@@ -32,7 +32,7 @@ const MoviesPage = () => {
               title="Popular Movies"
               body={
                 movies.results?.map(movie =>
-                  <MovieLink to={toMovie(movie)}>
+                  <MovieLink key={movie.id} to={toMovie(movie)}>
                     <Tile
                       key={movie.id}
                       title={movie.title}
