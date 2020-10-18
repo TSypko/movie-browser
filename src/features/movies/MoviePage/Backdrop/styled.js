@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 
-export const MainInfoBackground = styled.div`
+export const BackdropBackground = styled.div`
     background-color: black;
 `;
 
-export const MainInfoContainer = styled.div`
+export const BackdropContainer = styled.div`
     max-width: 1368px;
-    height: 769px;
     margin: auto;
     position: relative;
     background-position: center;
@@ -26,7 +25,7 @@ export const InfoBox = styled.div`
     left: 0;
 `;
 
-export const MainInfoTitle = styled.h2`
+export const BackdropTitle = styled.h2`
     font-weight: 600;
     font-size: 64px;
     line-height: 1.2;
