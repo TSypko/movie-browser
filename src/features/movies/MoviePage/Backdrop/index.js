@@ -1,13 +1,13 @@
 import React from "react";
 import Star from "../../../../assets/images/star.svg";
-import { BackdropBackground, BackdropContainer as BackdropPoster, InfoBox, BackdropTitle, StarIcon, Rate, RateValue, MaxRate, Votes, CenteredContainer as BackdropContainer } from "./styled";
+import { BackdropBackground, BackdropContainer, HiddenImage, InfoBox, BackdropTitle, StarIcon, Rate, RateValue, MaxRate, Votes } from "./styled";
 
 export default ({ movie }) => (
     <BackdropBackground>
-        <BackdropPoster src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}>
+        <BackdropContainer src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}>
             {/* hack to give div the height of backdrop image */}
-            <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} style={{ visibility: "hidden" }} />
-            
+            <HiddenImage src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} />
+
             <InfoBox>
                 <BackdropTitle>{movie.title}</BackdropTitle>
                 <Rate>
@@ -16,6 +16,6 @@ export default ({ movie }) => (
                     <Votes>{movie.vote_count} votes</Votes>
                 </Rate>
             </InfoBox>
-        </BackdropPoster>
+        </BackdropContainer>
     </BackdropBackground>
 );
