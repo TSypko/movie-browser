@@ -8,6 +8,7 @@ import Tile from "../../../common/Tile";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import Pagination from "../../../common/Pagination";
 import {MovieLink} from "./styled";
+import ErrorPage from "../../../common/ErrorPage";
 
 const MoviesPage = () => {
 
@@ -23,7 +24,7 @@ const MoviesPage = () => {
   return (
     <>
       {loading && <LoadingSpinner />}
-      {error && <div>ERROR!</div>}
+      {error && <ErrorPage />}
       {movies.results &&
         <>
           <Main>
