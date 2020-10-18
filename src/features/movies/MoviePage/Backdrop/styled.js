@@ -42,11 +42,11 @@ export const BackdropTitle = styled.h2`
     line-height: 1.2;
     color: ${({ theme }) => theme.colors.White};
     margin-bottom: 25px;
+    margin-left: 16px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         font-size: 24px;
         margin-bottom: 4px;
-        margin-left: 16px;
     }
 `;
 
@@ -62,12 +62,12 @@ export const Rate = styled.div`
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    padding-left: 16px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         flex-wrap: nowrap;
         justify-content: flex-start;
         align-items: center;
-        padding-left: 16px;
     }
 `;
 
