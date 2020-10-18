@@ -18,7 +18,7 @@ const MoviePage = () => {
 
     useEffect(() => {
         dispatch(fetchMovie(params.id));
-    }, [params]);
+    }, [dispatch, params]);
 
     const formatDate = date => {
         return date && new Date(date).toLocaleString(
