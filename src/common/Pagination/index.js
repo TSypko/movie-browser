@@ -65,97 +65,105 @@ const Pagination = ({ type }) => {
   };
 
   const nextButtonHandler = () => {
+    if (page === null) {
+      replaceQueryParameter({
+        key: pageName,
+        value: 2
+      });
+    }
+    else {
       replaceQueryParameter({
         key: pageName,
         value: +page + 1
       });
     };
-
-    const lastButtonHandler = () => {
-      if (type === "movies") {
-        replaceQueryParameter({
-          key: pageName,
-          value: movies.total_pages
-        });
-      }
-      else if (type === "people") {
-        replaceQueryParameter({
-          key: pageName,
-          value: people.total_pages
-        });
-      };
-    };
-
-    return (
-      <Footer>
-        <Button
-          previous
-          buttonText="First"
-          disabled={backButtonIsDisabled}
-          onClick={firstButtonHandler}
-          body={
-            <>
-              <Icon
-                mobile
-                previous
-                disabled={backButtonIsDisabled}
-                alt="back to first page symbol"
-              />
-              <Icon
-                previous
-                disabled={backButtonIsDisabled}
-                alt="back to previous page symbol"
-              />
-            </>}
-        />
-        <Button
-          previous
-          buttonText="Previous"
-          disabled={backButtonIsDisabled}
-          onClick={previousButtonHandler}
-          body={
-            <>
-              <Icon
-                previous
-                disabled={backButtonIsDisabled}
-                alt="back to first page symbol"
-              />
-            </>}
-        />
-
-        <PageInfo type={type} />
-
-        <Button
-          buttonText="Next"
-          disabled={forwardButtonIsDisabled}
-          onClick={nextButtonHandler}
-          body={
-            <>
-              <Icon
-                disabled={forwardButtonIsDisabled}
-                alt="move to next page symbol"
-              />
-            </>}
-        />
-        <Button
-          buttonText="Last"
-          disabled={forwardButtonIsDisabled}
-          onClick={lastButtonHandler}
-          body={
-            <>
-              <Icon
-                disabled={forwardButtonIsDisabled}
-                alt="move to last page symbol"
-              />
-              <Icon
-                mobile
-                disabled={forwardButtonIsDisabled}
-                alt="move to last page symbol"
-              />
-            </>}
-        />
-      </Footer>
-    );
   };
 
-  export default Pagination;
+  const lastButtonHandler = () => {
+    if (type === "movies") {
+      replaceQueryParameter({
+        key: pageName,
+        value: movies.total_pages
+      });
+    }
+    else if (type === "people") {
+      replaceQueryParameter({
+        key: pageName,
+        value: people.total_pages
+      });
+    };
+  };
+
+  return (
+    <Footer>
+      <Button
+        previous
+        buttonText="First"
+        disabled={backButtonIsDisabled}
+        onClick={firstButtonHandler}
+        body={
+          <>
+            <Icon
+              mobile
+              previous
+              disabled={backButtonIsDisabled}
+              alt="back to first page symbol"
+            />
+            <Icon
+              previous
+              disabled={backButtonIsDisabled}
+              alt="back to previous page symbol"
+            />
+          </>}
+      />
+      <Button
+        previous
+        buttonText="Previous"
+        disabled={backButtonIsDisabled}
+        onClick={previousButtonHandler}
+        body={
+          <>
+            <Icon
+              previous
+              disabled={backButtonIsDisabled}
+              alt="back to first page symbol"
+            />
+          </>}
+      />
+
+      <PageInfo type={type} />
+
+      <Button
+        buttonText="Next"
+        disabled={forwardButtonIsDisabled}
+        onClick={nextButtonHandler}
+        body={
+          <>
+            <Icon
+              disabled={forwardButtonIsDisabled}
+              alt="move to next page symbol"
+            />
+          </>}
+      />
+      <Button
+        buttonText="Last"
+        disabled={forwardButtonIsDisabled}
+        onClick={lastButtonHandler}
+        body={
+          <>
+            <Icon
+              disabled={forwardButtonIsDisabled}
+              alt="move to last page symbol"
+            />
+            <Icon
+              mobile
+              disabled={forwardButtonIsDisabled}
+              alt="move to last page symbol"
+            />
+          </>}
+      />
+    </Footer>
+  );
+};
+
+export default Pagination;
