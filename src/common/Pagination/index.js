@@ -15,36 +15,28 @@ const Pagination = ({ type }) => {
   const params = useParams();
 
   const [page, setPage] = useState(+params.page);
-  const [backButtonState, setBackButtonState] = useState(false);
-  const [forwardButtonState, setForwardButtonState] = useState(false);
+  const [backButtonIsDisabled, setBackButtonIsDisabled] = useState(false);
+  const [forwardButtonIsDisabled, setForwardButtonIsDisabled] = useState(false);
 
   const backButtonStateHandler = () => {
-    if (type === "movies") {
-      if (page === 1) {
-        setBackButtonState(true);
-      } else
-        setBackButtonState(false);
-    };
-    if (type === "people") {
-      if (page === 1) {
-        setBackButtonState(true);
-      } else
-        setBackButtonState(false);
-    };
+    if (page === 1) {
+      setBackButtonIsDisabled(true);
+    } else
+      setBackButtonIsDisabled(false);
   };
 
   const forwardButtonStateHandler = () => {
     if (type === "movies") {
       if (page === movies.total_pages) {
-        setForwardButtonState(true);
+        setForwardButtonIsDisabled(true);
       } else
-        setForwardButtonState(false);
+        setForwardButtonIsDisabled(false);
     };
     if (type === "people") {
       if (page === people.total_pages) {
-        setForwardButtonState(true);
+        setForwardButtonIsDisabled(true);
       } else
-        setForwardButtonState(false);
+        setForwardButtonIsDisabled(false);
     };
   };
 
@@ -93,19 +85,19 @@ const Pagination = ({ type }) => {
       <Button
         previous
         buttonText="First"
-        disabled={backButtonState}
+        disabled={backButtonIsDisabled}
         onClick={firstButtonHandler}
         body={
           <>
             <Icon
               mobile
               previous
-              disabled={backButtonState}
+              disabled={backButtonIsDisabled}
               alt="back to first page symbol"
             />
             <Icon
               previous
-              disabled={backButtonState}
+              disabled={backButtonIsDisabled}
               alt="back to previous page symbol"
             />
           </>}
@@ -113,13 +105,13 @@ const Pagination = ({ type }) => {
       <Button
         previous
         buttonText="Previous"
-        disabled={backButtonState}
+        disabled={backButtonIsDisabled}
         onClick={previousButtonHandler}
         body={
           <>
             <Icon
               previous
-              disabled={backButtonState}
+              disabled={backButtonIsDisabled}
               alt="back to first page symbol"
             />
           </>}
@@ -129,29 +121,29 @@ const Pagination = ({ type }) => {
 
       <Button
         buttonText="Next"
-        disabled={forwardButtonState}
+        disabled={forwardButtonIsDisabled}
         onClick={nextButtonHandler}
         body={
           <>
             <Icon
-              disabled={forwardButtonState}
+              disabled={forwardButtonIsDisabled}
               alt="move to next page symbol"
             />
           </>}
       />
       <Button
         buttonText="Last"
-        disabled={forwardButtonState}
+        disabled={forwardButtonIsDisabled}
         onClick={lastButtonHandler}
         body={
           <>
             <Icon
-              disabled={forwardButtonState}
+              disabled={forwardButtonIsDisabled}
               alt="move to last page symbol"
             />
             <Icon
               mobile
-              disabled={forwardButtonState}
+              disabled={forwardButtonIsDisabled}
               alt="move to last page symbol"
             />
           </>}
