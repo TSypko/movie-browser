@@ -10,43 +10,23 @@ const PageInfo = ({ type }) => {
     const people = useSelector(selectPopularPeople);
 
     return (
-
         <Paragraph>
-            { movies && type === "movies" &&
-                <>
-                    <PageCaption>
-                        Page
-                    </PageCaption>
-                    <PageCaption number>
-                        {movies.page}
-                    </PageCaption>
-                    <PageCaption>
-                        of
-                    </PageCaption>
-                    <PageCaption number>
-                        {movies.total_pages}
-                    </PageCaption>
-                </>
-            }
-            { people && type === "people" &&
-                <>
-                    <PageCaption>
-                        Page
-                    </PageCaption>
-                    <PageCaption number>
-                        {people.page}
-                    </PageCaption>
-                    <PageCaption>
-                        of
-                    </PageCaption>
-                    <PageCaption number>
-                        {people.total_pages}
-                    </PageCaption>
-                </>
-            }
+            <PageCaption>
+                Page
+            </PageCaption>
+            <PageCaption number>
+                {type === "movies" && movies.page}
+                {type === "people" && people.page}
+            </PageCaption>
+            <PageCaption>
+                of
+            </PageCaption>
+            <PageCaption number>
+                {type === "movies" && movies.total_pages}
+                {type === "people" && people.total_pages}
+            </PageCaption>
         </Paragraph>
-
-    )
+    );
 };
 
 export default PageInfo;
