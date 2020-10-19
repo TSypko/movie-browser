@@ -20,6 +20,13 @@ const Pagination = ({ type }) => {
 
   const replaceQueryParameter = useReplaceQueryParameter();
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
   const backButtonIsDisabledHandler = () => {
     if (+page === 1 || page === null) {
       setBackButtonIsDisabled(true);
@@ -46,6 +53,7 @@ const Pagination = ({ type }) => {
   useEffect(() => {
     backButtonIsDisabledHandler();
     forwardButtonIsDisabledHandler();
+    scrollToTop();
   }, [page])
 
   const previousButtonHandler = () => {

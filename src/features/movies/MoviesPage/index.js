@@ -18,16 +18,8 @@ const MoviesPage = () => {
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  };
-  
   useEffect(() => {
     dispatch(fetchPopularMovies(query || 1));
-    scrollToTop();
   }, [dispatch, query]);
 
   return (
