@@ -21,7 +21,7 @@ const Pagination = ({ type }) => {
   const replaceQueryParameter = useReplaceQueryParameter();
 
   const backButtonIsDisabledHandler = () => {
-    if (+page === 1) {
+    if (+page === 1 || page === null) {
       setBackButtonIsDisabled(true);
     } else
       setBackButtonIsDisabled(false);
