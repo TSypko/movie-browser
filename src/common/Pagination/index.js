@@ -18,14 +18,14 @@ const Pagination = ({ type }) => {
   const [backButtonIsDisabled, setBackButtonIsDisabled] = useState(false);
   const [forwardButtonIsDisabled, setForwardButtonIsDisabled] = useState(false);
 
-  const backButtonStateHandler = () => {
+  const backButtonIsDisabledHandler = () => {
     if (page === 1) {
       setBackButtonIsDisabled(true);
     } else
       setBackButtonIsDisabled(false);
   };
 
-  const forwardButtonStateHandler = () => {
+  const forwardButtonIsDisabledHandler = () => {
     if (type === "movies") {
       if (page === movies.total_pages) {
         setForwardButtonIsDisabled(true);
@@ -41,9 +41,8 @@ const Pagination = ({ type }) => {
   };
 
   useEffect(() => {
-    backButtonStateHandler();
-    forwardButtonStateHandler();
-    // eslint-disable-next-line
+    backButtonIsDisabledHandler();
+    forwardButtonIsDisabledHandler();
   }, [page])
 
   const previousButtonHandler = () => {
