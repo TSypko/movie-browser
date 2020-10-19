@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const popularPeopleSlice = createSlice({
   name: "popularPeople",
   initialState: {
-    popularPeopleByPage: [],
+    popularPeople: [],
     loading: false,
     error: false,
   },
@@ -13,7 +13,7 @@ const popularPeopleSlice = createSlice({
     },
 
     fetchPopularPeopleSucces: (state, { payload: people}) => {
-      state.popularPeobleByPage = people;
+      state.popularPeoble = people;
       state.loading = false;
       state.error = false;
     },
@@ -26,6 +26,6 @@ const popularPeopleSlice = createSlice({
 });
 
 export const selectPopularPeopleState = state => state.popularPeople;
-export const selectPopularPeople = state => selectPopularPeopleState(state).popularPeobleByPage;
+export const selectPopularPeople = state => selectPopularPeopleState(state).popularPeople;
 export const { fetchPopularPeople, fetchPopularPeopleSucces, fetchPopularPeopleError } = popularPeopleSlice.actions;
 export default popularPeopleSlice.reducer;
