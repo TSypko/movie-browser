@@ -1,25 +1,26 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPopularMovies, selectMovies, selectLoading, selectError } from "../moviesSlice";
+import { page as pageName } from "../../../queryParamNames";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import Pagination from "../../../common/Pagination";
 import ErrorPage from "../../../common/ErrorPage";
-import { useParams } from "react-router-dom";
+import { useQueryParameter } from "../../../useQueryParameters";
 
 const MoviesPage = () => {
 
-  const params = useParams();
   const dispatch = useDispatch();
+  const query = useQueryParameter(pageName);
   const movies = useSelector(selectMovies);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchPopularMovies(params.page));
-  }, [dispatch, params.page]);
+    dispatch(fetchPopularMovies(query || 1));
+  }, [dispatch, query]);
 
   return (
     <>
