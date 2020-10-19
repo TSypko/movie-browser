@@ -18,14 +18,22 @@ const MoviesPage = () => {
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+  
   useEffect(() => {
     dispatch(fetchPopularMovies(query || 1));
+    scrollToTop();
   }, [dispatch, query]);
 
   return (
     <>
-      {loading && <LoadingSpinner />}
-      {error && <ErrorPage />}
+      {!movies.results && loading && <LoadingSpinner />}
+      {!movies.results && error && <ErrorPage />}
       {movies.results &&
         <>
           <Main>
