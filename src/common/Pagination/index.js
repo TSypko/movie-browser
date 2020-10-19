@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { selectMovies } from '../../features/movies/moviesSlice';
 import { selectPopularPeople } from '../../features/people/popularPeopleSlice';
 import { useQueryParameter, useReplaceQueryParameter } from '../../useQueryParameters';
-import { page as pageName } from "../../queryParamNames";
+import { page as pageParameterName } from "../../queryParamNames";
 import Button from "./Button";
 import Icon from "./Icon";
 import PageInfo from './PageInfo';
@@ -14,7 +14,7 @@ const Pagination = ({ type }) => {
   const movies = useSelector(selectMovies);
   const people = useSelector(selectPopularPeople);
 
-  const page = useQueryParameter(pageName);
+  const page = useQueryParameter(pageParameterName);
   const [backButtonIsDisabled, setBackButtonIsDisabled] = useState(false);
   const [forwardButtonIsDisabled, setForwardButtonIsDisabled] = useState(false);
 
@@ -59,7 +59,7 @@ const Pagination = ({ type }) => {
   const previousButtonHandler = () => {
     if (+page !== 1) {
       replaceQueryParameter({
-        key: pageName,
+        key: pageParameterName,
         value: +page - 1
       });
     };
@@ -67,7 +67,7 @@ const Pagination = ({ type }) => {
 
   const firstButtonHandler = () => {
     replaceQueryParameter({
-      key: pageName,
+      key: pageParameterName,
       value: 1
     });
   };
@@ -75,13 +75,13 @@ const Pagination = ({ type }) => {
   const nextButtonHandler = () => {
     if (page === null) {
       replaceQueryParameter({
-        key: pageName,
+        key: pageParameterName,
         value: 2
       });
     }
     else {
       replaceQueryParameter({
-        key: pageName,
+        key: pageParameterName,
         value: +page + 1
       });
     };
@@ -90,13 +90,13 @@ const Pagination = ({ type }) => {
   const lastButtonHandler = () => {
     if (type === "movies") {
       replaceQueryParameter({
-        key: pageName,
+        key: pageParameterName,
         value: movies.total_pages
       });
     }
     else if (type === "people") {
       replaceQueryParameter({
-        key: pageName,
+        key: pageParameterName,
         value: people.total_pages
       });
     };

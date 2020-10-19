@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPopularMovies, selectMovies, selectLoading, selectError } from "../moviesSlice";
-import { page as pageName } from "../../../queryParamNames";
+import { page as pageParameterName } from "../../../queryParamNames";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
@@ -13,7 +13,7 @@ import { useQueryParameter } from "../../../useQueryParameters";
 const MoviesPage = () => {
 
   const dispatch = useDispatch();
-  const query = useQueryParameter(pageName);
+  const query = useQueryParameter(pageParameterName);
   const movies = useSelector(selectMovies);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
