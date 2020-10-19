@@ -2,7 +2,7 @@ import { takeLatest, call, put } from "redux-saga/effects";
 import { fetchPopularPeople, fetchPopularPeopleSucces, fetchPopularPeopleError } from "./popularPeopleSlice";
 import { getPopularPeople } from "../../../src/apiClient";
 
-function* fetchPopularPeoplesHandler({ payload }) {
+function* fetchPopularPeopleHandler({ payload }) {
   try {
     const page = payload;
     const popularPeople = yield call(getPopularPeople, page);
@@ -14,5 +14,5 @@ function* fetchPopularPeoplesHandler({ payload }) {
 }
 
 export function* popularPeopleSaga() {
-  yield takeLatest(fetchPopularPeople.type, fetchPopularPeoplesHandler);
+  yield takeLatest(fetchPopularPeople.type, fetchPopularPeopleHandler);
 }
