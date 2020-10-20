@@ -1,20 +1,25 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchMovie, selectError, selectLoading, selectMovie } from '../moviesSlice';
+import { fetchMovie, selectError, selectLoading, selectMovie, selectMovieCredits } from '../moviesSlice';
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import ErrorPage from "../../../common/ErrorPage";
 import Backdrop from './Backdrop';
 import Main from "../../../common/Main";
 import Tile from '../../../common/Tile';
+import Section from "../../../common/Section";
+import CreditsTile from './CreditsTile';
 
 const MoviePage = () => {
     const params = useParams();
 
     const dispatch = useDispatch();
     const movie = useSelector(selectMovie);
+    const credits = useSelector(selectMovieCredits);
     const loading = useSelector(selectLoading);
     const error = useSelector(selectError);
+
+    console.log(credits);
 
     useEffect(() => {
         dispatch(fetchMovie(params.id));
@@ -54,6 +59,36 @@ const MoviePage = () => {
                     genres={movie.genres}
                     rate={movie.vote_average}
                     votes={movie.vote_count}
+                />
+                <Section 
+                    title="Cast"
+                    type="people"
+                    grid
+                    body={
+                        credits.cast.map(cast => 
+                            <CreditsTile 
+                                key={cast.credit_id}
+                                poster={cast.profile_path}
+                                title={cast.name}
+                                subtitle={cast.character}
+                            />
+                        )
+                    }
+                />
+                <Section 
+                    title="Crew"
+                    type="people"
+                    grid
+                    body={
+                        credits.crew.map(crew => 
+                            <CreditsTile 
+                                key={crew.credit_id}
+                                poster={crew.profile_path}
+                                title={crew.name}
+                                subtitle={crew.department}
+                            />
+                        )
+                    }
                 />
             </Main>
             }
