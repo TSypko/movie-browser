@@ -3,25 +3,25 @@ import styled, { css } from "styled-components";
 export const StyledTile = styled.div`
   display: flex;
   flex-direction: column;
-  width: 324px;
-  min-height: 650px;
+  width: 248px;
+  min-height: 339px;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.White};
   padding: 16px;
-  box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
+  filter: drop-shadow(0px 4px 12px rgba(186, 199, 213, 0.5));
   justify-self: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-    flex-direction: row;
-    width: 288px;
-    min-height: 201px;
-  }
+    width: 136px;
+    min-height: 245px;
+    padding: 8px;
+  };
 
   ${({ horizontal }) =>
     horizontal &&
     css`
       flex-direction: row;
-      min-height: 544px;
+      min-height: 644px;
       width: auto;
       padding: 40px;
       border-radius: 0;
@@ -29,46 +29,51 @@ export const StyledTile = styled.div`
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         display: grid;
         grid-template-areas:
-          "poster movieDetails"
-          "movieDescription movieDescription";
-        grid-template-columns: 122px 1fr;
-        width: 288px;
+          "poster personDetails"
+          "personDescription personDescription";
+        grid-template-columns: 124px 1fr;
+        width: 290px;
         padding: 16px;
         box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
+        margin: 0 auto;
       }
-    `};
+      `
+  }
 `;
 
 export const Poster = styled.img`
-  width: 292px;
-  height: 434px;
+  width: 217px;
   border-radius: 5px;
-  background: ${({ theme }) => theme.colors.Silver};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-    width: 114px;
-    height: 169px;
-    margin-right: 8px;
+    width: 120px;
   }
 
   ${({ horizontal }) =>
     horizontal &&
     css`
+      width: 399px;
       margin-right: 20px;
+
+      @media (max-width: ${({ theme }) => theme.breakpoints.headerMax}) {
+        width: 300px;
+        align-self: flex-start;
+      }
 
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         grid-area: poster;
+        width: 120px;
       }
     `};
 `;
 
-export const MovieDetails = styled.section`
+export const PersonDetails = styled.section`
+  margin: 16px 0 8px 0;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-    margin-left: 8px;
+    margin: 8px 0;
   }
 
   ${({ horizontal }) =>
@@ -78,26 +83,28 @@ export const MovieDetails = styled.section`
       margin-left: 20px;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-        grid-area: movieDetails;
+        grid-area: personDetails;
+        margin-left: 16px;
       }
     `};
 `;
 
-export const MovieTitle = styled.h3`
-  margin: 16px 0 8px 0;
+export const PersonName = styled.h3`
+  margin: 0;
+  text-align: center;
   font-size: 22px;
   font-weight: 500;
   line-height: 1.3;
   color: ${({ theme }) => theme.colors.Woodsmoke};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-    font-size: 16px;
-    margin: 0 0 4px 0;
+    font-size: 14px;
   }
 
   ${({ horizontal }) =>
     horizontal &&
     css`
+      text-align: left;
       margin: 8px 0 12px 0;
       font-size: 36px;
       font-weight: 600;
@@ -112,33 +119,6 @@ export const MovieTitle = styled.h3`
     `};
 `;
 
-export const MovieYear = styled.p`
-  margin: 0;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: ${({ theme }) => theme.colors.Mystic};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-    font-size: 13px;
-  }
-
-  ${({ horizontal }) =>
-    horizontal &&
-    css`
-      margin: 12px 0;
-      font-size: 22px;
-      font-weight: normal;
-      line-height: 1.2;
-      color: ${({ theme }) => theme.colors.Black};
-
-      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-        color: ${({ theme }) => theme.colors.Mystic};
-        margin: 2px 0 4px 0;
-      } ;
-    `};
-`;
-
 export const InfoLabelSpan = styled.span`
   display: inline-block;
   color: ${({ theme }) => theme.colors.StormGray};
@@ -147,7 +127,9 @@ export const InfoLabelSpan = styled.span`
   line-height: 1.2;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-    display: none;
+    font-size: 12px;
+    line-height: 1.2;
+    margin-right: 4px;
   } ;
 `;
 
@@ -163,28 +145,30 @@ export const InfoSpan = styled.span`
   } ;
 `;
 
-export const MovieProduction = styled.p`
+export const PersonBirthDate = styled.p`
   margin: 12px 0 4px 0;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     margin: 0;
   } ;
 `;
 
-export const MovieRelease = styled.p`
+export const PersonBirthPlace = styled.p`
   margin: 4px 0 12px 0;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     margin: 0;
   } ;
 `;
 
-export const MovieDescription = styled.p`
+export const PersonDescription = styled.p`
   margin-top: 12px;
   font-size: 20px;
   line-height: 1.6;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-    grid-area: movieDescription;
+    grid-area: personDescription;
     font-size: 14px;
-    margin: 24px 0 0 0;
+    margin: 16px 0 0 0;
   }
 `;
