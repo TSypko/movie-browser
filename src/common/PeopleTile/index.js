@@ -9,11 +9,12 @@ import {
   InfoLabelSpan,
   InfoSpan,
   PersonDescription,
+  PersonRole,
 } from "./styled";
-import posterPlaceholder from "../../assets/images/video.svg";
+import posterPlaceholder from "../../assets/images/profile.svg";
 import { theme } from "../../theme";
 
-const PeopleTile = ({ horizontal, name, birthDate, poster, birthCity, description }) => {
+const PeopleTile = ({ horizontal, name, birthDate, poster, birthCity, description, role }) => {
   const [mobileContent, setMobileContent] = useState(false);
   const mobileBreakpoint = +theme.breakpoints.mobileMax.slice(0, -2);
   const onWidthChange = () => {
@@ -36,13 +37,14 @@ const PeopleTile = ({ horizontal, name, birthDate, poster, birthCity, descriptio
         horizontal={horizontal}
         src={
           poster
-            ? `https://image.tmdb.org/t/p/original${poster}`
+            ? `https://image.tmdb.org/t/p/${!mobileContent ? "w185" : "w154" }${poster}`
             : posterPlaceholder
         }
         alt={`Image of ${name} poster`}
       />
       <PersonDetails horizontal={horizontal}>
         <PersonName horizontal={horizontal}>{name}</PersonName>
+        {role && <PersonRole>{role}</PersonRole>}
         {horizontal ? (
           <>
             <PersonBirthDate>
