@@ -8,7 +8,7 @@ import Backdrop from './Backdrop';
 import Main from "../../../common/Main";
 import Tile from '../../../common/Tile';
 import Section from "../../../common/Section";
-import CreditsTile from './CreditsTile';
+import PeopleTile from '../../../common/PeopleTile';
 
 const MoviePage = () => {
     const params = useParams();
@@ -66,11 +66,11 @@ const MoviePage = () => {
                     grid
                     body={
                         credits.cast.map(cast => 
-                            <CreditsTile 
+                            <PeopleTile 
                                 key={cast.credit_id}
                                 poster={cast.profile_path}
-                                title={cast.name}
-                                subtitle={cast.character}
+                                name={cast.name}
+                                role={cast.character}
                             />
                         )
                     }
@@ -81,11 +81,11 @@ const MoviePage = () => {
                     grid
                     body={
                         credits.crew.map(crew => 
-                            <CreditsTile 
+                            <PeopleTile
                                 key={crew.credit_id}
                                 poster={crew.profile_path}
-                                title={crew.name}
-                                subtitle={crew.department}
+                                name={crew.name}
+                                role={crew.department}
                             />
                         )
                     }
