@@ -19,6 +19,10 @@ export const BackdropContainer = styled.div`
         linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.689555) 4.66%, rgba(0, 0, 0, 0.439033) 9.34%, rgba(0, 0, 0, 0.20628) 15.16%, rgba(0, 0, 0, 0) 24.22%), 
         linear-gradient(189.44deg, rgba(0, 0, 0, 0) 58.48%, rgba(0, 0, 0, 0.106473) 63.17%, rgba(0, 0, 0, 0.235359) 68.85%, rgba(0, 0, 0, 0.492821) 78.08%, rgba(0, 0, 0, 0.740286) 85.86%, #000000 92.87%), 
         url(${({ src }) => src});
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+        min-height: 100px;
+    }
 `;
 
 export const HiddenImage = styled.img`
