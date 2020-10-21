@@ -1,27 +1,31 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPopularMovies, selectMovies, selectLoading, selectError } from "../moviesSlice";
+import { page as pageParameterName } from "../../../queryParamNames";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import Pagination from "../../../common/Pagination";
+import ErrorPage from "../../../common/ErrorPage";
+import { useQueryParameter } from "../../../useQueryParameters";
 
 const MoviesPage = () => {
 
   const dispatch = useDispatch();
+  const query = useQueryParameter(pageParameterName);
   const movies = useSelector(selectMovies);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchPopularMovies());
-  }, [dispatch])
+    dispatch(fetchPopularMovies(query || 1));
+  }, [dispatch, query]);
 
   return (
     <>
-      {loading && <LoadingSpinner /> }
-      {error && <div>ERROR!</div> }
+      {!movies.results && loading && <LoadingSpinner />}
+      {!movies.results && error && <ErrorPage />}
       {movies.results &&
         <>
           <Main>
@@ -30,7 +34,7 @@ const MoviesPage = () => {
               grid
               title="Popular Movies"
               body={
-                movies.results?.map(movie =>
+                movies.results.map(movie =>
                   <Tile
                     key={movie.id}
                     title={movie.title}
@@ -44,7 +48,7 @@ const MoviesPage = () => {
                 )
               } />
           </Main>
-          <Pagination type="movies"/>
+          <Pagination type="movies" />
         </>
       }
     </>
