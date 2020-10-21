@@ -19,8 +19,6 @@ const MoviePage = () => {
     const loading = useSelector(selectLoading);
     const error = useSelector(selectError);
 
-    console.log(credits);
-
     useEffect(() => {
         dispatch(fetchMovie(params.id));
     }, [dispatch, params]);
