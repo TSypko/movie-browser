@@ -7,8 +7,10 @@ import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import Pagination from "../../../common/Pagination";
+import { MovieLink } from "./styled";
 import ErrorPage from "../../../common/ErrorPage";
 import { useQueryParameter } from "../../../useQueryParameters";
+import { toMovie } from "../../../routes";
 
 const MoviesPage = () => {
 
@@ -34,17 +36,19 @@ const MoviesPage = () => {
               grid
               title="Popular Movies"
               body={
-                movies.results.map(movie =>
-                  <Tile
-                    key={movie.id}
-                    title={movie.title}
-                    poster={movie.poster_path}
-                    year={movie.release_date}
-                    description={movie.overview}
-                    genres={movie.genre_ids}
-                    rate={movie.vote_average}
-                    votes={movie.vote_count}
-                  />
+                movies.results?.map(movie =>
+                  <MovieLink key={movie.id} to={toMovie(movie)}>
+                    <Tile
+                      key={movie.id}
+                      title={movie.title}
+                      poster={movie.poster_path}
+                      year={movie.release_date}
+                      description={movie.overview}
+                      genres={movie.genre_ids}
+                      rate={movie.vote_average}
+                      votes={movie.vote_count}
+                    />
+                  </MovieLink>
                 )
               } />
           </Main>

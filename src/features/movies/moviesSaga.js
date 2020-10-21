@@ -1,6 +1,6 @@
 import { takeLatest, call, put, delay } from "redux-saga/effects";
-import { getPopularMovies, getGenres } from "../../../src/apiClient";
-import { fetchPopularMovies, fetchPopularMoviesSucces, fetchPopularMoviesError, setGenres } from "./moviesSlice";
+import { getPopularMovies, getGenres, getMovie } from "../../../src/apiClient";
+import { fetchPopularMovies, fetchPopularMoviesSucces, fetchPopularMoviesError, setGenres, fetchMovieSucces, fetchMovieError, fetchMovie } from "./moviesSlice";
 
 function* fetchPopularMoviesHandler({ payload }) {
     try {
@@ -16,6 +16,18 @@ function* fetchPopularMoviesHandler({ payload }) {
     }
 };
 
+function* fetchMovieHandler(action) {
+    try {
+        yield delay(500);
+        const movie = yield call(getMovie, action.payload);
+        yield put(fetchMovieSucces(movie));
+    } catch (error) {
+        yield put(fetchMovieError());
+        console.error(error);
+    }
+};
+
 export function* moviesSaga() {
     yield takeLatest(fetchPopularMovies.type, fetchPopularMoviesHandler);
+    yield takeLatest(fetchMovie.type, fetchMovieHandler);
 };
