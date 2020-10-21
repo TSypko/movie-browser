@@ -3,34 +3,29 @@ import { createSlice } from "@reduxjs/toolkit";
 const popularPeopleSlice = createSlice({
   name: "popularPeople",
   initialState: {
-    page: 1,
-    totalPages: null,
-    popularPeopleByPage: [],
+    popularPeople: [],
     loading: false,
     error: false,
   },
   reducers: {
-    getPopularPeople: state => {
-      console.log("Method for Saga");
-      //to be deleted after finish work with this slice
+    fetchPopularPeople: (state) => {
       state.loading = true;
     },
 
-    setPopularPeople: (state, action) => {
-      state.page = action.payload.page;
-      state.totalPages = action.payload.total_pages;
-      state.popularPeobleByPage = action.payload.results;
+    fetchPopularPeopleSucces: (state, { payload: people}) => {
+      state.popularPeople = people;
       state.loading = false;
       state.error = false;
     },
 
-    getPopularPeopleError: state => {
+    fetchPopularPeopleError: state => {
       state.loading = false;
       state.error = true;
     },
   },
 });
 
-export const selectPopularPeople = state => state.popularPeople.popularPeobleByPage;
-export const { getPopularPeople, setPopularPeople, getPopularPeopleError } = popularPeopleSlice.actions;
+export const selectPopularPeopleState = state => state.popularPeople;
+export const selectPopularPeople = state => selectPopularPeopleState(state).popularPeople;
+export const { fetchPopularPeople, fetchPopularPeopleSucces, fetchPopularPeopleError } = popularPeopleSlice.actions;
 export default popularPeopleSlice.reducer;

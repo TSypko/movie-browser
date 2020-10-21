@@ -1,34 +1,38 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPopularMovies, selectMovies, selectLoading, selectError } from "../moviesSlice";
-import { toMovie } from "../../../routes";
+import { page as pageParameterName } from "../../../queryParamNames";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import Pagination from "../../../common/Pagination";
-import {MovieLink} from "./styled";
+import { MovieLink } from "./styled";
 import ErrorPage from "../../../common/ErrorPage";
+import { useQueryParameter } from "../../../useQueryParameters";
+import { toMovie } from "../../../routes";
 
 const MoviesPage = () => {
 
   const dispatch = useDispatch();
+  const query = useQueryParameter(pageParameterName);
   const movies = useSelector(selectMovies);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchPopularMovies());
-  }, [dispatch])
+    dispatch(fetchPopularMovies(query || 1));
+  }, [dispatch, query]);
 
   return (
     <>
-      {loading && <LoadingSpinner />}
-      {error && <ErrorPage />}
+      {!movies.results && loading && <LoadingSpinner />}
+      {!movies.results && error && <ErrorPage />}
       {movies.results &&
         <>
           <Main>
             <Section
+              type="movies"
               grid
               title="Popular Movies"
               body={
