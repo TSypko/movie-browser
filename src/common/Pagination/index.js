@@ -20,24 +20,16 @@ const Pagination = ({ type }) => {
 
   const replaceQueryParameter = useReplaceQueryParameter();
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  };
-
-  const backButtonIsDisabledHandler = () => {
+  useEffect(() => {
     if (+page === 1 || page === null) {
       setBackButtonIsDisabled(true);
     } else
       setBackButtonIsDisabled(false);
-  };
+  }, [page]);
 
-  const forwardButtonIsDisabledHandler = () => {
+  useEffect(() => {
     if (type === "movies") {
-      if (+page === 500) {
-        console.log(+page)
+      if (+page === movies.total_pages) {
         setForwardButtonIsDisabled(true);
       } else
         setForwardButtonIsDisabled(false);
@@ -48,13 +40,14 @@ const Pagination = ({ type }) => {
       } else
         setForwardButtonIsDisabled(false);
     };
-  };
+  }, [type, page, people.total_pages, movies.total_pages]);
 
   useEffect(() => {
-    backButtonIsDisabledHandler();
-    forwardButtonIsDisabledHandler();
-    scrollToTop();
-  }, [page])
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }, [page]);
 
   const previousButtonHandler = () => {
     if (+page !== 1) {
@@ -64,6 +57,9 @@ const Pagination = ({ type }) => {
       });
     };
   };
+
+
+
 
   const firstButtonHandler = () => {
     replaceQueryParameter({
