@@ -31,15 +31,18 @@ const PeopleTile = ({ horizontal, name, birthDate, poster, birthCity, descriptio
     return () => window.removeEventListener("resize", onWidthChange);
   });
 
+  const getProfileImage = (poster, horizontal) => {
+    if (!poster) return posterPlaceholder;
+    if (horizontal) return `https://image.tmdb.org/t/p/original${poster}`;
+    if (mobileContent) return `https://image.tmdb.org/t/p/w154${poster}`;
+    return `https://image.tmdb.org/t/p/w185${poster}`;
+  }
+
   return (
     <StyledTile horizontal={horizontal}>
       <Poster
         horizontal={horizontal}
-        src={
-          poster
-            ? `https://image.tmdb.org/t/p/${!mobileContent ? "w185" : "w154" }${poster}`
-            : posterPlaceholder
-        }
+        src={getProfileImage(poster, horizontal)}
         alt={`Image of ${name} poster`}
       />
       <PersonDetails horizontal={horizontal}>

@@ -58,6 +58,8 @@ export const Poster = styled.img`
     horizontal &&
     css`
       width: 399px;
+      height: auto;
+      object-fit: fill;
       margin-right: 20px;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.headerMax}) {
