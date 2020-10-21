@@ -7,6 +7,7 @@ export const BackdropBackground = styled.div`
 
 export const BackdropContainer = styled.div`
     max-width: 1368px;
+    min-height: 500px;
     margin: auto;
     position: relative;
     background-position: center;
