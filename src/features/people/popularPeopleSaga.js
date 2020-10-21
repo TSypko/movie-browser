@@ -1,17 +1,18 @@
 import { takeLatest, call, put } from "redux-saga/effects";
-import { getPopularPeople, setPopularPeople, getPopularPeopleError } from "./popularPeopleSlice";
+import { fetchPopularPeople, fetchPopularPeopleSucces, fetchPopularPeopleError } from "./popularPeopleSlice";
+import { getPopularPeople } from "../../../src/apiClient";
 
-function* fetchPopularPeoplesHandler() {
+function* fetchPopularPeopleHandler({ payload }) {
   try {
-    // to be replaced by a function prepared by Kasia - function should get page number from Pagiation component
-    const popularPeople = yield call();
-    yield put(setPopularPeople(popularPeople));
+    const page = payload;
+    const popularPeople = yield call(getPopularPeople, page);
+    yield put(fetchPopularPeopleSucces(popularPeople));
   } catch (error) {
-    yield put(getPopularPeopleError());
+    yield put(fetchPopularPeopleError());
     console.error(error);
   }
 }
 
 export function* popularPeopleSaga() {
-  yield takeLatest(getPopularPeople.type, fetchPopularPeoplesHandler);
+  yield takeLatest(fetchPopularPeople.type, fetchPopularPeopleHandler);
 }
