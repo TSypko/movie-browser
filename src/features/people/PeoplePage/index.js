@@ -7,8 +7,10 @@ import Section from "../../../common/Section";
 import Pagination from "../../../common/Pagination";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import ErrorPage from "../../../common/ErrorPage";
+import { PersonLink } from "./styled";
 import { fetchPopularPeople, selectPopularPeople, selectPopularPeopleLoadingState, selectPopularPeopleErrorState, resetPopularPeople } from "../popularPeopleSlice";
 import { useQueryParameter } from "../../../useQueryParameters";
+import { toPerson } from "../../../routes";
 
 const PeoplePage = () => {
 
@@ -17,7 +19,6 @@ const PeoplePage = () => {
   const popularPeopleLoading = useSelector(selectPopularPeopleLoadingState);
   const popularPeopleError = useSelector(selectPopularPeopleErrorState);
   const query = useQueryParameter(pageParameterName);
-  console.log(query);
 
   useEffect(() => {
     dispatch(fetchPopularPeople(query || 1));
@@ -37,14 +38,15 @@ const PeoplePage = () => {
             grid
             title="Popular People"
             body={popularPeople && popularPeople.map(popularPerson => (
-              <PeopleTile
-                key={popularPerson.id}
-                name={popularPerson.name}
-                birthCity={popularPerson.place_of_birth}
-                birthDate={popularPerson.birthday}
-                poster={popularPerson.profile_path}
-                description={popularPerson.biography}
-              />
+              <PersonLink key={popularPerson.id} to={toPerson(popularPerson)}>
+                <PeopleTile
+                  name={popularPerson.name}
+                  birthCity={popularPerson.place_of_birth}
+                  birthDate={popularPerson.birthday}
+                  poster={popularPerson.profile_path}
+                  description={popularPerson.biography}
+                />
+              </PersonLink>
             ))}
           />
           <Pagination type="people" />
