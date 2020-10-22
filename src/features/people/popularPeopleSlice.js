@@ -27,5 +27,7 @@ const popularPeopleSlice = createSlice({
 
 export const selectPopularPeopleState = state => state.popularPeople;
 export const selectPopularPeople = state => selectPopularPeopleState(state).popularPeople;
+export const selectPopularPeopleLoadingState = state  => selectPopularPeopleState(state).loading;
+export const selectPopularPeopleErrorState = state  => selectPopularPeopleState(state).error;
 export const { fetchPopularPeople, fetchPopularPeopleSucces, fetchPopularPeopleError } = popularPeopleSlice.actions;
 export default popularPeopleSlice.reducer;
