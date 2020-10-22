@@ -12,7 +12,7 @@ const popularPeopleSlice = createSlice({
       state.loading = true;
     },
 
-    fetchPopularPeopleSucces: (state, { payload: people}) => {
+    fetchPopularPeopleSucces: (state, { payload: people }) => {
       state.popularPeople = people;
       state.loading = false;
       state.error = false;
@@ -22,12 +22,18 @@ const popularPeopleSlice = createSlice({
       state.loading = false;
       state.error = true;
     },
+
+    resetPopularPeople: state => {
+      state.popularPeople = [];
+      state.loading = false;
+      state.error = false;
+    },
   },
 });
 
 export const selectPopularPeopleState = state => state.popularPeople;
 export const selectPopularPeople = state => selectPopularPeopleState(state).popularPeople;
-export const selectPopularPeopleLoadingState = state  => selectPopularPeopleState(state).loading;
-export const selectPopularPeopleErrorState = state  => selectPopularPeopleState(state).error;
-export const { fetchPopularPeople, fetchPopularPeopleSucces, fetchPopularPeopleError } = popularPeopleSlice.actions;
+export const selectPopularPeopleLoadingState = state => selectPopularPeopleState(state).loading;
+export const selectPopularPeopleErrorState = state => selectPopularPeopleState(state).error;
+export const { fetchPopularPeople, fetchPopularPeopleSucces, fetchPopularPeopleError, resetPopularPeople } = popularPeopleSlice.actions;
 export default popularPeopleSlice.reducer;
