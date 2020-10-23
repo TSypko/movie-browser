@@ -41,6 +41,8 @@ function* fetchMovieHandler({ payload }) {
 function* searchMoviesByQueryHandler({ payload }) {
     try {
         const movies = yield call(searchForMovies, payload.page, payload.query);
+        const genres = yield call(getGenres);
+        yield put(setGenres(genres));
         yield put(searchMoviesByQuerySucces(movies));
     } catch (error) {
         yield put(searchMoviesByQueryError());
