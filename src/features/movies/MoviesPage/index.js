@@ -24,7 +24,7 @@ const MoviesPage = () => {
   const error = useSelector(selectError);
 
   useEffect(() => {
-    if (searchQuery && searchQuery !== "") {
+    if (searchQuery) {
       dispatch(searchMoviesByQuery({
         page: pageQuery,
         query: searchQuery
@@ -33,7 +33,7 @@ const MoviesPage = () => {
       dispatch(fetchPopularMovies(pageQuery))
     };
   }, [dispatch, pageQuery, searchQuery]);
-  console.log(movies.results)
+
   return (
     <>
       {!movies.results && loading && <LoadingSpinner />}
@@ -50,26 +50,27 @@ const MoviesPage = () => {
           <Main>
             <Section
               type="movies"
-              grid
-              title="Popular Movies"
+              grid={!loading}
+              title={searchQuery ? `Search results for "${searchQuery}"` : "Popular Movies"}
               body={
-                movies.results?.map(movie =>
-                  <MovieLink key={movie.id} to={toMovie(movie)}>
-                    <Tile
-                      key={movie.id}
-                      title={movie.title}
-                      poster={movie.poster_path}
-                      year={movie.release_date}
-                      description={movie.overview}
-                      genres={movie.genre_ids}
-                      rate={movie.vote_average}
-                      votes={movie.vote_count}
-                    />
-                  </MovieLink>
-                )
+                loading ? <LoadingSpinner /> :
+                  movies.results?.map(movie =>
+                    <MovieLink key={movie.id} to={toMovie(movie)}>
+                      <Tile
+                        key={movie.id}
+                        title={movie.title}
+                        poster={movie.poster_path}
+                        year={movie.release_date}
+                        description={movie.overview}
+                        genres={movie.genre_ids}
+                        rate={movie.vote_average}
+                        votes={movie.vote_count}
+                      />
+                    </MovieLink>
+                  )
               } />
           </Main>
-          <Pagination type="movies" />
+          {loading ? null : <Pagination type="movies" />}
         </>
       }
     </>
