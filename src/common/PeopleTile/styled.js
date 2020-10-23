@@ -43,16 +43,20 @@ export const StyledTile = styled.div`
 
 export const Poster = styled.img`
   width: 217px;
+  height: 326px;
   border-radius: 5px;
+  background: ${({ theme }) => theme.colors.Silver};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     width: 120px;
+    height: 178px;
   }
 
   ${({ horizontal }) =>
     horizontal &&
     css`
       width: 399px;
+      height: auto;
       margin-right: 20px;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.headerMax}) {
@@ -117,6 +121,20 @@ export const PersonName = styled.h3`
         margin: 0 0 2px 0;
       } ;
     `};
+`;
+
+export const PersonRole = styled.span`
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+    flex-basis: 100%;
+    color: ${({ theme }) => theme.colors.Waterloo};
+    margin: 8px;
+
+    @media (max-width: ${({theme}) => theme.breakpoints.mobileMax}) {
+        font-size: 13px;
+    }
 `;
 
 export const InfoLabelSpan = styled.span`
