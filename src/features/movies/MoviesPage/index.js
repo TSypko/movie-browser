@@ -32,12 +32,19 @@ const MoviesPage = () => {
       dispatch(fetchPopularMovies(pageQuery))
     };
   }, [dispatch, pageQuery, searchQuery]);
-
+  console.log(movies.results)
   return (
     <>
       {!movies.results && loading && <LoadingSpinner />}
       {!movies.results && error && <ErrorPage />}
-      {movies.results &&
+      {!loading && !error && movies.total_results === 0 &&
+        <Main>
+          <Section
+            title="Not found"
+            body={""}
+          />
+        </Main>}
+      {movies.results && movies.total_results !== 0 &&
         <>
           <Main>
             <Section
