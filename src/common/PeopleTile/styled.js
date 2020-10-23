@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const StyledTile = styled.div`
   display: flex;
   flex-direction: column;
-  width: 208px;
+  width: 248px;
   min-height: 339px;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.White};
@@ -42,12 +42,10 @@ export const StyledTile = styled.div`
 `;
 
 export const Poster = styled.img`
-  width: 177px;
-  height: 264px;
+  width: 217px;
+  height: 326px;
   border-radius: 5px;
   background: ${({ theme }) => theme.colors.Silver};
-  object-fit: none;
-  object-position: center center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     width: 120px;
@@ -59,7 +57,7 @@ export const Poster = styled.img`
     css`
       width: 399px;
       height: auto;
-      object-fit: fill;
+      /* object-fit: fill; */
       margin-right: 20px;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.headerMax}) {

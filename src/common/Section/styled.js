@@ -19,16 +19,17 @@ export const Title = styled.h2`
 export const Container = styled.div`
   display: ${({ grid }) => (grid ? "grid" : "block")};
   margin: 0 auto;
-  grid-gap: 24px;
 
   ${({ grid }) =>
     grid && css`
     ${({ type }) => type === "movies" && css`
       grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
+    grid-gap: 24px;
     `}
 
     ${({ type }) => type === "people" && css`
-      grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+    grid-gap: 32px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
       grid-template-columns: repeat(auto-fill, minmax(136px, 0.4fr));
