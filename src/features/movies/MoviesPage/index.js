@@ -12,6 +12,7 @@ import { MovieLink } from "./styled";
 import ErrorPage from "../../../common/ErrorPage";
 import { useQueryParameter } from "../../../useQueryParameters";
 import { toMovie } from "../../../routes";
+import NoResultsPage from "../../../common/NoResultsPage";
 
 const MoviesPage = () => {
 
@@ -40,8 +41,8 @@ const MoviesPage = () => {
       {!loading && !error && movies.total_results === 0 &&
         <Main>
           <Section
-            title="Not found"
-            body={""}
+            title={`Sorry, there are no results for "${searchQuery}"`}
+            body={<NoResultsPage />}
           />
         </Main>}
       {movies.results && movies.total_results !== 0 &&
