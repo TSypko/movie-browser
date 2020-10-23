@@ -39,6 +39,18 @@ const moviesSlice = createSlice({
             state.loading = false;
             state.error = true;
         },
+        searchMoviesByQuery: (state) => {
+            state.loading = true;
+        },
+        searchMoviesByQuerySucces: (state, { payload: moviesByQuery }) => {
+            state.movies = moviesByQuery;
+            state.loading = false;
+            state.error = false;
+        },
+        searchMoviesByQueryError: (state) => {
+            state.loading = false;
+            state.error = true;
+        },
     }
 });
 
@@ -50,6 +62,9 @@ export const {
     fetchMovie,
     fetchMovieSucces,
     fetchMovieError,
+    searchMoviesByQuery,
+    searchMoviesByQuerySucces,
+    searchMoviesByQueryError
 } = moviesSlice.actions;
 
 export const selectMoviesState = state => state.movies;
