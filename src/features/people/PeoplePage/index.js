@@ -7,7 +7,7 @@ import Section from "../../../common/Section";
 import Pagination from "../../../common/Pagination";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import ErrorPage from "../../../common/ErrorPage";
-import { PersonLink } from "./styled";
+import FeatureLink from "../../../common/FeatureLink";
 import { fetchPopularPeople, selectPopularPeople, selectPopularPeopleLoadingState, selectPopularPeopleErrorState, resetPopularPeople } from "../popularPeopleSlice";
 import { useQueryParameter } from "../../../useQueryParameters";
 import { toPerson } from "../../../routes";
@@ -38,7 +38,7 @@ const PeoplePage = () => {
             grid
             title="Popular People"
             body={popularPeople && popularPeople.map(popularPerson => (
-              <PersonLink key={popularPerson.id} to={toPerson(popularPerson)}>
+              <FeatureLink key={popularPerson.id} to={toPerson(popularPerson)}>
                 <PeopleTile
                   name={popularPerson.name}
                   birthCity={popularPerson.place_of_birth}
@@ -46,7 +46,7 @@ const PeoplePage = () => {
                   poster={popularPerson.profile_path}
                   description={popularPerson.biography}
                 />
-              </PersonLink>
+              </FeatureLink>
             ))}
           />
           <Pagination type="people" />
