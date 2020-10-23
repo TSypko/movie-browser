@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPopularMovies, selectMovies, selectLoading, selectError } from "../moviesSlice";
+import { fetchPopularMovies, selectMovies, selectLoading, selectError, searchMoviesByQuery } from "../moviesSlice";
 import { page as pageParameterName } from "../../../queryParamNames";
+import { search as searchParameterName } from "../../../queryParamNames";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
@@ -15,14 +16,22 @@ import { toMovie } from "../../../routes";
 const MoviesPage = () => {
 
   const dispatch = useDispatch();
-  const query = useQueryParameter(pageParameterName);
+  const pageQuery = useQueryParameter(pageParameterName);
+  const searchQuery = useQueryParameter(searchParameterName);
   const movies = useSelector(selectMovies);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchPopularMovies(query || 1));
-  }, [dispatch, query]);
+    if (searchQuery && searchQuery !== "") {
+      dispatch(searchMoviesByQuery({
+        page: pageQuery,
+        query: searchQuery
+      }))
+    } else {
+      dispatch(fetchPopularMovies(pageQuery))
+    };
+  }, [dispatch, pageQuery, searchQuery]);
 
   return (
     <>
