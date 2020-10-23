@@ -37,11 +37,10 @@ const MoviePage = () => {
         return countries && countries.map(country => country.name).join(", ");
     };
 
-    if (loading) return <LoadingSpinner />;
-    if (error) return <ErrorPage />;
-
     return (
         <>
+        {loading && <LoadingSpinner />}
+        {error && <ErrorPage />}
             {movie && movie.backdrop_path &&
                 <Backdrop movie={movie} />
             }

@@ -33,9 +33,9 @@ const PeopleTile = ({ horizontal, name, birthDate, poster, birthCity, descriptio
 
   const getProfileImage = (poster, horizontal) => {
     if (!poster) return posterPlaceholder;
-    if (horizontal) return `https://image.tmdb.org/t/p/original${poster}`;
-    if (mobileContent) return `https://image.tmdb.org/t/p/w154${poster}`;
-    return `https://image.tmdb.org/t/p/w185${poster}`;
+    else if (horizontal) return `https://image.tmdb.org/t/p/original${poster}`;
+    else if (mobileContent) return `https://image.tmdb.org/t/p/w154${poster}`;
+    else return `https://image.tmdb.org/t/p/w185${poster}`;
   }
 
   return (
