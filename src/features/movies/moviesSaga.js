@@ -10,7 +10,9 @@ import {
     fetchMovie,
     searchMoviesByQuery,
     searchMoviesByQuerySucces,
-    searchMoviesByQueryError
+    searchMoviesByQueryError,
+    getMoviesSearchQuery,
+    setMoviesSearchQuery,
 } from "./moviesSlice";
 
 function* fetchPopularMoviesHandler({ payload }) {
@@ -50,8 +52,17 @@ function* searchMoviesByQueryHandler({ payload }) {
     };
 };
 
+function* getMoviesSearchQueryHandler({ payload }) {
+    try {
+        yield put(setMoviesSearchQuery(payload));
+    } catch (error) {
+        console.error(error);
+    };
+};
+
 export function* moviesSaga() {
     yield takeLatest(fetchPopularMovies.type, fetchPopularMoviesHandler);
     yield takeLatest(fetchMovie.type, fetchMovieHandler);
+    yield debounce(600, getMoviesSearchQuery.type, getMoviesSearchQueryHandler);
     yield debounce(600, searchMoviesByQuery.type, searchMoviesByQueryHandler);
 };
