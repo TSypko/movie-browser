@@ -1,60 +1,58 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { page as pageParameterName } from "../../../queryParamNames";
 import PeopleTile from "../../../common/PeopleTile";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Pagination from "../../../common/Pagination";
-
-const examplePerson = {
-  name: "Mark Hamill",
-  birthday: "1951-09-25",
-  place_of_birth: "Concord, California, USA",
-  biography: "Mark Richard Hamill (born September 25, 1951) is an American actor, voice artist, producer, director, and writer. Hamill is best known for his role as Luke Skywalker in the original Star Wars trilogy and also well known for voice-acting characters such as the Joker in various animated series, animated films and video games, beginning with Batman: The Animated Series, the Skeleton king in Super Robot Monkey Team Hyperforce Go!, Fire Lord Ozai in Avatar: The Last Airbender, Master Eraqus in Kingdom Hearts: Birth by Sleep, Skips in Regular Show, and Senator Stampington on Metalocalypse.",
-  image: "\/9Wws35pCsT0KoZpiV4Gk5nbn9ZD.jpg",
-}
+import LoadingSpinner from "../../../common/LoadingSpinner";
+import ErrorPage from "../../../common/ErrorPage";
+import FeatureLink from "../../../common/FeatureLink";
+import { fetchPopularPeople, selectPopularPeople, selectPopularPeopleLoadingState, selectPopularPeopleErrorState, resetPopularPeople } from "../popularPeopleSlice";
+import { useQueryParameter } from "../../../useQueryParameters";
+import { toPerson } from "../../../routes";
 
 const PeoplePage = () => {
+
+  const dispatch = useDispatch();
+  const popularPeople = useSelector(selectPopularPeople).results;
+  const popularPeopleLoading = useSelector(selectPopularPeopleLoadingState);
+  const popularPeopleError = useSelector(selectPopularPeopleErrorState);
+  const query = useQueryParameter(pageParameterName);
+
+  useEffect(() => {
+    dispatch(fetchPopularPeople(query || 1));
+    return (() => {
+      dispatch(resetPopularPeople())
+    })
+  }, [dispatch, query])
+
   return (
-    <>
-      <Main>
-        <Section
-          type="people"
-          // grid
-          title="Popular People"
-          body={
-            <>
-              {/* Body has been prepared for component's testing - please replace after tests */}
-              <PeopleTile
-                horizontal
-                name={examplePerson.name}
-                birthCity={examplePerson.place_of_birth}
-                birthDate={examplePerson.birthday}
-                poster={examplePerson.image}
-                description={examplePerson.biography}
-              />
-              {/* <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile />
-              <PeopleTile /> */}
-            </>
-          } />
-      </Main>
-      <Pagination type="movies" />
-    </>
+    <Main>
+      {(!popularPeople && popularPeopleLoading) && <LoadingSpinner />}
+      {(!popularPeople && popularPeopleError) && <ErrorPage />}
+      {popularPeople &&
+        <>
+          <Section
+            type="people"
+            grid
+            title="Popular People"
+            body={popularPeople && popularPeople.map(popularPerson => (
+              <FeatureLink key={popularPerson.id} to={toPerson(popularPerson)}>
+                <PeopleTile
+                  name={popularPerson.name}
+                  birthCity={popularPerson.place_of_birth}
+                  birthDate={popularPerson.birthday}
+                  poster={popularPerson.profile_path}
+                  description={popularPerson.biography}
+                />
+              </FeatureLink>
+            ))}
+          />
+          <Pagination type="people" />
+        </>
+      }
+    </Main>
   )
 };
 

@@ -7,7 +7,7 @@ import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import Pagination from "../../../common/Pagination";
-import { MovieLink } from "./styled";
+import FeatureLink from "../../../common/FeatureLink";
 import ErrorPage from "../../../common/ErrorPage";
 import { useQueryParameter } from "../../../useQueryParameters";
 import { toMovie } from "../../../routes";
@@ -37,7 +37,7 @@ const MoviesPage = () => {
               title="Popular Movies"
               body={
                 movies.results?.map(movie =>
-                  <MovieLink key={movie.id} to={toMovie(movie)}>
+                  <FeatureLink key={movie.id} to={toMovie(movie)}>
                     <Tile
                       key={movie.id}
                       title={movie.title}
@@ -48,7 +48,7 @@ const MoviesPage = () => {
                       rate={movie.vote_average}
                       votes={movie.vote_count}
                     />
-                  </MovieLink>
+                  </FeatureLink>
                 )
               } />
           </Main>
