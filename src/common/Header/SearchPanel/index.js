@@ -26,7 +26,7 @@ const SearchPanel = () => {
     return (
         <SearchInput
             placeholder={`Search for ${location.pathname.includes(toMovies()) ? "movies" : "people"}...`}
-            value={searchQuery || ""}
+            value={searchQuery}
             onChange={onInputChange}
         />
     );
