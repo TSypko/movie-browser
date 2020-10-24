@@ -1,6 +1,15 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPopularMovies, selectMovies, selectLoading, selectError, searchMoviesByQuery } from "../moviesSlice";
+import {
+  fetchPopularMovies,
+  selectMovies,
+  selectLoading,
+  selectError,
+  searchMoviesByQuery,
+  selectMoviesSearchQuery,
+  resetMoviesSearchQuery,
+  getMoviesSearchQuery
+} from "../moviesSlice";
 import { page as pageParameterName } from "../../../queryParamNames";
 import { search as searchParameterName } from "../../../queryParamNames";
 import Main from "../../../common/Main";
@@ -22,9 +31,11 @@ const MoviesPage = () => {
   const movies = useSelector(selectMovies);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
+  const moviesSearchQuery = useSelector(selectMoviesSearchQuery);
 
   useEffect(() => {
-    if (searchQuery) {
+    if (searchQuery !== "" && searchQuery !== null) {
+      dispatch(getMoviesSearchQuery(searchQuery));
       dispatch(searchMoviesByQuery({
         page: pageQuery,
         query: searchQuery
@@ -32,6 +43,9 @@ const MoviesPage = () => {
     } else {
       dispatch(fetchPopularMovies(pageQuery))
     };
+    return () => {
+      dispatch(resetMoviesSearchQuery())
+    }
   }, [dispatch, pageQuery, searchQuery]);
 
   return (
@@ -41,7 +55,7 @@ const MoviesPage = () => {
       {!loading && !error && movies.total_results === 0 &&
         <Main>
           <Section
-            title={`Sorry, there are no results for "${searchQuery}"`}
+            title={`Sorry, there are no results for "${moviesSearchQuery}"`}
             body={<NoResultsPage />}
           />
         </Main>}
@@ -51,7 +65,11 @@ const MoviesPage = () => {
             <Section
               type="movies"
               grid={!loading}
-              title={searchQuery ? `Search results for "${searchQuery}"` : "Popular Movies"}
+              title={moviesSearchQuery
+                ? `Search results for "${moviesSearchQuery}"`
+                : loading
+                  ? ""
+                  : "Popular Movies"}
               body={
                 loading ? <LoadingSpinner /> :
                   movies.results?.map(movie =>
