@@ -19,7 +19,6 @@ function* fetchPopularMoviesHandler({ payload }) {
         const page = payload;
         const popularMovies = yield call(getPopularMovies, page);
         const genres = yield call(getGenres);
-        
         yield put(fetchPopularMoviesSucces(popularMovies));
         yield put(setGenres(genres));
         yield delay(500);
