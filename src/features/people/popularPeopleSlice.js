@@ -11,13 +11,11 @@ const popularPeopleSlice = createSlice({
     fetchPopularPeople: (state) => {
       state.loading = true;
     },
-
     fetchPopularPeopleSucces: (state, { payload: people }) => {
       state.popularPeople = people;
       state.loading = false;
       state.error = false;
     },
-
     fetchPopularPeopleError: state => {
       state.loading = false;
       state.error = true;
