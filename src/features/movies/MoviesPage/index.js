@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchPopularMovies,
+  resetMovies,
   selectMovies,
   selectLoading,
   selectError,
@@ -38,7 +39,7 @@ const MoviesPage = () => {
     } else {
       dispatch(fetchPopularMovies(pageQuery))
     };
-
+    return () => dispatch(resetMovies())
   }, [dispatch, pageQuery, searchQuery]);
 
   return (
@@ -65,7 +66,7 @@ const MoviesPage = () => {
                   : "Popular Movies"}
               body={loading
                 ? <LoadingSpinner />
-                : movies.results?.map(movie =>
+                : movies.results.map(movie =>
                   <FeatureLink key={movie.id} to={toMovie(movie)}>
                     <Tile
                       key={movie.id}

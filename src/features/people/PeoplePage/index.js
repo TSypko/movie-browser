@@ -13,7 +13,8 @@ import {
   selectPopularPeople,
   selectPopularPeopleLoadingState,
   selectPopularPeopleErrorState,
-  searchPopularPeopleByQuery
+  searchPopularPeopleByQuery,
+  resetPopularPeople
 } from "../popularPeopleSlice";
 import { useQueryParameter } from "../../../useQueryParameters";
 import { toPerson } from "../../../routes";
@@ -38,8 +39,9 @@ const PeoplePage = () => {
     } else {
       dispatch(fetchPopularPeople(pageQuery))
     };
+    return () => dispatch(resetPopularPeople())
   }, [dispatch, pageQuery, searchQuery]);
-  
+
   return (
     <>
       {!popularPeopleLoading && !popularPeopleError && popularPeople.total_results === 0 &&
@@ -64,7 +66,7 @@ const PeoplePage = () => {
                   : "Popular People"}
               body={popularPeopleLoading
                 ? <LoadingSpinner />
-                : popularPeople.results?.map(popularPerson => (
+                : popularPeople.results.map(popularPerson => (
                   <FeatureLink key={popularPerson.id} to={toPerson(popularPerson)}>
                     <PeopleTile
                       name={popularPerson.name}

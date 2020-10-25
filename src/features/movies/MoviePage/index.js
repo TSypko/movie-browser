@@ -1,7 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchMovie, selectError, selectLoading, selectMovie, selectMovieCredits } from '../moviesSlice';
+import {
+    fetchMovie,
+    resetMovie,
+    selectError,
+    selectLoading,
+    selectMovie,
+    selectMovieCredits
+} from '../moviesSlice';
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import ErrorPage from "../../../common/ErrorPage";
 import Backdrop from './Backdrop';
@@ -12,7 +19,6 @@ import PeopleTile from '../../../common/PeopleTile';
 
 const MoviePage = () => {
     const params = useParams();
-
     const dispatch = useDispatch();
     const movie = useSelector(selectMovie);
     const credits = useSelector(selectMovieCredits);
@@ -21,11 +27,14 @@ const MoviePage = () => {
 
     useEffect(() => {
         dispatch(fetchMovie(params.id));
+        return () => {
+            dispatch(resetMovie())
+        }
     }, [dispatch, params]);
 
     const formatDate = date => {
         return date && new Date(date).toLocaleString(
-            undefined, 
+            undefined,
             {
                 day: "numeric",
                 month: "numeric",
@@ -39,8 +48,8 @@ const MoviePage = () => {
 
     return (
         <>
-        {loading && <LoadingSpinner />}
-        {error && <ErrorPage />}
+            {loading && <LoadingSpinner />}
+            {error && <ErrorPage />}
             {movie && movie.backdrop_path &&
                 <Backdrop movie={movie} />
             }
@@ -57,13 +66,13 @@ const MoviePage = () => {
                     rate={movie.vote_average}
                     votes={movie.vote_count}
                 />
-                <Section 
+                <Section
                     title="Cast"
                     type="people"
                     grid
                     body={
-                        credits.cast.map(cast => 
-                            <PeopleTile 
+                        credits.cast.map(cast =>
+                            <PeopleTile
                                 key={cast.credit_id}
                                 poster={cast.profile_path}
                                 name={cast.name}
@@ -72,12 +81,12 @@ const MoviePage = () => {
                         )
                     }
                 />
-                <Section 
+                <Section
                     title="Crew"
                     type="people"
                     grid
                     body={
-                        credits.crew.map(crew => 
+                        credits.crew.map(crew =>
                             <PeopleTile
                                 key={crew.credit_id}
                                 poster={crew.profile_path}
