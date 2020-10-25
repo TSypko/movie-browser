@@ -1,5 +1,5 @@
 import { takeLatest, call, put, delay, debounce } from "redux-saga/effects";
-import { getPopularMovies, getGenres, getMovie, searchForMovies } from "../../../src/apiClient";
+import { getPopularMovies, getGenres, getMovie, searchForMovies, getMovieCredits } from "../../../src/apiClient";
 import {
     fetchPopularMovies,
     fetchPopularMoviesSucces,
@@ -33,7 +33,9 @@ function* fetchMovieHandler({ payload }) {
     try {
         yield delay(500);
         const movie = yield call(getMovie, payload);
-        yield put(fetchMovieSucces(movie));
+        const credits = yield call(getMovieCredits, payload);
+        yield put(fetchMovieSucces({movie, credits}));
+
     } catch (error) {
         yield put(fetchMovieError());
         console.error(error);

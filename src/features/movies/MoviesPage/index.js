@@ -13,7 +13,7 @@ import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import Pagination from "../../../common/Pagination";
-import { MovieLink } from "./styled";
+import FeatureLink from "../../../common/FeatureLink";
 import ErrorPage from "../../../common/ErrorPage";
 import { useQueryParameter } from "../../../useQueryParameters";
 import { toMovie } from "../../../routes";
@@ -38,12 +38,12 @@ const MoviesPage = () => {
     } else {
       dispatch(fetchPopularMovies(pageQuery))
     };
-  
+
   }, [dispatch, pageQuery, searchQuery]);
 
   return (
     <>
-    {!loading && !error && movies.total_results === 0 &&
+      {!loading && !error && movies.total_results === 0 &&
         <Main>
           <Section
             title={`Sorry, there are no results for "${searchQuery}"`}
@@ -52,7 +52,6 @@ const MoviesPage = () => {
         </Main>}
       {!movies.results && loading && <LoadingSpinner />}
       {!movies.results && error && <ErrorPage />}
-      
       {movies.results && movies.total_results !== 0 &&
         <>
           <Main>
@@ -64,22 +63,22 @@ const MoviesPage = () => {
                 : loading
                   ? ""
                   : "Popular Movies"}
-              body={
-                loading ? <LoadingSpinner /> :
-                  movies.results?.map(movie =>
-                    <MovieLink key={movie.id} to={toMovie(movie)}>
-                      <Tile
-                        key={movie.id}
-                        title={movie.title}
-                        poster={movie.poster_path}
-                        year={movie.release_date}
-                        description={movie.overview}
-                        genres={movie.genre_ids}
-                        rate={movie.vote_average}
-                        votes={movie.vote_count}
-                      />
-                    </MovieLink>
-                  )
+              body={loading
+                ? <LoadingSpinner />
+                : movies.results?.map(movie =>
+                  <FeatureLink key={movie.id} to={toMovie(movie)}>
+                    <Tile
+                      key={movie.id}
+                      title={movie.title}
+                      poster={movie.poster_path}
+                      year={movie.release_date}
+                      description={movie.overview}
+                      genres={movie.genre_ids}
+                      rate={movie.vote_average}
+                      votes={movie.vote_count}
+                    />
+                  </FeatureLink>
+                )
               } />
           </Main>
           {loading ? null : <Pagination type="movies" />}

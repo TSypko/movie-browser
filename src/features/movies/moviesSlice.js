@@ -7,7 +7,7 @@ const moviesSlice = createSlice({
         loading: false,
         error: false,
         genres: [],
-        movie: undefined,
+        movieData: {movie: undefined, credits: undefined},
     },
     reducers: {
         fetchPopularMovies: (state) => {
@@ -30,8 +30,8 @@ const moviesSlice = createSlice({
         fetchMovie: (state) => {
             state.loading = true;
         },
-        fetchMovieSucces: (state, { payload: movie }) => {
-            state.movie = movie;
+        fetchMovieSucces: (state, { payload: movieData }) => {
+            state.movieData = movieData;
             state.loading = false;
             state.error = false;
         },
@@ -74,6 +74,7 @@ export const selectMovies = state => selectMoviesState(state).movies;
 export const selectLoading = state => selectMoviesState(state).loading;
 export const selectError = state => selectMoviesState(state).error;
 export const selectGenres = state => selectMoviesState(state).genres;
-export const selectMovie = state => selectMoviesState(state).movie;
+export const selectMovie = state => selectMoviesState(state).movieData.movie;
+export const selectMovieCredits = state => selectMoviesState(state).movieData.credits;
 
 export default moviesSlice.reducer;
