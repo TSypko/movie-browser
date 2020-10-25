@@ -1,4 +1,4 @@
-import { takeLatest, call, put, delay, debounce } from "redux-saga/effects";
+import { takeLatest, call, put, debounce } from "redux-saga/effects";
 import {
   fetchPopularPeople,
   fetchPopularPeopleSucces,
@@ -13,7 +13,6 @@ function* fetchPopularPeopleHandler({ payload }) {
   try {
     const page = payload;
     const popularPeople = yield call(getPopularPeople, page);
-    yield delay(500);
     yield put(fetchPopularPeopleSucces(popularPeople));
   } catch (error) {
     yield put(fetchPopularPeopleError());
