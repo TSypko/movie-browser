@@ -31,7 +31,6 @@ function* fetchMovieHandler({ payload }) {
         const movie = yield call(getMovie, payload);
         const credits = yield call(getMovieCredits, payload);
         yield put(fetchMovieSucces({movie, credits}));
-
     } catch (error) {
         yield put(fetchMovieError());
         console.error(error);
@@ -53,5 +52,5 @@ function* searchMoviesByQueryHandler({ payload }) {
 export function* moviesSaga() {
     yield takeLatest(fetchPopularMovies.type, fetchPopularMoviesHandler);
     yield takeLatest(fetchMovie.type, fetchMovieHandler);
-    yield debounce(600, searchMoviesByQuery.type, searchMoviesByQueryHandler);
+    yield takeLatest(searchMoviesByQuery.type, searchMoviesByQueryHandler);
 };
