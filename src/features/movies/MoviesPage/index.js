@@ -55,7 +55,7 @@ const MoviesPage = () => {
                   )
               } />
           </Main>
-          <Pagination type="movies" />
+          {!loading && <Pagination type="movies" />}
         </>
       }
     </>

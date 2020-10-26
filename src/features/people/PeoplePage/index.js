@@ -54,7 +54,7 @@ const PeoplePage = () => {
                 ))
             }
           />
-          <Pagination type="people" />
+          {!popularPeopleLoading && <Pagination type="people" />}
         </>
       }
     </Main>
