@@ -1,14 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import {
+    checkRedirect,
     fetchMovie,
     resetMovie,
     selectError,
     selectLoading,
     selectMovie,
-    selectMovieCredits
+    selectMovieCredits,
+    selectRedirect,
+    setRedirectIsUnactive
 } from '../moviesSlice';
+import { page as pageParameterName } from "../../../queryParamNames";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import ErrorPage from "../../../common/ErrorPage";
 import Backdrop from './Backdrop';
@@ -16,21 +20,35 @@ import Main from "../../../common/Main";
 import Tile from '../../../common/Tile';
 import Section from "../../../common/Section";
 import PeopleTile from '../../../common/PeopleTile';
+import { useQueryParameter } from '../../../useQueryParameters';
+import { selectSearchIsOn, selectSearchQuery } from '../../search/searchSlice';
+import { toMovies } from '../../../routes';
 
 const MoviePage = () => {
+
     const params = useParams();
     const dispatch = useDispatch();
     const movie = useSelector(selectMovie);
     const credits = useSelector(selectMovieCredits);
     const loading = useSelector(selectLoading);
     const error = useSelector(selectError);
+    const pageQuery = useQueryParameter(pageParameterName);
+    const searchQuery = useSelector(selectSearchQuery);
+    const searchisOn = useSelector(selectSearchIsOn);
+    const moviesPageIsActive = useSelector(selectRedirect);
 
     useEffect(() => {
-        dispatch(fetchMovie(params.id));
-        return () => {
-            dispatch(resetMovie())
+        if (searchisOn) {
+            dispatch(checkRedirect());
         }
-    }, [dispatch, params]);
+        else {
+            dispatch(fetchMovie(params.id));
+        };
+        return () => {
+            dispatch(resetMovie());
+            dispatch(setRedirectIsUnactive());
+        };
+    }, [dispatch, params, pageQuery, searchisOn]);
 
     const formatDate = date => {
         return date && new Date(date).toLocaleString(
@@ -48,6 +66,7 @@ const MoviePage = () => {
 
     return (
         <>
+            {moviesPageIsActive && <Redirect to={`${toMovies()}?search=${searchQuery}`} />}
             {loading && <LoadingSpinner />}
             {error && <ErrorPage />}
             {movie && movie.backdrop_path &&
