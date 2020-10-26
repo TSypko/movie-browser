@@ -27,8 +27,9 @@ const SearchPanel = () => {
     };
 
     return (
+
         <SearchInput
-            placeholder={`Search for ${location.pathname.substring(1)}...`}
+            placeholder={`Search for ${location.pathname.substring(1, 6)}...`}
             value={searchQuery || ""}
             onChange={onInputChange}
         />
