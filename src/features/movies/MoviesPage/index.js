@@ -58,7 +58,7 @@ const MoviesPage = () => {
               type="movies"
               grid={!loading}
               title={searchQuery
-                ? `Search results for "${searchQuery}"`
+                ? `Search results for "${searchQuery}" (${movies.total_results})`
                 : loading
                   ? ""
                   : "Popular Movies"}

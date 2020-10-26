@@ -60,7 +60,7 @@ const PeoplePage = () => {
               type="people"
               grid={!popularPeopleLoading}
               title={searchQuery
-                ? `Search results for "${searchQuery}"`
+                ? `Search results for "${searchQuery}" (${popularPeople.total_results})`
                 : popularPeopleLoading
                   ? ""
                   : "Popular People"}
