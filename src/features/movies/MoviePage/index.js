@@ -35,7 +35,7 @@ const MoviePage = () => {
     const pageQuery = useQueryParameter(pageParameterName);
     const searchQuery = useSelector(selectSearchQuery);
     const searchisOn = useSelector(selectSearchIsOn);
-    const moviesPageIsActive = useSelector(selectRedirect);
+    const redirectIsActive = useSelector(selectRedirect);
 
     useEffect(() => {
         if (searchisOn) {
@@ -66,7 +66,7 @@ const MoviePage = () => {
 
     return (
         <>
-            {moviesPageIsActive && <Redirect to={`${toMovies()}?search=${searchQuery}`} />}
+            {redirectIsActive && <Redirect to={`${toMovies()}?search=${searchQuery}`} />}
             {loading && <LoadingSpinner />}
             {error && <ErrorPage />}
             {movie && movie.backdrop_path &&
