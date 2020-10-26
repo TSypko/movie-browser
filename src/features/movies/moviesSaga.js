@@ -52,6 +52,6 @@ function* searchMoviesByQueryHandler({ payload }) {
 
 export function* moviesSaga() {
     yield takeLatest(fetchPopularMovies.type, fetchPopularMoviesHandler);
-    yield debounce(600, fetchMovie.type, fetchMovieHandler);
-    yield debounce(600,searchMoviesByQuery.type, searchMoviesByQueryHandler);
+    yield takeLatest(fetchMovie.type, fetchMovieHandler);
+    yield debounce(600, searchMoviesByQuery.type, searchMoviesByQueryHandler);
 };
