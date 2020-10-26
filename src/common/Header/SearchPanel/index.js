@@ -22,7 +22,12 @@ const SearchPanel = () => {
         timeout = setTimeout(() => {
             const path = location.pathname.includes(toMovies()) ? "movies" : "people";
             query = target.value;
-            history.push(`/${path}?search=${query}`);
+            if (query) {
+                history.push(`/${path}?search=${query}`)
+            }
+            else {
+                history.push(`/`)
+            };
         }, 300)
     }
 
