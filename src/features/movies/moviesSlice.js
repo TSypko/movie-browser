@@ -39,7 +39,11 @@ const moviesSlice = createSlice({
             state.loading = false;
             state.error = true;
         },
-
+        resetMovie: (state) => {
+            state.movieData = {movie: undefined, credits: undefined};
+            state.loading = false;
+            state.error = false;
+        },
         searchMoviesByQuery: (state) => {
             state.loading = true;
         },
