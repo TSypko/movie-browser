@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { toMovies } from "../../../routes";
 import { SearchInput } from "./styled";
@@ -9,6 +9,11 @@ const SearchPanel = () => {
     let query = useQueryParameter("search");
     let timeout = 0;
     const history = useHistory();
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        inputRef.current.value = "";
+    }, [location.pathname]);
 
     const onInputChange = ({ target }) => {
         if (timeout) {
@@ -25,6 +30,7 @@ const SearchPanel = () => {
         <SearchInput
             placeholder={`Search for ${location.pathname.includes(toMovies()) ? "movies" : "people"}...`}
             onChange={onInputChange}
+            ref={inputRef}
         />
     )
 };
