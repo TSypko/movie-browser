@@ -22,11 +22,6 @@ const moviesSlice = createSlice({
             state.loading = false;
             state.error = true;
         },
-        resetMovies: state => {
-            state.movies = [];
-            state.loading = false;
-            state.error = false;
-          },
         setGenres: (state, { payload: genres }) => {
             state.genres = genres;
             state.loading = false;
@@ -44,11 +39,7 @@ const moviesSlice = createSlice({
             state.loading = false;
             state.error = true;
         },
-        resetMovie: (state) => {
-            state.movieData = {movie: undefined, credits: undefined};
-            state.loading = false;
-            state.error = false;
-        },
+
         searchMoviesByQuery: (state) => {
             state.loading = true;
         },
@@ -68,7 +59,6 @@ export const {
     fetchPopularMovies,
     fetchPopularMoviesSucces,
     fetchPopularMoviesError,
-    resetMovies,
     setGenres,
     fetchMovie,
     fetchMovieSucces,
