@@ -32,6 +32,7 @@ const PeoplePage = () => {
 
   useEffect(() => {
     if (searchQuery) {
+      dispatch(resetPopularPeople())
       dispatch(searchPopularPeopleByQuery({
         page: pageQuery,
         query: searchQuery
@@ -39,7 +40,6 @@ const PeoplePage = () => {
     } else {
       dispatch(fetchPopularPeople(pageQuery))
     };
-    return () => dispatch(resetPopularPeople())
   }, [dispatch, pageQuery, searchQuery]);
 
   return (
