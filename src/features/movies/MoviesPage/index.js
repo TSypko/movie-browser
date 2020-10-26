@@ -6,6 +6,7 @@ import {
   selectLoading,
   selectError,
   searchMoviesByQuery,
+  resetMovies,
 } from "../moviesSlice";
 import { page as pageParameterName } from "../../../queryParamNames";
 import Main from "../../../common/Main";
@@ -31,6 +32,7 @@ const MoviesPage = () => {
 
   useEffect(() => {
     if (searchQuery) {
+      dispatch(resetMovies())
       dispatch(searchMoviesByQuery({
         page: pageQuery,
         query: searchQuery
