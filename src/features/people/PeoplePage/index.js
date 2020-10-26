@@ -10,6 +10,7 @@ import ErrorPage from "../../../common/ErrorPage";
 import FeatureLink from "../../../common/FeatureLink";
 import { fetchPopularPeople, selectPopularPeople, selectPopularPeopleLoadingState, selectPopularPeopleErrorState, resetPopularPeople } from "../popularPeopleSlice";
 import { useQueryParameter } from "../../../useQueryParameters";
+import { search as searchParameterName } from "../../../queryParamNames";
 import { toPerson } from "../../../routes";
 
 const PeoplePage = () => {
@@ -19,7 +20,7 @@ const PeoplePage = () => {
   const popularPeopleLoading = useSelector(selectPopularPeopleLoadingState);
   const popularPeopleError = useSelector(selectPopularPeopleErrorState);
   const page = useQueryParameter(pageParameterName);
-  const query = useQueryParameter("search");
+  const query = useQueryParameter(searchParameterName);
 
   useEffect(() => {
     dispatch(fetchPopularPeople({ page: page || 1, query }));

@@ -3,10 +3,11 @@ import { useHistory, useLocation } from "react-router-dom";
 import { toMovies } from "../../../routes";
 import { SearchInput } from "./styled";
 import { useQueryParameter } from "../../../useQueryParameters";
+import { search as searchParameterName } from "../../../queryParamNames";
 
 const SearchPanel = () => {
     const location = useLocation();
-    let query = useQueryParameter("search");
+    let query = useQueryParameter(searchParameterName);
     let timeout = 0;
     const history = useHistory();
     const inputRef = useRef(null);
@@ -23,7 +24,7 @@ const SearchPanel = () => {
             const path = location.pathname.includes(toMovies()) ? "movies" : "people";
             query = target.value;
             if (query) {
-                history.push(`/${path}?search=${query}`)
+                history.push(`/${path}?${searchParameterName}=${query}`)
             }
             else {
                 history.push(`/`)

@@ -10,13 +10,14 @@ import Pagination from "../../../common/Pagination";
 import FeatureLink from "../../../common/FeatureLink";
 import ErrorPage from "../../../common/ErrorPage";
 import { useQueryParameter } from "../../../useQueryParameters";
+import { search as searchParameterName } from "../../../queryParamNames";
 import { toMovie } from "../../../routes";
 
 const MoviesPage = () => {
 
   const dispatch = useDispatch();
   const page = useQueryParameter(pageParameterName);
-  const query = useQueryParameter("search");
+  const query = useQueryParameter(searchParameterName);
   const movies = useSelector(selectMovies);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
