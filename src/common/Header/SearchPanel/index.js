@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { resetSearchQuery, getSearchQuery } from "../../../features/search/searchSlice";
 import { search as searchQueryParamName } from "../../../queryParamNames";
 import { page as pageQueryParamName } from "../../../queryParamNames";
-import { toMovies } from "../../../routes";
+import { toMovies, toPeople } from "../../../routes";
 import { useQueryParameter, useReplaceQueryParameter } from "../../../useQueryParameters";
 import { SearchInput } from "./styled";
 
@@ -16,7 +16,7 @@ const SearchPanel = () => {
     const searchQuery = useQueryParameter(searchQueryParamName);
 
     useEffect(() => {
-        return () => {
+       if (location.pathname.includes(toPeople())) {
             dispatch(resetSearchQuery())
         };
     }, [dispatch, location.pathname])
