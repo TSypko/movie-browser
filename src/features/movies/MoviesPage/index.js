@@ -36,7 +36,7 @@ const MoviesPage = () => {
             <Section
               type="movies"
               grid={movies.results}
-              title={query ? `Search results for "${query}" ${movies.results ? `(${movies.results.length})` : ""}` : "Popular Movies"}
+              title={query ? `Search results for "${query}" ${movies.results ? `(${movies.total_results})` : ""}` : "Popular Movies"}
               body={
                 loading
                   ? <LoadingSpinner />
