@@ -15,39 +15,44 @@ import { toPerson } from "../../../routes";
 const PeoplePage = () => {
 
   const dispatch = useDispatch();
-  const popularPeople = useSelector(selectPopularPeople).results;
+  const people = useSelector(selectPopularPeople).results;
   const popularPeopleLoading = useSelector(selectPopularPeopleLoadingState);
   const popularPeopleError = useSelector(selectPopularPeopleErrorState);
-  const query = useQueryParameter(pageParameterName);
+  const page = useQueryParameter(pageParameterName);
+  const query = useQueryParameter("search");
 
   useEffect(() => {
-    dispatch(fetchPopularPeople(query || 1));
+    dispatch(fetchPopularPeople({ page: page || 1, query }));
     return (() => {
       dispatch(resetPopularPeople())
     })
-  }, [dispatch, query])
+  }, [dispatch, page, query])
 
   return (
     <Main>
-      {(!popularPeople && popularPeopleLoading) && <LoadingSpinner />}
-      {(!popularPeople && popularPeopleError) && <ErrorPage />}
-      {popularPeople &&
+      {(!people && !query && popularPeopleLoading) && <LoadingSpinner />}
+      {(!people && popularPeopleError) && <ErrorPage />}
+      {(people || query) &&
         <>
           <Section
             type="people"
-            grid
-            title="Popular People"
-            body={popularPeople && popularPeople.map(popularPerson => (
-              <FeatureLink key={popularPerson.id} to={toPerson(popularPerson)}>
-                <PeopleTile
-                  name={popularPerson.name}
-                  birthCity={popularPerson.place_of_birth}
-                  birthDate={popularPerson.birthday}
-                  poster={popularPerson.profile_path}
-                  description={popularPerson.biography}
-                />
-              </FeatureLink>
-            ))}
+            grid={people}
+            title={query ? `Search results for "${query}" ${people ? `(${people.length})` : ""}` : "Popular People"}
+            body={
+              !people
+                ? <LoadingSpinner />
+                : people.map(popularPerson => (
+                  <FeatureLink key={popularPerson.id} to={toPerson(popularPerson)}>
+                    <PeopleTile
+                      name={popularPerson.name}
+                      birthCity={popularPerson.place_of_birth}
+                      birthDate={popularPerson.birthday}
+                      poster={popularPerson.profile_path}
+                      description={popularPerson.biography}
+                    />
+                  </FeatureLink>
+                ))
+            }
           />
           <Pagination type="people" />
         </>
