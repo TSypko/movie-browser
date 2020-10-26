@@ -8,7 +8,6 @@ const moviesSlice = createSlice({
         error: false,
         genres: [],
         movieData: { movie: undefined, credits: undefined },
-        redirect: false,
     },
     reducers: {
         fetchPopularMovies: (state) => {
@@ -27,14 +26,6 @@ const moviesSlice = createSlice({
             state.movies = [];
             state.loading = false;
             state.error = false;
-        },
-        checkRedirect: () => {
-        },
-        setRedirectIsActive: (state) => {
-            state.redirect = true;
-        },
-        setRedirectIsUnactive: (state) => {
-            state.redirect = false;
         },
         setGenres: (state, { payload: genres }) => {
             state.genres = genres;
@@ -80,9 +71,6 @@ export const {
     fetchPopularMoviesError,
     resetMovies,
     setGenres,
-    checkRedirect,
-    setRedirectIsActive,
-    setRedirectIsUnactive,
     fetchMovie,
     fetchMovieSucces,
     fetchMovieError,
@@ -101,6 +89,5 @@ export const selectError = state => selectMoviesState(state).error;
 export const selectGenres = state => selectMoviesState(state).genres;
 export const selectMovie = state => selectMoviesState(state).movieData.movie;
 export const selectMovieCredits = state => selectMoviesState(state).movieData.credits;
-export const selectRedirect = state => selectMoviesState(state).redirect;
 
 export default moviesSlice.reducer;

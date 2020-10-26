@@ -1,13 +1,10 @@
-import { takeLatest, call, put, debounce } from "redux-saga/effects";
+import { takeLatest, call, put } from "redux-saga/effects";
 import { getPopularMovies, getGenres, getMovie, searchForMovies, getMovieCredits } from "../../../src/apiClient";
 import {
     fetchPopularMovies,
     fetchPopularMoviesSucces,
     fetchPopularMoviesError,
     setGenres,
-    checkRedirect,
-    setRedirectIsActive,
-    setRedirectIsUnactive,
     fetchMovieSucces,
     fetchMovieError,
     fetchMovie,
@@ -39,16 +36,6 @@ function* fetchMovieHandler({ payload }) {
         console.error(error);
     };
 };
-
-function* checkRedirectHandler() {
-    try {
-        yield put(setRedirectIsActive());
-    } catch (error) {
-        yield put(setRedirectIsUnactive());
-        console.error(error);
-    };
-};
-
 function* searchMoviesByQueryHandler({ payload }) {
     try {
         const movies = yield call(searchForMovies, payload.page, payload.query);
@@ -65,5 +52,4 @@ export function* moviesSaga() {
     yield takeLatest(fetchPopularMovies.type, fetchPopularMoviesHandler);
     yield takeLatest(fetchMovie.type, fetchMovieHandler);
     yield takeLatest(searchMoviesByQuery.type, searchMoviesByQueryHandler);
-    yield debounce(600, checkRedirect.type, checkRedirectHandler);
 };

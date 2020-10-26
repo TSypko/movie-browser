@@ -1,16 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom';
 import {
-    checkRedirect,
     fetchMovie,
     resetMovie,
     selectError,
     selectLoading,
     selectMovie,
     selectMovieCredits,
-    selectRedirect,
-    setRedirectIsUnactive
 } from '../moviesSlice';
 import { page as pageParameterName } from "../../../queryParamNames";
 import LoadingSpinner from "../../../common/LoadingSpinner";
@@ -35,18 +32,18 @@ const MoviePage = () => {
     const pageQuery = useQueryParameter(pageParameterName);
     const searchQuery = useSelector(selectSearchQuery);
     const searchisOn = useSelector(selectSearchIsOn);
-    const redirectIsActive = useSelector(selectRedirect);
+    const [redirectIsActive, setRedirectIsActive] = useState(false)
 
     useEffect(() => {
         if (searchisOn) {
-            dispatch(checkRedirect());
+            setRedirectIsActive(true);
         }
         else {
             dispatch(fetchMovie(params.id));
         };
         return () => {
             dispatch(resetMovie());
-            dispatch(setRedirectIsUnactive());
+            setRedirectIsActive(false);
         };
     }, [dispatch, params, pageQuery, searchisOn]);
 
