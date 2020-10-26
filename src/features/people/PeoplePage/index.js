@@ -12,18 +12,20 @@ import { fetchPopularPeople, selectPopularPeople, selectPopularPeopleLoadingStat
 import { useQueryParameter } from "../../../useQueryParameters";
 import { search as searchParameterName } from "../../../queryParamNames";
 import { toPerson } from "../../../routes";
+import NoResultsPage from "../../../common/NoResultsPage";
 
 const PeoplePage = () => {
 
   const dispatch = useDispatch();
-  const people = useSelector(selectPopularPeople).results;
-  const popularPeopleLoading = useSelector(selectPopularPeopleLoadingState);
-  const popularPeopleError = useSelector(selectPopularPeopleErrorState);
+  const people = useSelector(selectPopularPeople);
+  const loading = useSelector(selectPopularPeopleLoadingState);
+  const error = useSelector(selectPopularPeopleErrorState);
   const page = useQueryParameter(pageParameterName);
   const query = useQueryParameter(searchParameterName);
 
   useEffect(() => {
     dispatch(fetchPopularPeople({ page: page || 1, query }));
+    console.log(people);
     return (() => {
       dispatch(resetPopularPeople())
     })
@@ -31,18 +33,25 @@ const PeoplePage = () => {
 
   return (
     <Main>
-      {(!people && !query && popularPeopleLoading) && <LoadingSpinner />}
-      {(!people && popularPeopleError) && <ErrorPage />}
-      {(people || query) &&
+      {!loading && !error && people && people.total_results === 0 &&
+        <Main>
+          <Section
+            title={`Sorry, there are no results for "${query}"`}
+            body={<NoResultsPage />}
+          />
+        </Main>}
+      {(!people.results && !query && loading) && <LoadingSpinner />}
+      {(!people.results && error) && <ErrorPage />}
+      {people.total_results !== 0 && (people.results || query) &&
         <>
           <Section
             type="people"
-            grid={people}
-            title={query ? `Search results for "${query}" ${people ? `(${people.length})` : ""}` : "Popular People"}
+            grid={people.results}
+            title={query ? `Search results for "${query}" ${people.results ? `(${people.total_results})` : ""}` : "Popular People"}
             body={
-              !people
+              !people.results
                 ? <LoadingSpinner />
-                : people.map(popularPerson => (
+                : people.results.map(popularPerson => (
                   <FeatureLink key={popularPerson.id} to={toPerson(popularPerson)}>
                     <PeopleTile
                       name={popularPerson.name}
@@ -55,7 +64,7 @@ const PeoplePage = () => {
                 ))
             }
           />
-          {!popularPeopleLoading && <Pagination type="people" />}
+          {!loading && <Pagination type="people" />}
         </>
       }
     </Main>

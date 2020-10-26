@@ -12,6 +12,7 @@ import ErrorPage from "../../../common/ErrorPage";
 import { useQueryParameter } from "../../../useQueryParameters";
 import { search as searchParameterName } from "../../../queryParamNames";
 import { toMovie } from "../../../routes";
+import NoResultsPage from "../../../common/NoResultsPage";
 
 const MoviesPage = () => {
 
@@ -28,9 +29,16 @@ const MoviesPage = () => {
 
   return (
     <>
+      {!loading && !error && movies.total_results === 0 &&
+        <Main>
+          <Section
+            title={`Sorry, there are no results for "${query}"`}
+            body={<NoResultsPage />}
+          />
+        </Main>}
       {!movies.results && !query && loading && <LoadingSpinner />}
       {!movies.results && error && <ErrorPage />}
-      {(movies.results || query) &&
+      {movies.total_results !== 0 && (movies.results || query) &&
         <>
           <Main>
             <Section
