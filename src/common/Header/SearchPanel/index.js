@@ -12,8 +12,8 @@ const SearchPanel = () => {
     const inputRef = useRef(null);
 
     useEffect(() => {
-        inputRef.current.value = "";
-    }, [location.pathname]);
+        inputRef.current.value = query;
+    }, [location]);
 
     const onInputChange = ({ target }) => {
         if (timeout) {
