@@ -38,7 +38,7 @@ const ProfilePage = () => {
                     description={person.biography}
                 />
                 <Section
-                    title="Movies - cast"
+                    title={`Movies - cast (${credits.cast.length})`}
                     type="movies"
                     grid
                     body={
@@ -56,7 +56,7 @@ const ProfilePage = () => {
                     }
                 />
                 <Section
-                    title="Movies - crew"
+                    title={`Movies - crew (${credits.crew.length})`}
                     type="movies"
                     grid
                     body={
