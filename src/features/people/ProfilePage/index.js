@@ -23,7 +23,6 @@ const ProfilePage = () => {
         return (() => dispatch(resetPerson()))
     }, [dispatch, params])
 
-    console.log(params);
     return (
         <>
             {loading && <LoadingSpinner />}
@@ -49,8 +48,8 @@ const ProfilePage = () => {
                                 year={cast.release_date}
                                 poster={cast.poster_path}
                                 genres={cast.genre_ids}
-                                rate={cast.vote_count}
-                                vote={cast.vote_average}
+                                rate={cast.vote_average}
+                                votes={cast.vote_count}
                             />
                         )
                     }
@@ -67,8 +66,8 @@ const ProfilePage = () => {
                                 year={crew.release_date}
                                 poster={crew.poster_path}
                                 genres={crew.genre_ids}
-                                rate={crew.vote_count}
-                                vote={crew.vote_average}
+                                rate={crew.vote_average}
+                                votes={crew.vote_count}
                             />
                         )
                     }

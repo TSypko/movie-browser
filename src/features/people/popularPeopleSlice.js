@@ -7,6 +7,7 @@ const popularPeopleSlice = createSlice({
     loading: false,
     error: false,
     personData: {person: undefined, credits: undefined},
+    genres: [],
   },
   reducers: {
     fetchPopularPeople: (state) => {
@@ -47,7 +48,13 @@ const popularPeopleSlice = createSlice({
       state.personData = {person: undefined, credits: undefined};
       state.loading = false;
       state.error = false;
-    }
+    },
+
+    setGenres: (state, { payload: genres }) => {
+      state.genres = genres;
+      state.loading = false;
+      state.error = false;
+  },
   },
 });
 
@@ -57,6 +64,7 @@ export const selectPopularPeopleLoadingState = state => selectPopularPeopleState
 export const selectPopularPeopleErrorState = state => selectPopularPeopleState(state).error;
 export const selectPerson = state => selectPopularPeopleState(state).personData.person;
 export const selectPersonCredits = state => selectPopularPeopleState(state).personData.credits;
+export const selectGenresFromPeople = state => selectPopularPeopleState(state).genres;
 export const {
   fetchPopularPeople,
   fetchPopularPeopleSucces, 
@@ -66,5 +74,6 @@ export const {
   fetchPersonSucces,
   fetchPersonError,
   resetPerson,
+  setGenres,
 } = popularPeopleSlice.actions;
 export default popularPeopleSlice.reducer;
