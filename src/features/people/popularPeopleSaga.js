@@ -1,6 +1,12 @@
 import { takeLatest, call, put, delay } from "redux-saga/effects";
-import { fetchPopularPeople, fetchPopularPeopleSucces, fetchPopularPeopleError } from "./popularPeopleSlice";
-import { getPopularPeople } from "../../../src/apiClient";
+import { 
+  fetchPopularPeople, 
+  fetchPopularPeopleSucces, 
+  fetchPopularPeopleError, 
+  fetchPerson, 
+  fetchPersonError, 
+  fetchPersonSucces } from "./popularPeopleSlice";
+import { getPopularPeople, getPerson, getPersonCredits } from "../../../src/apiClient";
 
 function* fetchPopularPeopleHandler({ payload }) {
   try {
@@ -14,6 +20,19 @@ function* fetchPopularPeopleHandler({ payload }) {
   }
 }
 
+function* fetchPersonHandler(action) {
+  try {
+      yield delay(500);
+      const person = yield call(getPerson, action.payload);
+      const credits = yield call(getPersonCredits, action.payload);
+      yield put(fetchPersonSucces({person, credits}));
+  } catch (error) {
+      yield put(fetchPersonError());
+      console.error(error);
+  }
+};
+
 export function* popularPeopleSaga() {
   yield takeLatest(fetchPopularPeople.type, fetchPopularPeopleHandler);
+  yield takeLatest(fetchPerson.type, fetchPersonHandler);
 }
