@@ -42,6 +42,12 @@ const popularPeopleSlice = createSlice({
       state.loading = false;
       state.error = true;
     },
+
+    resetPerson: (state) => {
+      state.personData = {person: undefined, credits: undefined};
+      state.loading = false;
+      state.error = false;
+    }
   },
 });
 
@@ -59,5 +65,6 @@ export const {
   fetchPerson,
   fetchPersonSucces,
   fetchPersonError,
+  resetPerson,
 } = popularPeopleSlice.actions;
 export default popularPeopleSlice.reducer;
