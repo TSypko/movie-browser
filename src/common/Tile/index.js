@@ -45,7 +45,7 @@ const Tile = ({ horizontal, title, year, poster, production, release, descriptio
         alt={`Image of ${title} poster`} />
       <MovieDetails horizontal={horizontal}>
         <MovieTitle horizontal={horizontal}>{title}</MovieTitle>
-        <MovieYear horizontal={horizontal}>{year.slice(0, 4)}</MovieYear>
+        {year ? <MovieYear horizontal={horizontal}>{year.slice(0, 4)}</MovieYear> : null}
         {horizontal ? (
           <>
             <MovieProduction>
