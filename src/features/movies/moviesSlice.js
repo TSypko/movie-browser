@@ -41,7 +41,10 @@ const moviesSlice = createSlice({
         },
         resetMovies: (state) => {
             state.movies = [];
-        }
+        },
+        resetMovie: (state) => {
+            state.movieData = {};
+        },
     }
 });
 
@@ -54,6 +57,7 @@ export const {
     fetchMovieSucces,
     fetchMovieError,
     resetMovies,
+    resetMovie,
 } = moviesSlice.actions;
 
 export const selectMoviesState = state => state.movies;

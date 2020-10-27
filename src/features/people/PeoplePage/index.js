@@ -8,7 +8,7 @@ import Pagination from "../../../common/Pagination";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import ErrorPage from "../../../common/ErrorPage";
 import FeatureLink from "../../../common/FeatureLink";
-import { fetchPopularPeople, selectPopularPeople, selectPopularPeopleLoadingState, selectPopularPeopleErrorState, resetPopularPeople } from "../popularPeopleSlice";
+import { fetchPopularPeople, selectPopularPeople, selectPopularPeopleLoadingState, selectPopularPeopleErrorState } from "../popularPeopleSlice";
 import { useQueryParameter } from "../../../useQueryParameters";
 import { search as searchParameterName } from "../../../queryParamNames";
 import { toPerson } from "../../../routes";
@@ -25,10 +25,6 @@ const PeoplePage = () => {
 
   useEffect(() => {
     dispatch(fetchPopularPeople({ page: page || 1, query }));
-    console.log(people);
-    return (() => {
-      dispatch(resetPopularPeople())
-    })
   }, [dispatch, page, query])
 
   return (

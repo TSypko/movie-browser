@@ -14,7 +14,7 @@ const SearchPanel = () => {
 
     useEffect(() => {
         inputRef.current.value = query;
-    }, [location]);
+    }, [location, query]);
 
     const onInputChange = ({ target }) => {
         if (timeout) {
@@ -27,9 +27,9 @@ const SearchPanel = () => {
                 history.push(`/${path}?${searchParameterName}=${query}`)
             }
             else {
-                history.push(`/`)
+                history.push(`/${path}`)
             };
-        }, 300)
+        }, 300);
     }
 
     return (
@@ -38,7 +38,7 @@ const SearchPanel = () => {
             onChange={onInputChange}
             ref={inputRef}
         />
-    )
+    );
 };
 
 export default SearchPanel;
