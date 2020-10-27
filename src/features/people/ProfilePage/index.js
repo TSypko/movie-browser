@@ -8,6 +8,8 @@ import ErrorPage from "../../../common/ErrorPage";
 import PeopleTile from "../../../common/PeopleTile";
 import Tile from "../../../common/Tile";
 import Section from "../../../common/Section";
+import FeatureLink from '../../../common/FeatureLink';
+import { toMovie } from "../../../routes";
 
 const ProfilePage = () => {
     const params = useParams();
@@ -42,15 +44,17 @@ const ProfilePage = () => {
                     grid
                     body={
                         credits.cast.map(cast =>
-                            <Tile
-                                key={cast.credit_id}
-                                title={cast.title}
-                                year={cast.release_date}
-                                poster={cast.poster_path}
-                                genres={cast.genre_ids}
-                                rate={cast.vote_average}
-                                votes={cast.vote_count}
-                            />
+                            <FeatureLink key={cast.credit_id} to={toMovie(cast)}>
+                                <Tile
+                                    key={cast.credit_id}
+                                    title={cast.title}
+                                    year={cast.release_date}
+                                    poster={cast.poster_path}
+                                    genres={cast.genre_ids}
+                                    rate={cast.vote_average}
+                                    votes={cast.vote_count}
+                                />
+                            </FeatureLink>
                         )
                     }
                 />
@@ -60,15 +64,17 @@ const ProfilePage = () => {
                     grid
                     body={
                         credits.crew.map(crew =>
-                            <Tile
-                                key={crew.credit_id}
-                                title={crew.title}
-                                year={crew.release_date}
-                                poster={crew.poster_path}
-                                genres={crew.genre_ids}
-                                rate={crew.vote_average}
-                                votes={crew.vote_count}
-                            />
+                            <FeatureLink key={crew.credit_id} to={toMovie(crew)}>
+                                <Tile
+                                    key={crew.credit_id}
+                                    title={crew.title}
+                                    year={crew.release_date}
+                                    poster={crew.poster_path}
+                                    genres={crew.genre_ids}
+                                    rate={crew.vote_average}
+                                    votes={crew.vote_count}
+                                />
+                            </FeatureLink>
                         )
                     }
                 />
