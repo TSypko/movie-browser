@@ -24,7 +24,6 @@ function* fetchPersonHandler(action) {
   try {
       yield delay(500);
       const person = yield call(getPerson, action.payload);
-      yield console.log(person);
       const credits = yield call(getPersonCredits, action.payload);
       yield put(fetchPersonSucces({person, credits}));
   } catch (error) {
