@@ -9,6 +9,8 @@ import Main from "../../../common/Main";
 import Tile from '../../../common/Tile';
 import Section from "../../../common/Section";
 import PeopleTile from '../../../common/PeopleTile';
+import FeatureLink from "../../../common/FeatureLink";
+import { toPerson } from "../../../routes";
 
 const MoviePage = () => {
     const params = useParams();
@@ -25,7 +27,7 @@ const MoviePage = () => {
 
     const formatDate = date => {
         return date && new Date(date).toLocaleString(
-            undefined, 
+            undefined,
             {
                 day: "numeric",
                 month: "numeric",
@@ -39,8 +41,8 @@ const MoviePage = () => {
 
     return (
         <>
-        {loading && <LoadingSpinner />}
-        {error && <ErrorPage />}
+            {loading && <LoadingSpinner />}
+            {error && <ErrorPage />}
             {movie && movie.backdrop_path &&
                 <Backdrop movie={movie} />
             }
@@ -57,33 +59,37 @@ const MoviePage = () => {
                     rate={movie.vote_average}
                     votes={movie.vote_count}
                 />
-                <Section 
+                <Section
                     title="Cast"
                     type="people"
                     grid
                     body={
-                        credits.cast.map(cast => 
-                            <PeopleTile 
-                                key={cast.credit_id}
-                                poster={cast.profile_path}
-                                name={cast.name}
-                                role={cast.character}
-                            />
+                        credits.cast.map(cast =>
+                            <FeatureLink key={cast.credit_id} to={toPerson(cast)}>
+                                <PeopleTile
+                                    key={cast.credit_id}
+                                    poster={cast.profile_path}
+                                    name={cast.name}
+                                    role={cast.character}
+                                />
+                            </FeatureLink>
                         )
                     }
                 />
-                <Section 
+                <Section
                     title="Crew"
                     type="people"
                     grid
                     body={
-                        credits.crew.map(crew => 
-                            <PeopleTile
-                                key={crew.credit_id}
-                                poster={crew.profile_path}
-                                name={crew.name}
-                                role={crew.department}
-                            />
+                        credits.crew.map(crew =>
+                            <FeatureLink key={crew.credit_id} to={toPerson(crew)}>
+                                <PeopleTile
+                                    key={crew.credit_id}
+                                    poster={crew.profile_path}
+                                    name={crew.name}
+                                    role={crew.department}
+                                />
+                            </FeatureLink>
                         )
                     }
                 />
