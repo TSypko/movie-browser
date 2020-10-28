@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchMovie, selectError, selectLoading, selectMovie, selectMovieCredits } from '../moviesSlice';
+import { fetchMovie, resetMovie, selectError, selectLoading, selectMovie, selectMovieCredits } from '../moviesSlice';
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import ErrorPage from "../../../common/ErrorPage";
 import Backdrop from './Backdrop';
@@ -23,6 +23,7 @@ const MoviePage = () => {
 
     useEffect(() => {
         dispatch(fetchMovie(params.id));
+        return(()=>dispatch(resetMovie()))
     }, [dispatch, params]);
 
     const formatDate = date => {
