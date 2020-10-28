@@ -20,7 +20,7 @@ export const StyledTile = styled.div`
   ${({ horizontal }) =>
     horizontal &&
     css`
-      flex-direction: row;
+      display: block;
       min-height: 644px;
       width: auto;
       padding: 40px;
@@ -55,8 +55,10 @@ export const Poster = styled.img`
   ${({ horizontal }) =>
     horizontal &&
     css`
+      float: left;
       width: 399px;
       height: auto;
+      max-height: 564px;
       margin-right: 20px;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.headerMax}) {
@@ -83,6 +85,7 @@ export const PersonDetails = styled.section`
   ${({ horizontal }) =>
     horizontal &&
     css`
+      display: block;
       margin-top: 0;
       margin-left: 20px;
 
@@ -152,7 +155,7 @@ export const InfoLabelSpan = styled.span`
 `;
 
 export const InfoSpan = styled.span`
-  display: inline-block;
+  display: block;
   font-size: 18px;
   line-height: 1.2;
 
@@ -183,6 +186,7 @@ export const PersonDescription = styled.p`
   margin-top: 12px;
   font-size: 20px;
   line-height: 1.6;
+  margin-left: -20px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     grid-area: personDescription;
