@@ -1,32 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const popularPeopleSlice = createSlice({
-  name: "popularPeople",
+const peopleSlice = createSlice({
+  name: "people",
   initialState: {
-    popularPeople: [],
+    people: [],
     loading: false,
     error: false,
     personData: {person: undefined, credits: undefined},
     genres: [],
   },
   reducers: {
-    fetchPopularPeople: (state) => {
+    fetchPeople: (state) => {
       state.loading = true;
     },
 
-    fetchPopularPeopleSucces: (state, { payload: people }) => {
-      state.popularPeople = people;
+    fetchPeopleSucces: (state, { payload: people }) => {
+      state.people = people;
       state.loading = false;
       state.error = false;
     },
 
-    fetchPopularPeopleError: state => {
+    fetchPeopleError: state => {
       state.loading = false;
       state.error = true;
     },
 
-    resetPopularPeople: state => {
-      state.popularPeople = [];
+    resetPeople: state => {
+      state.people = [];
       state.loading = false;
       state.error = false;
     },
@@ -58,22 +58,22 @@ const popularPeopleSlice = createSlice({
   },
 });
 
-export const selectPopularPeopleState = state => state.popularPeople;
-export const selectPopularPeople = state => selectPopularPeopleState(state).popularPeople;
-export const selectPopularPeopleLoadingState = state => selectPopularPeopleState(state).loading;
-export const selectPopularPeopleErrorState = state => selectPopularPeopleState(state).error;
-export const selectPerson = state => selectPopularPeopleState(state).personData.person;
-export const selectPersonCredits = state => selectPopularPeopleState(state).personData.credits;
-export const selectGenresFromPeople = state => selectPopularPeopleState(state).genres;
+export const selectPeopleState = state => state.people;
+export const selectPeople = state => selectPeopleState(state).people;
+export const selectPeopleLoadingState = state => selectPeopleState(state).loading;
+export const selectPeopleErrorState = state => selectPeopleState(state).error;
+export const selectPerson = state => selectPeopleState(state).personData.person;
+export const selectPersonCredits = state => selectPeopleState(state).personData.credits;
+export const selectGenresFromPeople = state => selectPeopleState(state).genres;
 export const {
-  fetchPopularPeople,
-  fetchPopularPeopleSucces, 
-  fetchPopularPeopleError, 
-  resetPopularPeople,
+  fetchPeople,
+  fetchPeopleSucces, 
+  fetchPeopleError, 
+  resetPeople,
   fetchPerson,
   fetchPersonSucces,
   fetchPersonError,
   resetPerson,
   setGenres,
-} = popularPeopleSlice.actions;
-export default popularPeopleSlice.reducer;
+} = peopleSlice.actions;
+export default peopleSlice.reducer;

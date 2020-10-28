@@ -8,43 +8,43 @@ import Pagination from "../../../common/Pagination";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import ErrorPage from "../../../common/ErrorPage";
 import FeatureLink from "../../../common/FeatureLink";
-import { fetchPopularPeople, selectPopularPeople, selectPopularPeopleLoadingState, selectPopularPeopleErrorState, resetPopularPeople } from "../popularPeopleSlice";
+import { fetchPeople, selectPeople, selectPeopleLoadingState, selectPeopleErrorState, resetPeople } from "../peopleSlice";
 import { useQueryParameter } from "../../../useQueryParameters";
 import { toPerson } from "../../../routes";
 
 const PeoplePage = () => {
 
   const dispatch = useDispatch();
-  const popularPeople = useSelector(selectPopularPeople).results;
-  const popularPeopleLoading = useSelector(selectPopularPeopleLoadingState);
-  const popularPeopleError = useSelector(selectPopularPeopleErrorState);
+  const people = useSelector(selectPeople).results;
+  const peopleLoading = useSelector(selectPeopleLoadingState);
+  const peopleError = useSelector(selectPeopleErrorState);
   const query = useQueryParameter(pageParameterName);
 
   useEffect(() => {
-    dispatch(fetchPopularPeople(query || 1));
+    dispatch(fetchPeople(query || 1));
     return (() => {
-      dispatch(resetPopularPeople())
+      dispatch(resetPeople())
     })
   }, [dispatch, query])
 
   return (
     <Main>
-      {(!popularPeople && popularPeopleLoading) && <LoadingSpinner />}
-      {(!popularPeople && popularPeopleError) && <ErrorPage />}
-      {popularPeople &&
+      {(!people && peopleLoading) && <LoadingSpinner />}
+      {(!people && peopleError) && <ErrorPage />}
+      {people &&
         <>
           <Section
             type="people"
             grid
             title="Popular People"
-            body={popularPeople && popularPeople.map(popularPerson => (
-              <FeatureLink key={popularPerson.id} to={toPerson(popularPerson)}>
+            body={people && people.map(person => (
+              <FeatureLink key={person.id} to={toPerson(person)}>
                 <PeopleTile
-                  name={popularPerson.name}
-                  birthCity={popularPerson.place_of_birth}
-                  birthDate={popularPerson.birthday}
-                  poster={popularPerson.profile_path}
-                  description={popularPerson.biography}
+                  name={person.name}
+                  birthCity={person.place_of_birth}
+                  birthDate={person.birthday}
+                  poster={person.profile_path}
+                  description={person.biography}
                 />
               </FeatureLink>
             ))}

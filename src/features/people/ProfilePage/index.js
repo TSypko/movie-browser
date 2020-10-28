@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPerson, selectPerson, selectPersonCredits, selectPopularPeopleLoadingState, selectPopularPeopleErrorState, resetPerson } from "../popularPeopleSlice";
+import { fetchPerson, selectPerson, selectPersonCredits, selectPeopleLoadingState, selectPeopleErrorState, resetPerson } from "../peopleSlice";
 import Main from "../../../common/Main";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import ErrorPage from "../../../common/ErrorPage";
@@ -17,8 +17,8 @@ const ProfilePage = () => {
 
     const person = useSelector(selectPerson);
     const credits = useSelector(selectPersonCredits);
-    const loading = useSelector(selectPopularPeopleLoadingState);
-    const error = useSelector(selectPopularPeopleErrorState);
+    const loading = useSelector(selectPeopleLoadingState);
+    const error = useSelector(selectPeopleErrorState);
 
     useEffect(() => {
         dispatch(fetchPerson(params.id))

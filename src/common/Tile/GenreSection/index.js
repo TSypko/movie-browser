@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import GenreTile from "../GenreTile";
 import { StyledSection } from "./styled";
 import { selectGenresFromMovies } from "../../../features/movies/moviesSlice"
-import { selectGenresFromPeople } from "../../../features/people/popularPeopleSlice";
+import { selectGenresFromPeople } from "../../../features/people/peopleSlice";
 import {useLocation} from "react-router-dom";
 import { toMovies } from "../../../routes";
 

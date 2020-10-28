@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectMovies } from '../../features/movies/moviesSlice';
-import { selectPopularPeople } from '../../features/people/popularPeopleSlice';
+import { selectPeople } from '../../features/people/peopleSlice';
 import { useQueryParameter, useReplaceQueryParameter } from '../../useQueryParameters';
 import { page as pageParameterName } from "../../queryParamNames";
 import Button from "./Button";
@@ -12,7 +12,7 @@ import { Footer } from './styled';
 const Pagination = ({ type }) => {
 
   const movies = useSelector(selectMovies);
-  const people = useSelector(selectPopularPeople);
+  const people = useSelector(selectPeople);
 
   const page = useQueryParameter(pageParameterName);
   const [backButtonIsDisabled, setBackButtonIsDisabled] = useState(false);
