@@ -15,8 +15,11 @@ import GenreSection from "./GenreSection";
 import VotesSection from "./VotesSection";
 import posterPlaceholder from "../../assets/images/video.svg";
 import { theme } from "../../theme";
+import { useLocation } from "react-router-dom";
 
-const Tile = ({ horizontal, title, year, poster, production, release, description, genres, rate, votes }) => {
+const Tile = ({ horizontal, title, year, poster, production, release, description, genres, rate, votes, personRole }) => {
+  const location = useLocation();
+  const useInPersonDetails = location.pathname.includes("people");
   const [mobileContent, setMobileContent] = useState(false);
   const mobileBreakpoint = +theme.breakpoints.mobileMax.slice(0, -2);
   const onWidthChange = () => {
@@ -45,7 +48,9 @@ const Tile = ({ horizontal, title, year, poster, production, release, descriptio
         alt={`Image of ${title} poster`} />
       <MovieDetails horizontal={horizontal}>
         <MovieTitle horizontal={horizontal}>{title}</MovieTitle>
-        {year ? <MovieYear horizontal={horizontal}>{year.slice(0, 4)}</MovieYear> : null}
+        {year ? <MovieYear horizontal={horizontal}>
+          {useInPersonDetails ? `${personRole ? personRole : ""} (${year.slice(0, 4)})` : year.slice(0, 4)}
+        </MovieYear> : null}
         {horizontal ? (
           <>
             <MovieProduction>

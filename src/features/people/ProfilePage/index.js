@@ -39,7 +39,7 @@ const ProfilePage = () => {
                     description={person.biography}
                 />
                 <Section
-                    title={`Movies - cast (${credits.cast.length})`}
+                    title={credits.cast.length !== 0 && `Movies - cast (${credits.cast.length})`}
                     type="movies"
                     grid
                     body={
@@ -53,13 +53,14 @@ const ProfilePage = () => {
                                     genres={cast.genre_ids}
                                     rate={cast.vote_average}
                                     votes={cast.vote_count}
+                                    personRole={cast.character}
                                 />
                             </FeatureLink>
                         )
                     }
                 />
                 <Section
-                    title={`Movies - crew (${credits.crew.length})`}
+                    title={credits.crew.length !== 0 && `Movies - crew (${credits.crew.length})`}
                     type="movies"
                     grid
                     body={
@@ -73,6 +74,7 @@ const ProfilePage = () => {
                                     genres={crew.genre_ids}
                                     rate={crew.vote_average}
                                     votes={crew.vote_count}
+                                    personRole={crew.job}
                                 />
                             </FeatureLink>
                         )
