@@ -44,11 +44,14 @@ export const Poster = styled.img`
   height: 434px;
   border-radius: 5px;
   background: ${({ theme }) => theme.colors.Silver};
+  object-position: center center;
+  object-fit: scale-down;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     width: 114px;
     height: 169px;
     margin-right: 8px;
+    object-fit: scale-down;
   }
 
   ${({ horizontal }) =>

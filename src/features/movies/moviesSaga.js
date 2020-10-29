@@ -1,15 +1,30 @@
-import { takeLatest, call, put, delay } from "redux-saga/effects";
-import { getPopularMovies, getGenres, getMovie, getMovieCredits } from "../../../src/apiClient";
-import { fetchPopularMovies, fetchPopularMoviesSucces, fetchPopularMoviesError, setGenres, fetchMovieSucces, fetchMovieError, fetchMovie } from "./moviesSlice";
+import { takeLatest, call, put, select } from "redux-saga/effects";
+import { getPopularMovies, getGenres, getMovie, getMovieCredits, searchForMovies } from "../../../src/apiClient";
+import {
+    fetchPopularMovies,
+    fetchPopularMoviesSucces,
+    fetchPopularMoviesError,
+    setGenres,
+    fetchMovieSucces,
+    fetchMovieError,
+    fetchMovie,
+    resetMovies,
+    resetMovie
+} from "./moviesSlice";
 
 function* fetchPopularMoviesHandler({ payload }) {
     try {
-        yield delay(500);
-        const page = payload;
-        const popularMovies = yield call(getPopularMovies, page);
-        const genres = yield call(getGenres);
+        yield put(resetMovies());
+        const popularMovies = payload.query
+            ? yield call(searchForMovies, payload.page, payload.query)
+            : yield call(getPopularMovies, payload.page);
         yield put(fetchPopularMoviesSucces(popularMovies));
-        yield put(setGenres(genres));
+        
+        const state = yield select();
+        if (state.movies.genres.length === 0) {
+            const genres = yield call(getGenres);
+            yield put(setGenres(genres));
+        }
     } catch (error) {
         yield put(fetchPopularMoviesError());
         console.error(error);
@@ -18,10 +33,10 @@ function* fetchPopularMoviesHandler({ payload }) {
 
 function* fetchMovieHandler(action) {
     try {
-        yield delay(500);
+        yield put(resetMovie());
         const movie = yield call(getMovie, action.payload);
         const credits = yield call(getMovieCredits, action.payload);
-        yield put(fetchMovieSucces({movie, credits}));
+        yield put(fetchMovieSucces({ movie, credits }));
     } catch (error) {
         yield put(fetchMovieError());
         console.error(error);

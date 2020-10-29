@@ -10,46 +10,58 @@ import ErrorPage from "../../../common/ErrorPage";
 import FeatureLink from "../../../common/FeatureLink";
 import { fetchPeople, selectPeople, selectPeopleLoadingState, selectPeopleErrorState, resetPeople } from "../peopleSlice";
 import { useQueryParameter } from "../../../useQueryParameters";
+import { search as searchParameterName } from "../../../queryParamNames";
 import { toPerson } from "../../../routes";
+import NoResultsPage from "../../../common/NoResultsPage";
 
 const PeoplePage = () => {
 
   const dispatch = useDispatch();
-  const people = useSelector(selectPeople).results;
-  const peopleLoading = useSelector(selectPeopleLoadingState);
-  const peopleError = useSelector(selectPeopleErrorState);
-  const query = useQueryParameter(pageParameterName);
+  const people = useSelector(selectPeople);
+  const loading = useSelector(selectPeopleLoadingState);
+  const error = useSelector(selectPeopleErrorState);
+  const page = useQueryParameter(pageParameterName);
+  const query = useQueryParameter(searchParameterName);
 
   useEffect(() => {
-    dispatch(fetchPeople(query || 1));
-    return (() => {
-      dispatch(resetPeople())
-    })
-  }, [dispatch, query])
+    dispatch(fetchPeople({ page: page || 1, query }));
+    return (() => dispatch(resetPeople()))
+  }, [dispatch, page, query])
 
   return (
     <Main>
-      {(!people && peopleLoading) && <LoadingSpinner />}
-      {(!people && peopleError) && <ErrorPage />}
-      {people &&
+      {!loading && !error && people && people.total_results === 0 &&
+        <Main>
+          <Section
+            title={`Sorry, there are no results for "${query}"`}
+            body={<NoResultsPage />}
+          />
+        </Main>}
+      {(!people.results && !query && loading) && <LoadingSpinner />}
+      {(!people.results && error) && <ErrorPage />}
+      {people.total_results !== 0 && (people.results || query) &&
         <>
           <Section
             type="people"
-            grid
-            title="Popular People"
-            body={people && people.map(person => (
-              <FeatureLink key={person.id} to={toPerson(person)}>
-                <PeopleTile
-                  name={person.name}
-                  birthCity={person.place_of_birth}
-                  birthDate={person.birthday}
-                  poster={person.profile_path}
-                  description={person.biography}
-                />
-              </FeatureLink>
-            ))}
+            grid={people.results}
+            title={query ? `Search results for "${query}" ${people.results ? `(${people.total_results})` : ""}` : "Popular People"}
+            body={
+              !people.results
+                ? <LoadingSpinner />
+                : people.results.map(person => (
+                  <FeatureLink key={person.id} to={toPerson(person)}>
+                    <PeopleTile
+                      name={person.name}
+                      birthCity={person.place_of_birth}
+                      birthDate={person.birthday}
+                      poster={person.profile_path}
+                      description={person.biography}
+                    />
+                  </FeatureLink>
+                ))
+            }
           />
-          <Pagination type="people" />
+          {!loading && <Pagination type="people" />}
         </>
       }
     </Main>
