@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchMovie, resetMovie, selectError, selectLoading, selectMovie, selectMovieCredits } from '../moviesSlice';
@@ -11,6 +11,7 @@ import Section from "../../../common/Section";
 import PeopleTile from '../../../common/PeopleTile';
 import FeatureLink from "../../../common/FeatureLink";
 import { toPerson } from "../../../routes";
+import { ShowMoreButton } from '../../../common/ShowMoreButton';
 
 const MoviePage = () => {
     const params = useParams();
@@ -21,9 +22,13 @@ const MoviePage = () => {
     const loading = useSelector(selectLoading);
     const error = useSelector(selectError);
 
+    const defaultLimit = 9;
+    const [castLimit, setCastLimit] = useState(defaultLimit);
+    const [crewLimit, setCrewLimit] = useState(defaultLimit);
+
     useEffect(() => {
         dispatch(fetchMovie(params.id));
-        return(()=>dispatch(resetMovie()))
+        return (() => dispatch(resetMovie()))
     }, [dispatch, params]);
 
     const formatDate = date => {
@@ -65,16 +70,27 @@ const MoviePage = () => {
                     type="people"
                     grid
                     body={
-                        credits.cast.map(cast =>
-                            <FeatureLink key={cast.credit_id} to={toPerson(cast)}>
-                                <PeopleTile
-                                    key={cast.credit_id}
-                                    poster={cast.profile_path}
-                                    name={cast.name}
-                                    role={cast.character}
-                                />
-                            </FeatureLink>
-                        )
+                        <>
+                            {credits.cast
+                                .slice(0, castLimit)
+                                .map((cast) =>
+                                    <FeatureLink key={cast.credit_id} to={toPerson(cast)}>
+                                        <PeopleTile
+                                            key={cast.credit_id}
+                                            poster={cast.profile_path}
+                                            name={cast.name}
+                                            role={cast.character}
+                                        />
+                                    </FeatureLink>
+                                )
+                            }
+                            {credits.cast.length > defaultLimit &&
+                                <ShowMoreButton
+                                    onClick={() => setCastLimit(credits.cast.length > castLimit ? credits.cast.length : defaultLimit)}
+                                >
+                                    {castLimit === credits.cast.length ? "Show less..." : "Show more..."}
+                                </ShowMoreButton>}
+                        </>
                     }
                 />
                 <Section
@@ -82,16 +98,26 @@ const MoviePage = () => {
                     type="people"
                     grid
                     body={
-                        credits.crew.map(crew =>
-                            <FeatureLink key={crew.credit_id} to={toPerson(crew)}>
-                                <PeopleTile
-                                    key={crew.credit_id}
-                                    poster={crew.profile_path}
-                                    name={crew.name}
-                                    role={crew.department}
-                                />
-                            </FeatureLink>
-                        )
+                        <>
+                            {credits.crew
+                                .slice(0, crewLimit)
+                                .map(crew =>
+                                    <FeatureLink key={crew.credit_id} to={toPerson(crew)}>
+                                        <PeopleTile
+                                            key={crew.credit_id}
+                                            poster={crew.profile_path}
+                                            name={crew.name}
+                                            role={crew.department}
+                                        />
+                                    </FeatureLink>
+                                )}
+                            {credits.crew.length > defaultLimit &&
+                                <ShowMoreButton
+                                    onClick={() => setCrewLimit(credits.crew.length > crewLimit ? credits.crew.length : defaultLimit)}
+                                >
+                                    {crewLimit === credits.crew.length ? "Show less..." : "Show more..."}
+                                </ShowMoreButton>}
+                        </>
                     }
                 />
             </Main>
