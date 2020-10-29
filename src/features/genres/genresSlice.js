@@ -13,8 +13,8 @@ const genresSlice = createSlice(
                 state.loading = true;
             },
 
-            fetchGenresSucces: (state, payload) => {
-                state.genres = payload;
+            fetchGenresSucces: (state, {payload: genres} ) => {
+                state.genres = genres;
                 state.loading = false;
             },
 
@@ -26,6 +26,7 @@ const genresSlice = createSlice(
     }
 );
 
-export const selectGenres = state => state.genres;
+export const selectGenresState = state => state.genres;
+export const selectGenres = state => selectGenresState(state).genres;
 export const { fetchGenres, fetchGenresSucces, fetchGenresError } = genresSlice.actions;
 export default genresSlice.reducer; 
