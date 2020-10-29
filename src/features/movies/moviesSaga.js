@@ -8,7 +8,6 @@ import {
     fetchMovieError,
     fetchMovie,
     resetMovies,
-    resetMovie
 } from "./moviesSlice";
 
 function* fetchPopularMoviesHandler({ payload }) {
