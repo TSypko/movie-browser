@@ -1,13 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { selectMovies } from '../../../features/movies/moviesSlice';
-import { selectPopularPeople } from '../../../features/people/popularPeopleSlice';
+import { selectPeople } from '../../../features/people/peopleSlice';
 import { PageCaption, Paragraph } from './styled';
 
 const PageInfo = ({ type }) => {
 
     const movies = useSelector(selectMovies);
-    const people = useSelector(selectPopularPeople);
+    const people = useSelector(selectPeople);
 
     return (
         <Paragraph>

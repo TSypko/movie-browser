@@ -8,7 +8,7 @@ import Pagination from "../../../common/Pagination";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import ErrorPage from "../../../common/ErrorPage";
 import FeatureLink from "../../../common/FeatureLink";
-import { fetchPopularPeople, selectPopularPeople, selectPopularPeopleLoadingState, selectPopularPeopleErrorState } from "../popularPeopleSlice";
+import { fetchPeople, selectPeople, selectPeopleLoadingState, selectPeopleErrorState, resetPeople } from "../peopleSlice";
 import { useQueryParameter } from "../../../useQueryParameters";
 import { search as searchParameterName } from "../../../queryParamNames";
 import { toPerson } from "../../../routes";
@@ -17,14 +17,15 @@ import NoResultsPage from "../../../common/NoResultsPage";
 const PeoplePage = () => {
 
   const dispatch = useDispatch();
-  const people = useSelector(selectPopularPeople);
-  const loading = useSelector(selectPopularPeopleLoadingState);
-  const error = useSelector(selectPopularPeopleErrorState);
+  const people = useSelector(selectPeople);
+  const loading = useSelector(selectPeopleLoadingState);
+  const error = useSelector(selectPeopleErrorState);
   const page = useQueryParameter(pageParameterName);
   const query = useQueryParameter(searchParameterName);
 
   useEffect(() => {
-    dispatch(fetchPopularPeople({ page: page || 1, query }));
+    dispatch(fetchPeople({ page: page || 1, query }));
+    return (() => dispatch(resetPeople()))
   }, [dispatch, page, query])
 
   return (
@@ -47,14 +48,14 @@ const PeoplePage = () => {
             body={
               !people.results
                 ? <LoadingSpinner />
-                : people.results.map(popularPerson => (
-                  <FeatureLink key={popularPerson.id} to={toPerson(popularPerson)}>
+                : people.results.map(person => (
+                  <FeatureLink key={person.id} to={toPerson(person)}>
                     <PeopleTile
-                      name={popularPerson.name}
-                      birthCity={popularPerson.place_of_birth}
-                      birthDate={popularPerson.birthday}
-                      poster={popularPerson.profile_path}
-                      description={popularPerson.biography}
+                      name={person.name}
+                      birthCity={person.place_of_birth}
+                      birthDate={person.birthday}
+                      poster={person.profile_path}
+                      description={person.biography}
                     />
                   </FeatureLink>
                 ))

@@ -1,10 +1,10 @@
 import { all } from "redux-saga/effects";
 import { moviesSaga } from "./features/movies/moviesSaga";
-import { popularPeopleSaga } from "./features/people/popularPeopleSaga";
+import { peopleSaga } from "./features/people/peopleSaga";
 
 export default function* rootSaga() {
     yield all([
         moviesSaga(),
-        popularPeopleSaga(),
+        peopleSaga(),
     ]);
 };
