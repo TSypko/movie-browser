@@ -26,7 +26,6 @@ function* fetchPopularMoviesHandler({ payload }) {
 
 function* fetchMovieHandler(action) {
     try {
-        yield put(resetMovie());
         const movie = yield call(getMovie, action.payload);
         const credits = yield call(getMovieCredits, action.payload);
         yield put(fetchMovieSucces({ movie, credits }));
