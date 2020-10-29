@@ -8,18 +8,19 @@ import {
   fetchPersonSucces,
   setGenres
 } from "./peopleSlice";
-import { getPopularPeople, getPerson, getPersonCredits, getGenres } from "../../apiClient";
+import { getPopularPeople, getPerson, getPersonCredits, getGenres, searchForPeople } from "../../apiClient";
 
 function* fetchPeopleHandler({ payload }) {
   try {
-    const page = payload;
-    const people = yield call(getPopularPeople, page);
+    const people = payload.query
+      ? yield call(searchForPeople, payload.page, payload.query)
+      : yield call(getPopularPeople, payload.page);
     yield put(fetchPeopleSucces(people));
   } catch (error) {
     yield put(fetchPeopleError());
     console.error(error);
-  };
-};
+  }
+}
 
 function* fetchPersonHandler(action) {
   try {
