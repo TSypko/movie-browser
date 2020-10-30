@@ -14,12 +14,21 @@ export const ErrorTitle = styled.h1`
     font-weight: 600;
     line-height: 120%;
     margin: 24px auto;
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobileMax}){
+        margin: 12px auto 18px auto;
+        font-size: 20px;
+    }   
 `;
 
 export const ErrorBody = styled.div`
     font-size: 22px;
     font-weight: 500;
     line-height: 130%;
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobileMax}){
+        font-size: 14px;
+    }   
 `;
 
 export const ErrorButton = styled.button`
@@ -41,4 +50,11 @@ export const ErrorButton = styled.button`
     &:active {
         filter: brightness(120%);
     }
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobileMax}){
+        font-size: 12px;
+        padding: 8px 12px;
+        margin: 18px auto;
+        font-weight: 500;
+    }  
 `;
