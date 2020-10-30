@@ -6,31 +6,26 @@ const peopleSlice = createSlice({
     people: [],
     loading: false,
     error: false,
-    personData: {person: undefined, credits: undefined},
-    genres: [],
+    personData: { person: undefined, credits: undefined },
   },
   reducers: {
     fetchPeople: (state) => {
       state.loading = true;
     },
-
     fetchPeopleSucces: (state, { payload: people }) => {
       state.people = people;
       state.loading = false;
       state.error = false;
     },
-
     fetchPeopleError: state => {
       state.loading = false;
       state.error = true;
     },
-
     resetPeople: state => {
       state.people = [];
       state.loading = false;
       state.error = false;
     },
-
     fetchPerson: (state) => {
       state.loading = true;
     },
@@ -43,18 +38,11 @@ const peopleSlice = createSlice({
       state.loading = false;
       state.error = true;
     },
-
     resetPerson: (state) => {
-      state.personData = {person: undefined, credits: undefined};
+      state.personData = { person: undefined, credits: undefined };
       state.loading = false;
       state.error = false;
     },
-
-    setGenres: (state, { payload: genres }) => {
-      state.genres = genres;
-      state.loading = false;
-      state.error = false;
-  },
   },
 });
 
@@ -64,16 +52,14 @@ export const selectPeopleLoadingState = state => selectPeopleState(state).loadin
 export const selectPeopleErrorState = state => selectPeopleState(state).error;
 export const selectPerson = state => selectPeopleState(state).personData.person;
 export const selectPersonCredits = state => selectPeopleState(state).personData.credits;
-export const selectGenresFromPeople = state => selectPeopleState(state).genres;
 export const {
   fetchPeople,
-  fetchPeopleSucces, 
-  fetchPeopleError, 
+  fetchPeopleSucces,
+  fetchPeopleError,
   resetPeople,
   fetchPerson,
   fetchPersonSucces,
   fetchPersonError,
   resetPerson,
-  setGenres,
 } = peopleSlice.actions;
 export default peopleSlice.reducer;

@@ -6,9 +6,8 @@ import {
   fetchPerson,
   fetchPersonError,
   fetchPersonSucces,
-  setGenres
 } from "./peopleSlice";
-import { getPopularPeople, getPerson, getPersonCredits, getGenres, searchForPeople } from "../../apiClient";
+import { getPopularPeople, getPerson, getPersonCredits, searchForPeople } from "../../apiClient";
 
 function* fetchPeopleHandler({ payload }) {
   try {
@@ -26,9 +25,7 @@ function* fetchPersonHandler(action) {
   try {
     const person = yield call(getPerson, action.payload);
     const credits = yield call(getPersonCredits, action.payload);
-    const genres = yield call(getGenres);
     yield put(fetchPersonSucces({ person, credits }));
-    yield put(setGenres(genres));
   } catch (error) {
     yield put(fetchPersonError());
     console.error(error);

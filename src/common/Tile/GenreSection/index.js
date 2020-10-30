@@ -2,17 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import GenreTile from "../GenreTile";
 import { StyledSection } from "./styled";
-import { selectGenresFromMovies } from "../../../features/movies/moviesSlice"
-import { selectGenresFromPeople } from "../../../features/people/peopleSlice";
-import {useLocation} from "react-router-dom";
-import { toMovies } from "../../../routes";
+import { selectGenres } from "../../../features/genres/genresSlice";
 
 const GenreSection = ({ horizontal, genres }) => {
-  const location = useLocation();
-  const genresListFromMovies = useSelector(selectGenresFromMovies);
-  const genresListFromPeople = useSelector(selectGenresFromPeople);
-  let genresList;
-  genresList = location.pathname.includes(toMovies()) ? genresListFromMovies : genresListFromPeople;
+  const genresList = useSelector(selectGenres);
 
   return (
     <StyledSection horizontal={horizontal}>
