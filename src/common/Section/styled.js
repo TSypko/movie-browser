@@ -22,7 +22,7 @@ export const Container = styled.div`
 
   ${({ grid }) =>
     grid && css`
-     grid-auto-rows: minmax(min-content, max-content);
+
     ${({ type }) => type === "movies" && css`
       grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
     grid-gap: 24px;
