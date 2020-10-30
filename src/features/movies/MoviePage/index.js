@@ -11,7 +11,7 @@ import Section from "../../../common/Section";
 import PeopleTile from '../../../common/PeopleTile';
 import FeatureLink from "../../../common/FeatureLink";
 import { toPerson } from "../../../routes";
-import { ShowMoreButton } from '../../../common/ShowMoreButton';
+import ShowMoreButton from '../../../common/ShowMoreButton';
 
 const MoviePage = () => {
     const params = useParams();
@@ -86,10 +86,11 @@ const MoviePage = () => {
                             }
                             {credits.cast.length > defaultLimit &&
                                 <ShowMoreButton
+                                    body={castLimit === credits.cast.length ? "Show less..." : "Show more..."}
                                     onClick={() => setCastLimit(credits.cast.length > castLimit ? credits.cast.length : defaultLimit)}
-                                >
-                                    {castLimit === credits.cast.length ? "Show less..." : "Show more..."}
-                                </ShowMoreButton>}
+                                    width={248}
+                                    height={452}
+                                />}
                         </>
                     }
                 />
@@ -113,10 +114,11 @@ const MoviePage = () => {
                                 )}
                             {credits.crew.length > defaultLimit &&
                                 <ShowMoreButton
+                                    body={crewLimit === credits.crew.length ? "Show less..." : "Show more..."}
                                     onClick={() => setCrewLimit(credits.crew.length > crewLimit ? credits.crew.length : defaultLimit)}
-                                >
-                                    {crewLimit === credits.crew.length ? "Show less..." : "Show more..."}
-                                </ShowMoreButton>}
+                                    width={248}
+                                    height={452}
+                                />}
                         </>
                     }
                 />
