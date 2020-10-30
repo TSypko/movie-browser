@@ -4,7 +4,7 @@ export const StyledTile = styled.div`
   display: flex;
   flex-direction: column;
   width: 324px;
-  min-height: 650px;
+  height: 100%;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.White};
   padding: 16px;
