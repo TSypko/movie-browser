@@ -12,12 +12,10 @@ const genresSlice = createSlice(
             fetchGenres: state => {
                 state.loading = true;
             },
-
-            fetchGenresSucces: (state, {payload: genres} ) => {
+            fetchGenresSucces: (state, { payload: genres }) => {
                 state.genres = genres;
                 state.loading = false;
             },
-
             fetchGenresError: state => {
                 state.loading = false;
                 state.error = true;

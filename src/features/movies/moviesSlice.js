@@ -21,23 +21,19 @@ const moviesSlice = createSlice({
             state.loading = false;
             state.error = true;
         },
-
         fetchMovie: (state) => {
             state.loading = true;
         },
-
         fetchMovieSucces: (state, { payload: movieData }) => {
             state.movieData = movieData;
             state.loading = false;
             state.error = false;
         },
-
         resetMovie: (state) => {
             state.movieData = { movie: undefined, credits: undefined };
             state.loading = false;
             state.error = false;
         },
-
         fetchMovieError: (state) => {
             state.loading = false;
             state.error = true;

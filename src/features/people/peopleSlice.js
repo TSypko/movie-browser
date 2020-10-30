@@ -12,39 +12,32 @@ const peopleSlice = createSlice({
     fetchPeople: (state) => {
       state.loading = true;
     },
-
     fetchPeopleSucces: (state, { payload: people }) => {
       state.people = people;
       state.loading = false;
       state.error = false;
     },
-
     fetchPeopleError: state => {
       state.loading = false;
       state.error = true;
     },
-
     resetPeople: state => {
       state.people = [];
       state.loading = false;
       state.error = false;
     },
-
     fetchPerson: (state) => {
       state.loading = true;
     },
-
     fetchPersonSucces: (state, { payload: personData }) => {
       state.personData = personData;
       state.loading = false;
       state.error = false;
     },
-
     fetchPersonError: (state) => {
       state.loading = false;
       state.error = true;
     },
-
     resetPerson: (state) => {
       state.personData = { person: undefined, credits: undefined };
       state.loading = false;
