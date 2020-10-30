@@ -40,6 +40,7 @@ const Tile = ({ horizontal, title, year, poster, production, release, descriptio
     <StyledTile horizontal={horizontal}>
       <Poster
         horizontal={horizontal}
+        noPoster={!poster}
         src={
           poster
             ? `https://image.tmdb.org/t/p/w342${poster}`
