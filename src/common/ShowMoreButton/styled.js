@@ -7,7 +7,6 @@ export const StyledButton = styled.a`
   justify-self: center;
   width: ${props => props.width}px;
   min-height: ${props => props.height}px;
-  padding: 16px;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.White};
   filter: drop-shadow(0px 4px 12px rgba(186, 199, 213, 0.5));
@@ -18,9 +17,8 @@ export const StyledButton = styled.a`
   cursor: pointer;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-    width: 136px;
-    min-height: 245px; 
-    padding: 8px;
+    width: ${props => props.mobileWidth}px;
+    min-height: ${props => props.mobileHeight}px; 
     font-size: 14px;
   };
 `;

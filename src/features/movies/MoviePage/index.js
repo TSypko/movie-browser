@@ -89,7 +89,9 @@ const MoviePage = () => {
                                     body={castLimit === credits.cast.length ? "Show less..." : "Show more..."}
                                     onClick={() => setCastLimit(credits.cast.length > castLimit ? credits.cast.length : defaultLimit)}
                                     width={248}
-                                    height={452}
+                                    height={410}
+                                    mobileWidth={136}
+                                    mobileHeight={245}
                                 />}
                         </>
                     }
@@ -117,7 +119,9 @@ const MoviePage = () => {
                                     body={crewLimit === credits.crew.length ? "Show less..." : "Show more..."}
                                     onClick={() => setCrewLimit(credits.crew.length > crewLimit ? credits.crew.length : defaultLimit)}
                                     width={248}
-                                    height={452}
+                                    height={410}
+                                    mobileWidth={136}
+                                    mobileHeight={245}
                                 />}
                         </>
                     }
