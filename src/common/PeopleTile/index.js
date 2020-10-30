@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   StyledTile,
   Poster,
@@ -12,24 +12,10 @@ import {
   PersonRole,
 } from "./styled";
 import posterPlaceholder from "../../assets/images/profile.svg";
-import { theme } from "../../theme";
+import useMobileContent from "../useMobileContent";
 
 const PeopleTile = ({ horizontal, name, birthDate, poster, birthCity, description, role }) => {
-  const [mobileContent, setMobileContent] = useState(false);
-  const mobileBreakpoint = +theme.breakpoints.mobileMax.slice(0, -2);
-  const onWidthChange = () => {
-    if (window.innerWidth <= mobileBreakpoint) {
-      setMobileContent(true);
-    } else {
-      setMobileContent(false);
-    }
-  };
-
-  useEffect(() => {
-    onWidthChange();
-    window.addEventListener("resize", onWidthChange);
-    return () => window.removeEventListener("resize", onWidthChange);
-  });
+  const mobileContent = useMobileContent();
 
   const getProfileImage = (poster, horizontal) => {
     if (!poster) return posterPlaceholder;
