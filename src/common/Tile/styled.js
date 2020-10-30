@@ -34,21 +34,24 @@ export const StyledTile = styled.div`
         grid-template-columns: 122px 1fr;
         width: 288px;
         padding: 16px;
-        margin: 0 auto;
         box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
       }
     `};
 `;
 
 export const Poster = styled.img`
-  max-width: 292px;
+  width: 292px;
+  height: 434px;
   border-radius: 5px;
   background: ${({ theme }) => theme.colors.Silver};
   object-position: center center;
+  object-fit: cover;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-    max-width: 114px;
+    width: 114px;
+    height: 169px;
     margin-right: 8px;
+    object-fit: scale-down;
   }
 
   ${({ horizontal }) =>
@@ -58,16 +61,6 @@ export const Poster = styled.img`
 
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         grid-area: poster;
-      }
-    `};
-
-  ${({ noPoster }) =>
-    noPoster &&
-    css`
-    height: 434px;
-    object-fit: scale-down;
-      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-        height: 169px;
       }
     `};
 `;
