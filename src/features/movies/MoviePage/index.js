@@ -6,7 +6,7 @@ import LoadingSpinner from "../../../common/LoadingSpinner";
 import ErrorPage from "../../../common/ErrorPage";
 import Backdrop from './Backdrop';
 import Main from "../../../common/Main";
-import Tile from '../../../common/Tile';
+import MovieTile from '../../../common/MovieTile';
 import Section from "../../../common/Section";
 import PeopleTile from '../../../common/PeopleTile';
 import FeatureLink from "../../../common/FeatureLink";
@@ -53,7 +53,7 @@ const MoviePage = () => {
                 <Backdrop movie={movie} />
             }
             {movie && <Main>
-                <Tile
+                <MovieTile
                     horizontal={true}
                     title={movie.title}
                     year={movie.release_date && movie.release_date.slice(0, 4)}
