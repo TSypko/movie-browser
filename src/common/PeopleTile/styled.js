@@ -32,7 +32,7 @@ export const StyledTile = styled.div`
           "poster personDetails"
           "personDescription personDescription";
         grid-template-columns: 124px 1fr;
-        width: 290px;
+        width: auto;
         padding: 16px;
         box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
         margin: 0 auto;
