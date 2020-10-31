@@ -13,6 +13,7 @@ import { useQueryParameter } from "../../../useQueryParameters";
 import { search as searchParameterName } from "../../../queryParamNames";
 import { toPerson } from "../../../routes";
 import NoResultsPage from "../../../common/NoResultsPage";
+import BackToTopButton from '../../../common/BackToTopButton';
 
 const PeoplePage = () => {
 
@@ -62,10 +63,11 @@ const PeoplePage = () => {
             }
           />
           {!loading && <Pagination type="people" />}
+          {people.results && <BackToTopButton />}
         </>
       }
     </Main>
-  )
+  );
 };
 
 export default PeoplePage;
