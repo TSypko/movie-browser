@@ -23,13 +23,15 @@ export const Container = styled.div`
   ${({ grid }) =>
     grid && css`
     ${({ type }) => type === "movies" && css`
-      grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
-    grid-gap: 24px;
+      grid-template-columns: repeat(auto-fill, 324px);
+      grid-gap: 24px;
+      justify-content: center;
     `}
 
     ${({ type }) => type === "people" && css`
-      grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
-    grid-gap: 32px;
+      grid-template-columns: repeat(auto-fill, 248px);
+      grid-gap: 32px;
+      justify-content: center;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
       grid-template-columns: repeat(auto-fill, minmax(136px, 0.4fr));
