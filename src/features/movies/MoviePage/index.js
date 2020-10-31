@@ -24,7 +24,7 @@ const MoviePage = () => {
 
     useEffect(() => {
         dispatch(fetchMovie(params.id));
-        return(()=>dispatch(resetMovie()))
+        return (() => dispatch(resetMovie()))
     }, [dispatch, params]);
 
     const formatDate = date => {
@@ -95,11 +95,11 @@ const MoviePage = () => {
                         )
                     }
                 />
+                <BackToTopButton />
             </Main>
             }
-            {movie && <BackToTopButton />}
         </>
-    )
-}
+    );
+};
 
 export default MoviePage;

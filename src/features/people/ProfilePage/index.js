@@ -81,9 +81,9 @@ const ProfilePage = () => {
                         )
                     }
                 />
+                <BackToTopButton />
             </Main>
             }
-            {person && <BackToTopButton />}
         </>
     );
 };

@@ -30,43 +30,45 @@ const PeoplePage = () => {
   }, [dispatch, page, query])
 
   return (
-    <Main>
-      {!loading && !error && people && people.total_results === 0 &&
-        <Main>
-          <Section
-            title={`Sorry, there are no results for "${query}"`}
-            body={<NoResultsPage />}
-          />
-        </Main>}
-      {(!people.results && !query && loading) && <LoadingSpinner />}
-      {(!people.results && error) && <ErrorPage />}
-      {people.total_results !== 0 && (people.results || query) &&
-        <>
-          <Section
-            type="people"
-            grid={people.results}
-            title={query ? `Search results for "${query}" ${people.results ? `(${people.total_results})` : ""}` : "Popular People"}
-            body={
-              !people.results
-                ? <LoadingSpinner />
-                : people.results.map(person => (
-                  <FeatureLink key={person.id} to={toPerson(person)}>
-                    <PeopleTile
-                      name={person.name}
-                      birthCity={person.place_of_birth}
-                      birthDate={person.birthday}
-                      poster={person.profile_path}
-                      description={person.biography}
-                    />
-                  </FeatureLink>
-                ))
-            }
-          />
-          {!loading && <Pagination type="people" />}
-          {people.results && <BackToTopButton />}
-        </>
-      }
-    </Main>
+    <>
+      <Main>
+        {!loading && !error && people && people.total_results === 0 &&
+          <Main>
+            <Section
+              title={`Sorry, there are no results for "${query}"`}
+              body={<NoResultsPage />}
+            />
+          </Main>}
+        {(!people.results && !query && loading) && <LoadingSpinner />}
+        {(!people.results && error) && <ErrorPage />}
+        {people.total_results !== 0 && (people.results || query) &&
+          <>
+            <Section
+              type="people"
+              grid={people.results}
+              title={query ? `Search results for "${query}" ${people.results ? `(${people.total_results})` : ""}` : "Popular People"}
+              body={
+                !people.results
+                  ? <LoadingSpinner />
+                  : people.results.map(person => (
+                    <FeatureLink key={person.id} to={toPerson(person)}>
+                      <PeopleTile
+                        name={person.name}
+                        birthCity={person.place_of_birth}
+                        birthDate={person.birthday}
+                        poster={person.profile_path}
+                        description={person.biography}
+                      />
+                    </FeatureLink>
+                  ))
+              }
+            />
+          </>
+        }
+        <BackToTopButton />
+      </Main>
+      {!loading && <Pagination type="people" />}
+    </>
   );
 };
 
