@@ -55,24 +55,21 @@ export const Poster = styled.img`
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         height: 169px;
       }
-    `};
+  `};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     width: 114px;
     height: 169px;
     margin-right: 8px;
-    object-fit: scale-down;
   }
 
-  ${({ horizontal }) =>
-    horizontal &&
-    css`
-      margin-right: 20px;
+  ${({ horizontal }) => horizontal && css`
+    margin-right: 20px;
 
-      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-        grid-area: poster;
-      }
-    `};
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+      grid-area: poster;
+    }
+  `};
 `;
 
 export const MovieDetails = styled.section`
