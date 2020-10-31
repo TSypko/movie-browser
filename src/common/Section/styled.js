@@ -20,8 +20,7 @@ export const Container = styled.div`
   display: ${({ grid }) => (grid ? "grid" : "block")};
   margin: 0 auto;
 
-  ${({ grid }) =>
-    grid && css`
+  ${({ grid }) =>  grid && css`
     ${({ type }) => type === "movies" && css`
       grid-template-columns: repeat(auto-fill, 324px);
       grid-gap: 24px;
