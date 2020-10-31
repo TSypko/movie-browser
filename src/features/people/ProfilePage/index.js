@@ -10,6 +10,7 @@ import Tile from "../../../common/Tile";
 import Section from "../../../common/Section";
 import FeatureLink from '../../../common/FeatureLink';
 import { toMovie } from "../../../routes";
+import BackToTopButton from '../../../common/BackToTopButton';
 import ShowMoreButton from '../../../common/ShowMoreButton';
 
 const ProfilePage = () => {
@@ -112,10 +113,11 @@ const ProfilePage = () => {
                         </>
                     }
                 />
+                <BackToTopButton />
             </Main>
             }
         </>
-    )
-}
+    );
+};
 
 export default ProfilePage;

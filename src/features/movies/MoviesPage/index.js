@@ -14,6 +14,7 @@ import { search as searchParameterName } from "../../../queryParamNames";
 import { toMovie } from "../../../routes";
 import NoResultsPage from "../../../common/NoResultsPage";
 import { fetchGenres } from "../../genres/genresSlice";
+import BackToTopButton from "../../../common/BackToTopButton";
 
 const MoviesPage = () => {
 
@@ -65,6 +66,7 @@ const MoviesPage = () => {
                     </FeatureLink>
                   )
               } />
+            <BackToTopButton />
           </Main>
           {!loading && <Pagination type="movies" />}
         </>

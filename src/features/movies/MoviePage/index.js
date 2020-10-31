@@ -11,6 +11,7 @@ import Section from "../../../common/Section";
 import PeopleTile from '../../../common/PeopleTile';
 import FeatureLink from "../../../common/FeatureLink";
 import { toPerson } from "../../../routes";
+import BackToTopButton from '../../../common/BackToTopButton';
 import ShowMoreButton from '../../../common/ShowMoreButton';
 
 const MoviePage = () => {
@@ -126,10 +127,11 @@ const MoviePage = () => {
                         </>
                     }
                 />
+                <BackToTopButton />
             </Main>
             }
         </>
-    )
-}
+    );
+};
 
 export default MoviePage;

@@ -8,7 +8,7 @@ export const StyledButton = styled.button`
     line-height: 1.4;
     border: none;
     border-radius: 5px;
-    margin: 12px 6px;
+    margin: 0px 6px;
     outline-color: ${({ theme }) => theme.colors.ScienceBlue};
     color: ${({ theme }) => theme.colors.MineShaft};
     background: ${({ theme }) => theme.colors.PattensBlue};
