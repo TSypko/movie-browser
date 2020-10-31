@@ -17,7 +17,7 @@ import posterPlaceholder from "../../assets/images/video.svg";
 import { useLocation } from "react-router-dom";
 import useMobileContent from "../useMobileContent";
 
-const MovieTile = ({ horizontal, title, year, poster, production, release, description, genres, rate, votes, personRole }) => {
+const Tile = ({ horizontal, title, year, poster, production, release, description, genres, rate, votes, personRole }) => {
   const location = useLocation();
   const useInPersonDetails = location.pathname.includes("people");
   const mobileContent = useMobileContent();
@@ -62,4 +62,4 @@ const MovieTile = ({ horizontal, title, year, poster, production, release, descr
   );
 };
 
-export default MovieTile;
+export default Tile;

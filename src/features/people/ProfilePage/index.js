@@ -6,7 +6,7 @@ import Main from "../../../common/Main";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import ErrorPage from "../../../common/ErrorPage";
 import PeopleTile from "../../../common/PeopleTile";
-import MovieTile from "../../../common/MovieTile";
+import Tile from "../../../common/Tile";
 import Section from "../../../common/Section";
 import FeatureLink from '../../../common/FeatureLink';
 import { toMovie } from "../../../routes";
@@ -53,7 +53,7 @@ const ProfilePage = () => {
                                 .slice(0, castLimit)
                                 .map(cast =>
                                     <FeatureLink key={cast.credit_id} to={toMovie(cast)}>
-                                        <MovieTile
+                                        <Tile
                                             key={cast.credit_id}
                                             title={cast.title}
                                             year={cast.release_date}
@@ -88,7 +88,7 @@ const ProfilePage = () => {
                                 .slice(0, crewLimit)
                                 .map(crew =>
                                     <FeatureLink key={crew.credit_id} to={toMovie(crew)}>
-                                        <MovieTile
+                                        <Tile
                                             key={crew.credit_id}
                                             title={crew.title}
                                             year={crew.release_date}

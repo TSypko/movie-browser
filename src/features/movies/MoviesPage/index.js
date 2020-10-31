@@ -4,7 +4,7 @@ import { fetchPopularMovies, selectMovies, selectLoading, selectError } from "..
 import { page as pageParameterName } from "../../../queryParamNames";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
-import MovieTile from "../../../common/MovieTile";
+import Tile from "../../../common/Tile";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import Pagination from "../../../common/Pagination";
 import FeatureLink from "../../../common/FeatureLink";
@@ -52,7 +52,7 @@ const MoviesPage = () => {
                   ? <LoadingSpinner />
                   : movies.results?.map(movie =>
                     <FeatureLink key={movie.id} to={toMovie(movie)}>
-                      <MovieTile
+                      <Tile
                         key={movie.id}
                         title={movie.title}
                         poster={movie.poster_path}
