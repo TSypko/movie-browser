@@ -187,6 +187,7 @@ export const PersonDescription = styled.p`
   font-size: 20px;
   line-height: 1.6;
   margin-left: -20px;
+  text-align: justify;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     grid-area: personDescription;

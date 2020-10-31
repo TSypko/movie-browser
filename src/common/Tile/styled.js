@@ -192,6 +192,7 @@ export const MovieDescription = styled.p`
   margin-top: 12px;
   font-size: 20px;
   line-height: 1.6;
+  text-align: justify;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     grid-area: movieDescription;
