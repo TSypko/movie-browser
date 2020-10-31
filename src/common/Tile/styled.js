@@ -4,7 +4,7 @@ export const StyledTile = styled.div`
   display: flex;
   flex-direction: column;
   width: 324px;
-  height: 100%;
+  align-self: stretch;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.White};
   padding: 16px;
@@ -16,7 +16,7 @@ export const StyledTile = styled.div`
     width: 288px;
     min-height: 201px;
   }
-
+  
   ${({ horizontal }) =>
     horizontal &&
     css`
@@ -46,6 +46,16 @@ export const Poster = styled.img`
   background: ${({ theme }) => theme.colors.Silver};
   object-position: center center;
   object-fit: cover;
+
+  ${({ noPoster }) =>
+    noPoster &&
+    css`
+    height: 434px;
+    object-fit: scale-down;
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+        height: 169px;
+      }
+    `};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     width: 114px;
