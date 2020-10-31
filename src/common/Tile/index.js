@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   StyledTile,
   Poster,
@@ -14,27 +14,13 @@ import {
 import GenreSection from "./GenreSection";
 import VotesSection from "./VotesSection";
 import posterPlaceholder from "../../assets/images/video.svg";
-import { theme } from "../../theme";
 import { useLocation } from "react-router-dom";
+import useMobileContent from "../useMobileContent";
 
 const Tile = ({ horizontal, title, year, poster, production, release, description, genres, rate, votes, personRole }) => {
   const location = useLocation();
   const useInPersonDetails = location.pathname.includes("people");
-  const [mobileContent, setMobileContent] = useState(false);
-  const mobileBreakpoint = +theme.breakpoints.mobileMax.slice(0, -2);
-  const onWidthChange = () => {
-    if (window.innerWidth <= mobileBreakpoint) {
-      setMobileContent(true);
-    } else {
-      setMobileContent(false);
-    }
-  };
-
-  useEffect(() => {
-    onWidthChange();
-    window.addEventListener("resize", onWidthChange);
-    return () => window.removeEventListener("resize", onWidthChange);
-  });
+  const mobileContent = useMobileContent();
 
   return (
     <StyledTile horizontal={horizontal}>

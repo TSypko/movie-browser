@@ -135,7 +135,7 @@ export const PersonRole = styled.span`
     color: ${({ theme }) => theme.colors.Waterloo};
     margin: 8px;
 
-    @media (max-width: ${({theme}) => theme.breakpoints.mobileMax}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         font-size: 13px;
     }
 `;
