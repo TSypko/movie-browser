@@ -47,6 +47,7 @@ export const Poster = styled.img`
   background: ${({ theme }) => theme.colors.Silver};
   object-position: center center;
   object-fit: cover;
+  flex-shrink: 0;
 
   ${({ noPoster }) =>
     noPoster &&
