@@ -42,13 +42,6 @@ const Pagination = ({ type }) => {
     };
   }, [type, page, people.total_pages, movies.total_pages]);
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  }, [page]);
-
   const previousButtonHandler = () => {
     if (+page !== 1) {
       replaceQueryParameter({
@@ -57,9 +50,6 @@ const Pagination = ({ type }) => {
       });
     };
   };
-
-
-
 
   const firstButtonHandler = () => {
     replaceQueryParameter({
