@@ -37,11 +37,11 @@ const PeopleTile = ({ horizontal, name, birthDate, poster, birthCity, descriptio
         {horizontal ? (
           <>
             <PersonBirthDate>
-              <InfoLabelSpan>{mobileContent ? "Birth" : "Date of birth"}: </InfoLabelSpan>
+              <InfoLabelSpan>{birthDate ? mobileContent ? "Birth" : "Date of birth" : ""}</InfoLabelSpan>
               <InfoSpan>{birthDate}</InfoSpan>
             </PersonBirthDate>
             <PersonBirthPlace>
-              <InfoLabelSpan>Place of birth: </InfoLabelSpan>
+              <InfoLabelSpan>{birthCity ? "Place of birth: " : ""}</InfoLabelSpan>
               <InfoSpan>{birthCity}</InfoSpan>
             </PersonBirthPlace>
             {horizontal && !mobileContent ? (

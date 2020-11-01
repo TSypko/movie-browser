@@ -41,11 +41,11 @@ const Tile = ({ horizontal, title, year, poster, production, release, descriptio
         {horizontal ? (
           <>
             <MovieProduction>
-              <InfoLabelSpan>Production:</InfoLabelSpan>
+              <InfoLabelSpan>{production ? "Production" : ""}</InfoLabelSpan>
               <InfoSpan>{production}</InfoSpan>
             </MovieProduction>
             <MovieRelease>
-              <InfoLabelSpan>Release date:</InfoLabelSpan>
+              <InfoLabelSpan>{release ? "Release date:" : ""}</InfoLabelSpan>
               <InfoSpan>{release}</InfoSpan>
             </MovieRelease>
           </>
