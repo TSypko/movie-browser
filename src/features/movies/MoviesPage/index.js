@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPopularMovies, selectMovies, selectLoading, selectError, resetMovies } from "../moviesSlice";
+import { fetchMovies, selectMovies, selectLoading, selectError, resetMovies } from "../moviesSlice";
 import { page as pageParameterName } from "../../../queryParamNames";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
@@ -25,7 +25,7 @@ const MoviesPage = () => {
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchPopularMovies({ page: page || 1, query }));
+    dispatch(fetchMovies({ page: page || 1, query }));
     return (() => dispatch(resetMovies()));
   }, [dispatch, page, query]);
 
