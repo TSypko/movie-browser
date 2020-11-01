@@ -168,7 +168,7 @@ export const InfoLabelSpan = styled.span`
 `;
 
 export const InfoSpan = styled.span`
-  display: block;
+  display: inline;
   font-size: 18px;
   line-height: 1.2;
 
