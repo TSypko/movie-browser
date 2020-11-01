@@ -1,17 +1,11 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import GenreTile from "../GenreTile";
 import { StyledSection } from "./styled";
-import { fetchGenres, selectGenres } from "../../../features/genres/genresSlice";
-import { useEffect } from "react";
+import { selectGenres } from "../../../features/genres/genresSlice";
 
 const GenreSection = ({ horizontal, genres }) => {
-  const dispatch = useDispatch();
   const genresList = useSelector(selectGenres);
-
-  useEffect(() => {
-    !genresList.genres && dispatch(fetchGenres());
-  }, [dispatch, genresList]);
 
   return (
     <StyledSection horizontal={horizontal}>
