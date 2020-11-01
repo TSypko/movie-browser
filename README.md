@@ -12,10 +12,9 @@ Current version 1.0.0
 
 ## DESCRIPTION
 
-Explore movies, TV Shows and poeple in easy way. 
+Explore movies, TV Shows, cast and crew in easy way. 
 In this app you will find thousands of titles, cast and crew to discover. 
-You will learn their details and viewers' ratings and the data is presented in a friendly way so that you can freely navigate the ocean of movies database.
-
+You will learn their details and viewers ratings. The data is presented in a friendly way so that you can freely navigate the ocean of movies database.
 
 
 ![Thematic Break](readme/thematicBreak.png)
@@ -26,6 +25,8 @@ You will learn their details and viewers' ratings and the data is presented in a
 ![React JS Icon](readme/react.png) 
 
 React.js with create-react-app
+
+
 
 ![Redux Icon](readme/redux.png)
 
@@ -119,11 +120,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
