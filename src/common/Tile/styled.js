@@ -4,7 +4,7 @@ export const StyledTile = styled.div`
   display: flex;
   flex-direction: column;
   width: 324px;
-  min-height: 650px;
+  align-self: stretch;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.White};
   padding: 16px;
@@ -16,7 +16,7 @@ export const StyledTile = styled.div`
     width: 288px;
     min-height: 201px;
   }
-
+  
   ${({ horizontal }) =>
     horizontal &&
     css`
@@ -46,13 +46,22 @@ export const Poster = styled.img`
   border-radius: 5px;
   background: ${({ theme }) => theme.colors.Silver};
   object-position: center center;
-  object-fit: scale-down;
+  object-fit: cover;
+
+  ${({ noPoster }) =>
+    noPoster &&
+    css`
+    height: 434px;
+    object-fit: scale-down;
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+        height: 169px;
+      }
+  `};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     width: 114px;
     height: 169px;
     margin-right: 8px;
-    object-fit: scale-down;
   }
 
   ${({ horizontal }) =>
@@ -61,10 +70,10 @@ export const Poster = styled.img`
       margin-right: 20px;
       float: left;
 
-      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
-        grid-area: poster;
-      }
-    `};
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+      grid-area: poster;
+    }
+  `};
 `;
 
 export const MovieDetails = styled.section`
