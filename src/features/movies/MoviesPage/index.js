@@ -13,7 +13,6 @@ import { useQueryParameter } from "../../../useQueryParameters";
 import { search as searchParameterName } from "../../../queryParamNames";
 import { toMovie } from "../../../routes";
 import NoResultsPage from "../../../common/NoResultsPage";
-import { fetchGenres } from "../../genres/genresSlice";
 import BackToTopButton from "../../../common/BackToTopButton";
 
 const MoviesPage = () => {
@@ -27,8 +26,7 @@ const MoviesPage = () => {
 
   useEffect(() => {
     dispatch(fetchPopularMovies({ page: page || 1, query }));
-    dispatch(fetchGenres());
-    return(()=>dispatch(resetMovies()));
+    return (() => dispatch(resetMovies()));
   }, [dispatch, page, query]);
 
   return (

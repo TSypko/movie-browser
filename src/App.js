@@ -6,8 +6,17 @@ import Header from "./common/Header";
 import { toMovies, toMovie, toPeople, toPerson } from "./routes";
 import MoviePage from "./features/movies/MoviePage";
 import ProfilePage from "./features/people/ProfilePage/";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchGenres } from "./features/genres/genresSlice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchGenres());
+  }, [dispatch]);
+
   return (
     <HashRouter>
       <Header />
