@@ -63,10 +63,10 @@ const PeoplePage = () => {
                   ))
               }
             />
+            <BackToTopButton />
           </Main>
         </>
       }
-      <BackToTopButton />
       {!loading && <Pagination type="people" />}
     </>
   );
