@@ -12,9 +12,9 @@ Current version 1.0.0
 
 ## DESCRIPTION
 
-Explore movies, TV Shows, cast and crew in easy way. 
+Explore movies, TV Shows, cast and crew easily. 
 In this app you will find thousands of titles, cast and crew to discover. 
-You will able to find out their details and viewers ratings. The data is presented in a friendly way so that you can freely navigate the ocean of movies database.
+You will be able to find out their details and viewers ratings. The data is presented in a friendly way so that you can freely navigate the ocean of movies database.
 
 
 ![Thematic Break](readme/thematicBreak.png)
