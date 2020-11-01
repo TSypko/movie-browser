@@ -26,7 +26,7 @@ const MoviesPage = () => {
 
   useEffect(() => {
     dispatch(fetchPopularMovies({ page: page || 1, query }));
-    return(()=>dispatch(resetMovies()));
+    return (() => dispatch(resetMovies()));
   }, [dispatch, page, query]);
 
   return (
