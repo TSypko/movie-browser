@@ -65,7 +65,7 @@ const MoviesPage = () => {
                     </FeatureLink>
                   )
               } />
-            <BackToTopButton />
+            {!loading && <BackToTopButton />}
           </Main>
           {!loading && <Pagination type="movies" />}
         </>
