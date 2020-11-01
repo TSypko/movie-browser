@@ -1,4 +1,112 @@
+
+![SCE-logo](readme/headImage.png)
+
+# MOVIE BROWSER
+
+
+**LIVE LINK**: [https://tsypko.github.io/movie-browser/](https://tsypko.github.io/movie-browser/)
+
+Current version 1.0.0 
+
+![Thematic Break](readme/thematicBreak.png)
+
+## DESCRIPTION
+
+Explore movies, TV Shows and poeple in easy way. 
+In this app you will find thousands of titles, cast and crew to discover. 
+You will learn their details and viewers' ratings and the data is presented in a friendly way so that you can freely navigate the ocean of movies database.
+
+
+
+![Thematic Break](readme/thematicBreak.png)
+
+### TECHNOLOGIES USED:
+<br>
+
+![React JS Icon](readme/react.png) 
+
+React.js with create-react-app
+
+![Redux Icon](readme/redux.png)
+
+ Redux with react-redux
+
+![Redux Saga Icon](readme/redux-saga.png) 
+
+Redux Saga
+
+![React Router  Icon](readme/react-router.png)
+
+ React Router
+
+![Styled Components Icon](readme/styled-components.png)
+
+ Styled Components
+
+![HTML Icon](readme/html.png)
+
+ HTML
+
+![CSS Icon](readme/css.png)
+
+ CSS
+
+![JavaScript Icon](readme/js.png)
+
+ JavaScript ES6+
+
+![API Icon](readme/api.png)
+
+ Fetch API
+
+### METHODOLOGIES USED:
+
+- Hooks
+- Custom Hooks
+- JSX
+
+![Thematic Break](readme/thematicBreak.png)
+### DATA SOURCE:
+
+[The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction) 
+
+![Thematic Break](readme/thematicBreak.png)
+
+### HOW TO USE
+
+#### **EXPLORING POPULAR MOVIES AND PEOPLE:**
+<br>
+
+![](readme/popularMoviesAndPeople.gif)
+
+#### **EXPLORING MOVIES AND PEOPLE DETAILS:**
+<br>
+
+![](readme/movieAndPeopleDetails.gif)
+
+#### **SEARCHING FOR MOVIES AND PEOPLE**
+<br>
+
+![](readme/searchingForMoviesAndPeople.gif)
+
+![Thematic Break](readme/thematicBreak.png)
+
+### AUTHORS
+[**Kasia Kowalska**](https://github.com/katkowa)
+
+[**Mateusz Polok**](https://github.com/mateusz24polok)
+
+[**Tomasz Sypko**](https://github.com/TSypko)
+
+![Thematic Break](readme/thematicBreak.png)
+
+### VERSION HISTORY
+
+1.0.0 - Stable working version introduced
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+![Thematic Break](readme/thematicBreak.png)
 
 ## Available Scripts
 
