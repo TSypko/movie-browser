@@ -20,7 +20,7 @@ export const StyledTile = styled.div`
   ${({ horizontal }) =>
     horizontal &&
     css`
-      flex-direction: row;
+      display: block;
       min-height: 544px;
       width: auto;
       padding: 40px;
@@ -32,7 +32,7 @@ export const StyledTile = styled.div`
           "poster movieDetails"
           "movieDescription movieDescription";
         grid-template-columns: 122px 1fr;
-        width: 288px;
+        width: auto;
         padding: 16px;
         margin: 0 auto;
         box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
@@ -47,6 +47,7 @@ export const Poster = styled.img`
   background: ${({ theme }) => theme.colors.Silver};
   object-position: center center;
   object-fit: cover;
+  flex-shrink: 0;
 
   ${({ noPoster }) =>
     noPoster &&
@@ -64,8 +65,11 @@ export const Poster = styled.img`
     margin-right: 8px;
   }
 
-  ${({ horizontal }) => horizontal && css`
-    margin-right: 20px;
+  ${({ horizontal }) =>
+    horizontal &&
+    css`
+      margin-right: 20px;
+      float: left;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
       grid-area: poster;
@@ -87,6 +91,7 @@ export const MovieDetails = styled.section`
     css`
       margin-top: 0;
       margin-left: 20px;
+      display: block;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         grid-area: movieDetails;
@@ -163,7 +168,7 @@ export const InfoLabelSpan = styled.span`
 `;
 
 export const InfoSpan = styled.span`
-  display: inline-block;
+  display: block;
   font-size: 18px;
   line-height: 1.2;
 
@@ -192,6 +197,8 @@ export const MovieDescription = styled.p`
   margin-top: 12px;
   font-size: 20px;
   line-height: 1.6;
+  text-align: justify;
+  margin-left: -20px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     grid-area: movieDescription;

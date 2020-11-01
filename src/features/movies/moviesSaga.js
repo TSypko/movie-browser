@@ -7,12 +7,10 @@ import {
     fetchMovieSucces,
     fetchMovieError,
     fetchMovie,
-    resetMovies,
 } from "./moviesSlice";
 
 function* fetchPopularMoviesHandler({ payload }) {
     try {
-        yield put(resetMovies());
         const popularMovies = payload.query
             ? yield call(searchForMovies, payload.page, payload.query)
             : yield call(getPopularMovies, payload.page);
