@@ -22,7 +22,7 @@ const PeopleTile = ({ horizontal, name, birthDate, poster, birthCity, descriptio
     else if (horizontal) return `https://image.tmdb.org/t/p/original${poster}`;
     else if (mobileContent) return `https://image.tmdb.org/t/p/w154${poster}`;
     else return `https://image.tmdb.org/t/p/w185${poster}`;
-  }
+  };
 
   return (
     <StyledTile horizontal={horizontal}>
@@ -40,8 +40,8 @@ const PeopleTile = ({ horizontal, name, birthDate, poster, birthCity, descriptio
               <InfoLabelSpan>{mobileContent ? "Birth" : "Date of birth"}</InfoLabelSpan>
               <InfoSpan>{birthDate}</InfoSpan>
             </PersonBirthDate>}
-            {birthDate && <PersonBirthPlace>
-              <InfoLabelSpan>{birthCity ? "Place of birth: " : ""}</InfoLabelSpan>
+            {birthCity && <PersonBirthPlace>
+              <InfoLabelSpan>Place of birth</InfoLabelSpan>
               <InfoSpan>{birthCity}</InfoSpan>
             </PersonBirthPlace>}
             {description && horizontal && !mobileContent ? (

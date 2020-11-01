@@ -40,23 +40,23 @@ const Tile = ({ horizontal, title, year, poster, production, release, descriptio
         </MovieYear> : null}
         {horizontal ? (
           <>
-            <MovieProduction>
-              <InfoLabelSpan>{production ? "Production" : ""}</InfoLabelSpan>
+            {production && <MovieProduction>
+              <InfoLabelSpan>Production</InfoLabelSpan>
               <InfoSpan>{production}</InfoSpan>
-            </MovieProduction>
-            <MovieRelease>
-              <InfoLabelSpan>{release ? "Release date:" : ""}</InfoLabelSpan>
+            </MovieProduction>}
+            {release && <MovieRelease>
+              <InfoLabelSpan>Release date</InfoLabelSpan>
               <InfoSpan>{release}</InfoSpan>
-            </MovieRelease>
+            </MovieRelease>}
           </>
         ) : null}
         <GenreSection horizontal={horizontal} genres={genres} />
         <VotesSection horizontal={horizontal} rate={rate} votes={votes} />
-        {horizontal && !mobileContent ? (
+        {horizontal && description && !mobileContent ? (
           <MovieDescription>{description}</MovieDescription>
         ) : null}
       </MovieDetails>
-      {horizontal && mobileContent ? (
+      {horizontal && description && mobileContent ? (
         <MovieDescription>{description}</MovieDescription>
       ) : null}
     </StyledTile>
