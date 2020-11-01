@@ -36,21 +36,21 @@ const PeopleTile = ({ horizontal, name, birthDate, poster, birthCity, descriptio
         {role && <PersonRole>{role}</PersonRole>}
         {horizontal ? (
           <>
-            <PersonBirthDate>
-              <InfoLabelSpan>{birthDate ? mobileContent ? "Birth" : "Date of birth" : ""}</InfoLabelSpan>
+            {birthDate && <PersonBirthDate>
+              <InfoLabelSpan>{mobileContent ? "Birth" : "Date of birth"}</InfoLabelSpan>
               <InfoSpan>{birthDate}</InfoSpan>
-            </PersonBirthDate>
-            <PersonBirthPlace>
+            </PersonBirthDate>}
+            {birthDate && <PersonBirthPlace>
               <InfoLabelSpan>{birthCity ? "Place of birth: " : ""}</InfoLabelSpan>
               <InfoSpan>{birthCity}</InfoSpan>
-            </PersonBirthPlace>
-            {horizontal && !mobileContent ? (
+            </PersonBirthPlace>}
+            {description && horizontal && !mobileContent ? (
               <PersonDescription>{description}</PersonDescription>
             ) : null}
           </>
         ) : null}
       </PersonDetails>
-      {horizontal && mobileContent ? (
+      {description && horizontal && mobileContent ? (
         <PersonDescription>{description}</PersonDescription>
       ) : null}
     </StyledTile>
