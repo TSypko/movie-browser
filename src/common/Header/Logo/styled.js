@@ -8,7 +8,8 @@ export const LogoWrapper = styled.div`
     letter-spacing: -1.5px;
     text-transform: capitalize;
     flex: 1 0;
-
+    text-decoration: none;
+    color: ${({theme})=>theme.colors.White};
     
     @media(max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
         font-size: 13px;

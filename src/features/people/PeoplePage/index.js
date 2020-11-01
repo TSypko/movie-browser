@@ -31,18 +31,18 @@ const PeoplePage = () => {
 
   return (
     <>
-      <Main>
-        {!loading && !error && people && people.total_results === 0 &&
+      {!loading && !error && people && people.total_results === 0 &&
+        <Main>
+          <Section
+            title={`Sorry, there are no results for "${query}"`}
+            body={<NoResultsPage />}
+          />
+        </Main>}
+      {(!people.results && !query && loading) && <LoadingSpinner />}
+      {(!people.results && error) && <ErrorPage />}
+      {people.total_results !== 0 && (people.results || query) &&
+        <>
           <Main>
-            <Section
-              title={`Sorry, there are no results for "${query}"`}
-              body={<NoResultsPage />}
-            />
-          </Main>}
-        {(!people.results && !query && loading) && <LoadingSpinner />}
-        {(!people.results && error) && <ErrorPage />}
-        {people.total_results !== 0 && (people.results || query) &&
-          <>
             <Section
               type="people"
               grid={people.results}
@@ -63,10 +63,10 @@ const PeoplePage = () => {
                   ))
               }
             />
-          </>
-        }
-        <BackToTopButton />
-      </Main>
+            <BackToTopButton />
+          </Main>
+        </>
+      }
       {!loading && <Pagination type="people" />}
     </>
   );
