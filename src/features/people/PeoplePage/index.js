@@ -63,7 +63,7 @@ const PeoplePage = () => {
                   ))
               }
             />
-            <BackToTopButton />
+            {!loading && <BackToTopButton />}
           </Main>
         </>
       }
